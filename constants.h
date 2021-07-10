@@ -44,4 +44,8 @@ inline double clamp(double x, double min, double max) {
 #include "ray.h"
 #include "vec3.h"
 
+inline color rgb_to_01(float red, float green, float blue) {
+    return color(red / 255, green / 255, blue / 255);
+}
+
 #endif
