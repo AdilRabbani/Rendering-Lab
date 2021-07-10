@@ -20,6 +20,7 @@ class ray {
     public:
         point3 orig;
         vec3 dir;
+        bool shadow_ray = false;
 };
 
 #endif
