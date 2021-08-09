@@ -1,0 +1,73 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: Project_Report_Adil_Rabbani.aux
+The style file: apacite.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: References.bib
+Warning--entry type for "Shirley2020RTW1" isn't style-file defined
+--line 20 of file References.bib
+Warning--entry type for "TRTChallenge" isn't style-file defined
+--line 92 of file References.bib
+Warning--entry type for "shadinglecture" isn't style-file defined
+--line 118 of file References.bib
+Warning--entry type for "2dtransformations" isn't style-file defined
+--line 125 of file References.bib
+Warning--entry type for "trianglemeshes" isn't style-file defined
+--line 139 of file References.bib
+Warning--entry type for "nvidiamarbles" isn't style-file defined
+--line 146 of file References.bib
+Warning--entry type for "scratchapixel" isn't style-file defined
+--line 153 of file References.bib
+Warning--entry type for "stackoverflow" isn't style-file defined
+--line 160 of file References.bib
+apacite.bst [2013/07/21 v6.03 APA bibliography style]
+You've used 27 entries,
+            6951 wiz_defined-function locations,
+            1387 strings with 14142 characters,
+and the built_in function-call counts, 41537 in all, are:
+= -- 5597
+> -- 329
+< -- 1514
++ -- 1301
+- -- 91
+* -- 2201
+:= -- 6379
+add.period$ -- 107
+call.type$ -- 27
+change.case$ -- 549
+chr.to.int$ -- 0
+cite$ -- 54
+duplicate$ -- 1031
+empty$ -- 1939
+format.name$ -- 506
+if$ -- 8828
+int.to.chr$ -- 0
+int.to.str$ -- 103
+missing$ -- 0
+newline$ -- 625
+num.names$ -- 216
+pop$ -- 1242
+preamble$ -- 1
+purify$ -- 110
+quote$ -- 0
+skip$ -- 3136
+stack$ -- 0
+substring$ -- 1440
+swap$ -- 521
+text.length$ -- 70
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 2736
+warning$ -- 0
+while$ -- 173
+width$ -- 0
+write$ -- 710
+(There were 8 warnings)

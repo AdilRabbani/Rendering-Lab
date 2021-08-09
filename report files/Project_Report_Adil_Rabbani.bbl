@@ -1,0 +1,671 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Buck%
+}{%
+Buck%
+}{%
+{\protect \APACyear {2019}}%
+}]{%
+TRTChallenge}
+\APACinsertmetastar {%
+TRTChallenge}%
+\begin{APACrefauthors}%
+Buck, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2019}{}{}.
+\newblock
+\APACrefbtitle {Area Lights: The Ray Tracer Challenge.} {Area lights: The ray
+  tracer challenge.}
+\newblock
+\begin{APACrefURL} \url{http://raytracerchallenge.com/bonus/area-light.html}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Burley%
+\ \protect \BOthers {.}}{%
+Burley%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2018}}%
+}]{%
+burley2018design}
+\APACinsertmetastar {%
+burley2018design}%
+\begin{APACrefauthors}%
+Burley, B.%
+, Adler, D.%
+, Chiang, M\BPBI J\BHBI Y.%
+, Driskill, H.%
+, Habel, R.%
+, Kelly, P.%
+\BDBL {}Teece, D.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2018}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {The design and evolution of disney’s hyperion
+  renderer} {The design and evolution of disney’s hyperion renderer}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{ACM Transactions on Graphics (TOG)}{37}{3}{1--22}.
+\newblock
+\APAChowpublished {\url{https://www.disneyanimation.com/technology/hyperion/}}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Christensen%
+\ \protect \BOthers {.}}{%
+Christensen%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2018}}%
+}]{%
+christensen2018renderman}
+\APACinsertmetastar {%
+christensen2018renderman}%
+\begin{APACrefauthors}%
+Christensen, P.%
+, Fong, J.%
+, Shade, J.%
+, Wooten, W.%
+, Schubert, B.%
+, Kensler, A.%
+\BDBL {}others%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2018}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Renderman: An advanced path-tracing architecture for
+  movie rendering} {Renderman: An advanced path-tracing architecture for movie
+  rendering}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{ACM Transactions on Graphics (TOG)}{37}{3}{1--21}.
+\newblock
+\begin{APACrefURL}
+  \url{https://renderman.pixar.com/resources/RenderMan_20/softShadows.html}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Ericson%
+}{%
+Ericson%
+}{%
+{\protect \APACyear {2004}}%
+}]{%
+ericson2004real}
+\APACinsertmetastar {%
+ericson2004real}%
+\begin{APACrefauthors}%
+Ericson, C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2004}.
+\newblock
+\APACrefbtitle {Real-time collision detection} {Real-time collision detection}.
+\newblock
+\APACaddressPublisher{}{Crc Press}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Haines%
+\ \BBA {} Akenine-M{\"o}ller%
+}{%
+Haines%
+\ \BBA {} Akenine-M{\"o}ller%
+}{%
+{\protect \APACyear {2019}}%
+}]{%
+haines2019ray}
+\APACinsertmetastar {%
+haines2019ray}%
+\begin{APACrefauthors}%
+Haines, E.%
+\BCBT {}\ \BBA {} Akenine-M{\"o}ller, T.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2019}.
+\newblock
+\APACrefbtitle {Ray Tracing Gems: High-Quality and Real-Time Rendering with DXR
+  and Other APIs} {Ray tracing gems: High-quality and real-time rendering with
+  dxr and other apis}.
+\newblock
+\APACaddressPublisher{}{Apress}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Kay%
+\ \BBA {} Kajiya%
+}{%
+Kay%
+\ \BBA {} Kajiya%
+}{%
+{\protect \APACyear {1986}}%
+}]{%
+kay1986ray}
+\APACinsertmetastar {%
+kay1986ray}%
+\begin{APACrefauthors}%
+Kay, T\BPBI L.%
+\BCBT {}\ \BBA {} Kajiya, J\BPBI T.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1986}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Ray tracing complex scenes} {Ray tracing complex
+  scenes}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{ACM SIGGRAPH computer graphics}{20}{4}{269--278}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Marschner%
+\ \BBA {} Shirley%
+}{%
+Marschner%
+\ \BBA {} Shirley%
+}{%
+{\protect \APACyear {2018}}%
+}]{%
+marschner2018fundamentals}
+\APACinsertmetastar {%
+marschner2018fundamentals}%
+\begin{APACrefauthors}%
+Marschner, S.%
+\BCBT {}\ \BBA {} Shirley, P.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2018}.
+\newblock
+\APACrefbtitle {Fundamentals of computer graphics} {Fundamentals of computer
+  graphics}.
+\newblock
+\APACaddressPublisher{}{CRC Press}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+M{\"o}ller%
+\ \BBA {} Trumbore%
+}{%
+M{\"o}ller%
+\ \BBA {} Trumbore%
+}{%
+{\protect \APACyear {1997}}%
+}]{%
+moller1997fast}
+\APACinsertmetastar {%
+moller1997fast}%
+\begin{APACrefauthors}%
+M{\"o}ller, T.%
+\BCBT {}\ \BBA {} Trumbore, B.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1997}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Fast, minimum storage ray-triangle intersection} {Fast,
+  minimum storage ray-triangle intersection}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of graphics tools}{2}{1}{21--28}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Nvidia%
+}{%
+Nvidia%
+}{%
+{\protect \APACyear {2021}}%
+}]{%
+nvidiamarbles}
+\APACinsertmetastar {%
+nvidiamarbles}%
+\begin{APACrefauthors}%
+Nvidia.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021}{}{}.
+\newblock
+\APACrefbtitle {Nvidia Marbles.} {Nvidia marbles.}
+\newblock
+\begin{APACrefURL}
+  \url{https://blogs.nvidia.com/blog/2021/05/27/omniverse-marbles-rtx-playable-sample/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Quilez%
+}{%
+Quilez%
+}{%
+{\protect \APACyear {2021}}%
+}]{%
+raytriangle}
+\APACinsertmetastar {%
+raytriangle}%
+\begin{APACrefauthors}%
+Quilez, I.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021}{}{}.
+\newblock
+\APACrefbtitle {Ray-Triangle intersection algorithm.} {Ray-triangle
+  intersection algorithm.}
+\newblock
+\begin{APACrefURL}
+  \url{https://www.iquilezles.org/www/articles/intersectors/intersectors.htm}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Scratchapixel%
+}{%
+Scratchapixel%
+}{%
+{\protect \APACyear {2021}}%
+}]{%
+scratchapixel}
+\APACinsertmetastar {%
+scratchapixel}%
+\begin{APACrefauthors}%
+Scratchapixel.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021}{}{}.
+\newblock
+\APACrefbtitle {Scratchapixel Blog.} {Scratchapixel blog.}
+\newblock
+\begin{APACrefURL} \url{https://www.scratchapixel.com/} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Shirley%
+}{%
+Shirley%
+}{%
+{\protect \APACyear {2020}}%
+}]{%
+Shirley2020RTW1}
+\APACinsertmetastar {%
+Shirley2020RTW1}%
+\begin{APACrefauthors}%
+Shirley, P.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2020}{December}{}.
+\newblock
+\APACrefbtitle {Ray Tracing in One Weekend.} {Ray tracing in one weekend.}
+\newblock
+\begin{APACrefURL}
+  \url{https://raytracing.github.io/books/RayTracingInOneWeekend.html}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+StackOverflow%
+}{%
+StackOverflow%
+}{%
+{\protect \APACyear {2012}}%
+}]{%
+stackoverflow}
+\APACinsertmetastar {%
+stackoverflow}%
+\begin{APACrefauthors}%
+StackOverflow.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+\APACrefbtitle {StackOverflow post about Area lights.} {Stackoverflow post
+  about area lights.}
+\newblock
+\begin{APACrefURL}
+  \url{https://stackoverflow.com/questions/11953825/area-lighting-in-ray-tracing}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Stanford%
+}{%
+Stanford%
+}{%
+{\protect \APACyear {2021}}%
+}]{%
+stanfordbunny}
+\APACinsertmetastar {%
+stanfordbunny}%
+\begin{APACrefauthors}%
+Stanford.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021}{}{}.
+\newblock
+\APACrefbtitle {Stanford Bunny.} {Stanford bunny.}
+\newblock
+\begin{APACrefURL} \url{http://graphics.stanford.edu/data/3Dscanrep/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Suffern%
+}{%
+Suffern%
+}{%
+{\protect \APACyear {2016}}%
+}]{%
+suffern2016ray}
+\APACinsertmetastar {%
+suffern2016ray}%
+\begin{APACrefauthors}%
+Suffern, K.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2016}.
+\newblock
+\APACrefbtitle {Ray Tracing from the Ground up} {Ray tracing from the ground
+  up}.
+\newblock
+\APACaddressPublisher{}{CRC Press}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Teschner%
+}{%
+Teschner%
+}{%
+{\protect \APACyear {2021}}%
+}]{%
+shadinglecture}
+\APACinsertmetastar {%
+shadinglecture}%
+\begin{APACrefauthors}%
+Teschner, M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021}{}{}.
+\newblock
+\APACrefbtitle {Image Processing and Computer Graphics, course notes on
+  Shading.} {Image processing and computer graphics, course notes on shading.}
+\newblock
+\begin{APACrefURL}
+  \url{https://cg.informatik.uni-freiburg.de/course_notes/graphics_02_shading.pdf}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wikipedia%
+}{%
+Wikipedia%
+}{%
+{\protect \APACyear {2021}}%
+{\protect \APACexlab {{\protect \BCnt {1}}}}}]{%
+inversesquarelaw2}
+\APACinsertmetastar {%
+inversesquarelaw2}%
+\begin{APACrefauthors}%
+Wikipedia.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021{\protect \BCnt {1}}}{}{}.
+\newblock
+\APACrefbtitle {Article on Inverse Square Law.} {Article on inverse square
+  law.}
+\newblock
+\begin{APACrefURL} \url{https://en.wikipedia.org/wiki/Inverse-square_law}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wikipedia%
+}{%
+Wikipedia%
+}{%
+{\protect \APACyear {2021}}%
+{\protect \APACexlab {{\protect \BCnt {2}}}}}]{%
+lambertscosinelaw}
+\APACinsertmetastar {%
+lambertscosinelaw}%
+\begin{APACrefauthors}%
+Wikipedia.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021{\protect \BCnt {2}}}{}{}.
+\newblock
+\APACrefbtitle {Article on Lambert's Cosine Law.} {Article on lambert's cosine
+  law.}
+\newblock
+\begin{APACrefURL}
+  \url{https://en.wikipedia.org/wiki/Lambert%27s_cosine_law#:~:text=In%20optics%2C%20Lambert's%20cosine%20law,I0cos(%CE%B8).}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wikipedia%
+}{%
+Wikipedia%
+}{%
+{\protect \APACyear {2021}}%
+{\protect \APACexlab {{\protect \BCnt {3}}}}}]{%
+cramersrule}
+\APACinsertmetastar {%
+cramersrule}%
+\begin{APACrefauthors}%
+Wikipedia.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021{\protect \BCnt {3}}}{}{}.
+\newblock
+\APACrefbtitle {Cramer's Rule.} {Cramer's rule.}
+\newblock
+\begin{APACrefURL} \url{https://en.wikipedia.org/wiki/Cramer%27s_rule}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wikipedia%
+}{%
+Wikipedia%
+}{%
+{\protect \APACyear {2021}}%
+{\protect \APACexlab {{\protect \BCnt {4}}}}}]{%
+fieldofview}
+\APACinsertmetastar {%
+fieldofview}%
+\begin{APACrefauthors}%
+Wikipedia.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021{\protect \BCnt {4}}}{}{}.
+\newblock
+\APACrefbtitle {Field of view.} {Field of view.}
+\newblock
+\begin{APACrefURL}
+  \url{https://en.wikipedia.org/wiki/Field_of_view#/media/File:Angle_of_view.svg}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wikipedia%
+}{%
+Wikipedia%
+}{%
+{\protect \APACyear {2021}}%
+{\protect \APACexlab {{\protect \BCnt {5}}}}}]{%
+inversesquarelaw}
+\APACinsertmetastar {%
+inversesquarelaw}%
+\begin{APACrefauthors}%
+Wikipedia.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021{\protect \BCnt {5}}}{}{}.
+\newblock
+\APACrefbtitle {Inverse Square Law.} {Inverse square law.}
+\newblock
+\begin{APACrefURL}
+  \url{https://en.wikipedia.org/wiki/Inverse-square_law#/media/File:Inverse_square_law.svg}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wikipedia%
+}{%
+Wikipedia%
+}{%
+{\protect \APACyear {2021}}%
+{\protect \APACexlab {{\protect \BCnt {6}}}}}]{%
+penumbra}
+\APACinsertmetastar {%
+penumbra}%
+\begin{APACrefauthors}%
+Wikipedia.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021{\protect \BCnt {6}}}{}{}.
+\newblock
+\APACrefbtitle {Penumbra.} {Penumbra.}
+\newblock
+\begin{APACrefURL}
+  \url{https://en.wikipedia.org/wiki/Penumbra_(disambiguation)}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wikipedia%
+}{%
+Wikipedia%
+}{%
+{\protect \APACyear {2021}}%
+{\protect \APACexlab {{\protect \BCnt {7}}}}}]{%
+phong}
+\APACinsertmetastar {%
+phong}%
+\begin{APACrefauthors}%
+Wikipedia.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021{\protect \BCnt {7}}}{}{}.
+\newblock
+\APACrefbtitle {Phong Reflection Model.} {Phong reflection model.}
+\newblock
+\begin{APACrefURL} \url{https://en.wikipedia.org/wiki/Phong_reflection_model}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wikipedia%
+}{%
+Wikipedia%
+}{%
+{\protect \APACyear {2021}}%
+{\protect \APACexlab {{\protect \BCnt {8}}}}}]{%
+ppmformat}
+\APACinsertmetastar {%
+ppmformat}%
+\begin{APACrefauthors}%
+Wikipedia.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021{\protect \BCnt {8}}}{}{}.
+\newblock
+\APACrefbtitle {PPM.} {Ppm.}
+\newblock
+\begin{APACrefURL} \url{https://en.wikipedia.org/wiki/Netpbm} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wikipedia%
+}{%
+Wikipedia%
+}{%
+{\protect \APACyear {2021}}%
+{\protect \APACexlab {{\protect \BCnt {9}}}}}]{%
+trianglemesh}
+\APACinsertmetastar {%
+trianglemesh}%
+\begin{APACrefauthors}%
+Wikipedia.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021{\protect \BCnt {9}}}{}{}.
+\newblock
+\APACrefbtitle {Triangle mesh.} {Triangle mesh.}
+\newblock
+\begin{APACrefURL}
+  \url{https://en.wikipedia.org/wiki/Triangle_mesh#/media/File:Dolphin_triangle_mesh.png}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Yuksel%
+}{%
+Yuksel%
+}{%
+{\protect \APACyear {2021}}%
+{\protect \APACexlab {{\protect \BCnt {1}}}}}]{%
+2dtransformations}
+\APACinsertmetastar {%
+2dtransformations}%
+\begin{APACrefauthors}%
+Yuksel, C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021{\protect \BCnt {1}}}{}{}.
+\newblock
+\APACrefbtitle {Prof. Cem Yuksel's lecture on 2D transformations on youtube.}
+  {Prof. cem yuksel's lecture on 2d transformations on youtube.}
+\newblock
+\begin{APACrefURL} \url{https://www.youtube.com/watch?v=EKN7dTJ4ep8}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Yuksel%
+}{%
+Yuksel%
+}{%
+{\protect \APACyear {2021}}%
+{\protect \APACexlab {{\protect \BCnt {2}}}}}]{%
+trianglemeshes}
+\APACinsertmetastar {%
+trianglemeshes}%
+\begin{APACrefauthors}%
+Yuksel, C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021{\protect \BCnt {2}}}{}{}.
+\newblock
+\APACrefbtitle {Prof. Cem Yuksel's lecture on trianglular meshes on youtube.}
+  {Prof. cem yuksel's lecture on trianglular meshes on youtube.}
+\newblock
+\begin{APACrefURL} \url{https://www.youtube.com/watch?v=HV2dKIQcp6k}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

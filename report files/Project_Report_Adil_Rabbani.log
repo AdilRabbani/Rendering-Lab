@@ -1,0 +1,1002 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.6)  9 AUG 2021 18:29
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**Project_Report_Adil_Rabbani.tex
+(./Project_Report_Adil_Rabbani.tex
+LaTeX2e <2020-02-02> patch level 2
+L3 programming layer <2020-02-14>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+)
+\c@part=\count167
+\c@section=\count168
+\c@subsection=\count169
+\c@subsubsection=\count170
+\c@paragraph=\count171
+\c@subparagraph=\count172
+\c@figure=\count173
+\c@table=\count174
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
+)
+(/usr/share/texlive/texmf-dist/tex/latex/preprint/fullpage.sty
+Package: fullpage 1999/02/23 1.1 (PWD)
+\FP@margin=\skip49
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2020/01/20 v2.17e AMS math features
+\@mathmargin=\skip50
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks14
+\ex@=\dimen135
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen136
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count175
+LaTeX Info: Redefining \frac on input line 227.
+\uproot@=\count176
+\leftroot@=\count177
+LaTeX Info: Redefining \overline on input line 389.
+\classnum@=\count178
+\DOTSCASE@=\count179
+LaTeX Info: Redefining \ldots on input line 486.
+LaTeX Info: Redefining \dots on input line 489.
+LaTeX Info: Redefining \cdots on input line 610.
+\Mathstrutbox@=\box45
+\strutbox@=\box46
+\big@size=\dimen137
+LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
+\macc@depth=\count180
+\c@MaxMatrixCols=\count181
+\dotsspace@=\muskip16
+\c@parentequation=\count182
+\dspbrk@lvl=\count183
+\tag@help=\toks15
+\row@=\count184
+\column@=\count185
+\maxfields@=\count186
+\andhelp@=\toks16
+\eqnshift@=\dimen138
+\alignsep@=\dimen139
+\tagshift@=\dimen140
+\tagwidth@=\dimen141
+\totwidth@=\dimen142
+\lineht@=\dimen143
+\@envbody=\toks17
+\multlinegap=\skip51
+\multlinetaggap=\skip52
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2859.
+LaTeX Info: Redefining \] on input line 2860.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2020/01/17 v1.23 mathematical typesetting tools
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count187
+\calc@Bcount=\count188
+\calc@Adimen=\dimen144
+\calc@Bdimen=\dimen145
+\calc@Askip=\skip53
+\calc@Bskip=\skip54
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count189
+\calc@Cskip=\skip55
+)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2017/03/31 v1.3 programming setup (MH)
+)
+LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
+\g_MT_multlinerow_int=\count190
+\l_MT_multwidth_dim=\dimen146
+\origjot=\skip56
+\l_MT_shortvdotswithinadjustabove_dim=\dimen147
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen148
+\l_MT_above_intertext_sep=\dimen149
+\l_MT_below_intertext_sep=\dimen150
+\l_MT_above_shortintertext_sep=\dimen151
+\l_MT_below_shortintertext_sep=\dimen152
+)
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2019/10/16 v2.13 Sectioning titles
+\ttl@box=\box47
+\beforetitleunit=\skip57
+\aftertitleunit=\skip58
+\ttl@plus=\dimen153
+\ttl@minus=\dimen154
+\ttl@toksa=\toks20
+\titlewidth=\dimen155
+\titlewidthlast=\dimen156
+\titlewidthfirst=\dimen157
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen158
+\Gin@req@width=\dimen159
+)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count191
+\float@exts=\toks21
+\float@box=\box48
+\@float@everytoks=\toks22
+\@floatcapt=\box49
+)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen160
+\WF@size=\dimen161
+\c@WF@wrappedlines=\count192
+\WF@box=\box50
+\WF@everypar=\toks23
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
+\c@tracingmulticols=\count193
+\mult@box=\box51
+\multicol@leftmargin=\dimen162
+\c@unbalance=\count194
+\c@collectmore=\count195
+\doublecol@number=\count196
+\multicoltolerance=\count197
+\multicolpretolerance=\count198
+\full@width=\dimen163
+\page@free=\dimen164
+\premulticols=\dimen165
+\postmulticols=\dimen166
+\multicolsep=\skip59
+\multicolbaselineskip=\skip60
+\partial@page=\box52
+\last@line=\box53
+\maxbalancingoverflow=\dimen167
+\mult@rightbox=\box54
+\mult@grightbox=\box55
+\mult@gfirstbox=\box56
+\mult@firstbox=\box57
+\@tempa=\box58
+\@tempa=\box59
+\@tempa=\box60
+\@tempa=\box61
+\@tempa=\box62
+\@tempa=\box63
+\@tempa=\box64
+\@tempa=\box65
+\@tempa=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\c@minrows=\count199
+\c@columnbadness=\count266
+\c@finalcolumnbadness=\count267
+\last@try=\dimen168
+\multicolovershoot=\dimen169
+\multicolundershoot=\dimen170
+\mult@nat@firstbox=\box95
+\colbreak@box=\box96
+\mc@col@check@num=\count268
+)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2020/01/03 v3.4h Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 61.
+\captionmargin=\dimen171
+\captionmargin@=\dimen172
+\captionwidth=\dimen173
+\caption@tempdima=\dimen174
+\caption@indent=\dimen175
+\caption@parindent=\dimen176
+\caption@hangindent=\dimen177
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count269
+\c@continuedfloat=\count270
+Package caption Info: float package is loaded.
+Package caption Info: wrapfig package is loaded.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2020/01/14 v7.00d Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2019/11/07 v1.0c TeX engine tests
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+)
+\@linkdim=\dimen178
+\Hy@linkcounter=\count271
+\Hy@pagecounter=\count272
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2020/01/14 v7.00d Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count273
+\pdfmajorversion=\count274
+Package hyperref Info: Hyper figures OFF on input line 4547.
+Package hyperref Info: Link nesting OFF on input line 4552.
+Package hyperref Info: Hyper index ON on input line 4555.
+Package hyperref Info: Plain pages OFF on input line 4562.
+Package hyperref Info: Backreferencing OFF on input line 4567.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4800.
+\c@Hy@tempcnt=\count275
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5159.
+\XeTeXLinkMargin=\dimen179
+
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count276
+\Field@Width=\dimen180
+\Fld@charsize=\dimen181
+Package hyperref Info: Hyper figures OFF on input line 6430.
+Package hyperref Info: Link nesting OFF on input line 6435.
+Package hyperref Info: Hyper index ON on input line 6438.
+Package hyperref Info: backreferencing OFF on input line 6445.
+Package hyperref Info: Link coloring OFF on input line 6450.
+Package hyperref Info: Link coloring with OCG OFF on input line 6455.
+Package hyperref Info: PDF/A mode OFF on input line 6460.
+LaTeX Info: Redefining \ref on input line 6500.
+LaTeX Info: Redefining \pageref on input line 6504.
+
+(/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty
+Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
+)
+\Hy@abspage=\count277
+\c@Item=\count278
+\c@Hfootnote=\count279
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2020/01/14 v7.00d Hyperref driver for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/atveryend/atveryend.sty
+Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+)
+\Fld@listcount=\count280
+\c@bookmark@seq@number=\count281
+
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip61
+)
+(/usr/share/texlive/texmf-dist/tex/latex/apacite/apacite.sty
+Package: apacite 2013/07/21 v6.03 APA citation
+\c@BibCnt=\count282
+\bibleftmargin=\skip62
+\bibindent=\skip63
+\bibparsep=\skip64
+\bibitemsep=\skip65
+\biblabelsep=\skip66
+)
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
+\multirow@colwidth=\skip67
+\multirow@cntb=\count283
+\multirow@dima=\skip68
+\bigstrutjot=\dimen182
+)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count284
+\l__pdf_internal_box=\box97
+)
+(./Project_Report_Adil_Rabbani.aux
+
+LaTeX Warning: Label `fig:scale' multiply defined.
+
+)
+\openout1 = `Project_Report_Adil_Rabbani.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count285
+\scratchdimen=\dimen183
+\scratchbox=\box98
+\nofMPsegments=\count286
+\nofMParguments=\count287
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count288
+\MPscratchDim=\dimen184
+\MPnumerator=\count289
+\makeMPintoPDFobject=\count290
+\everyMPtoPDFconversion=\toks25
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\AtBeginShipoutBox=\box99
+Package hyperref Info: Link coloring OFF on input line 19.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count291
+)
+LaTeX Info: Redefining \ref on input line 19.
+LaTeX Info: Redefining \pageref on input line 19.
+LaTeX Info: Redefining \nameref on input line 19.
+
+(./Project_Report_Adil_Rabbani.out) (./Project_Report_Adil_Rabbani.out)
+\@outlinefile=\write3
+\openout3 = `Project_Report_Adil_Rabbani.out'.
+
+\c@maskedRefs=\count292
+
+(/usr/share/texlive/texmf-dist/tex/latex/apacite/english.apc
+File: english.apc 2013/07/21 v6.03 apacite language file
+LaTeX Info: Redefining \BPBI on input line 129.
+LaTeX Info: Redefining \BHBI on input line 130.
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+<hyperion_renderer.png, id=161, 642.4pt x 401.5pt>
+File: hyperion_renderer.png Graphic file (type png)
+<use hyperion_renderer.png>
+Package pdftex.def Info: hyperion_renderer.png  used on input line 33.
+(pdftex.def)             Requested size: 317.07614pt x 198.1764pt.
+<nvidia_marbles.png, id=167, 1764.5925pt x 831.105pt>
+File: nvidia_marbles.png Graphic file (type png)
+<use nvidia_marbles.png>
+Package pdftex.def Info: nvidia_marbles.png  used on input line 40.
+(pdftex.def)             Requested size: 317.07614pt x 149.3388pt.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./hyperion_renderer.png>]
+<raytracing_gems.png, id=187, 972.63374pt x 684.5575pt>
+File: raytracing_gems.png Graphic file (type png)
+<use raytracing_gems.png>
+Package pdftex.def Info: raytracing_gems.png  used on input line 49.
+(pdftex.def)             Requested size: 271.7835pt x 191.27786pt.
+ [2 <./nvidia_marbles.png> <./raytracing_gems.png>] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 74--81
+
+ []
+
+<ppm_example.png, id=223, 487.06969pt x 445.665pt>
+File: ppm_example.png Graphic file (type png)
+<use ppm_example.png>
+Package pdftex.def Info: ppm_example.png  used on input line 89.
+(pdftex.def)             Requested size: 85.35826pt x 78.10135pt.
+<ray1.png, id=228, 445.665pt x 149.8097pt>
+File: ray1.png Graphic file (type png)
+<use ray1.png>
+Package pdftex.def Info: ray1.png  used on input line 97.
+(pdftex.def)             Requested size: 227.62204pt x 76.51393pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--99
+
+ []
+
+[4 <./ppm_example.png> <./ray1.png>]
+<camera.png, id=246, 552.56438pt x 372.64218pt>
+File: camera.png Graphic file (type png)
+<use camera.png>
+Package pdftex.def Info: camera.png  used on input line 112.
+(pdftex.def)             Requested size: 227.62204pt x 153.50072pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
+
+ []
+
+<axb_normal.png, id=251, 535.2497pt x 519.44063pt>
+File: axb_normal.png Graphic file (type png)
+<use axb_normal.png>
+Package pdftex.def Info: axb_normal.png  used on input line 126.
+(pdftex.def)             Requested size: 170.71652pt x 165.67749pt.
+[5 <./camera.png> <./axb_normal.png>]
+<triangle.png, id=265, 414.04688pt x 344.03531pt>
+File: triangle.png Graphic file (type png)
+<use triangle.png>
+Package pdftex.def Info: triangle.png  used on input line 137.
+(pdftex.def)             Requested size: 142.26378pt x 118.20935pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--166
+
+ []
+
+[6 <./triangle.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 195--199
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 255--258
+
+ []
+
+<ray_triangle.png, id=287, 1003.75pt x 564.1075pt>
+File: ray_triangle.png Graphic file (type png)
+<use ray_triangle.png>
+Package pdftex.def Info: ray_triangle.png  used on input line 264.
+(pdftex.def)             Requested size: 203.83417pt x 114.54962pt.
+[7]
+<circle.png, id=305, 432.11438pt x 432.86719pt>
+File: circle.png Graphic file (type png)
+<use circle.png>
+Package pdftex.def Info: circle.png  used on input line 275.
+(pdftex.def)             Requested size: 170.71652pt x 171.01038pt.
+ [8 <./ray_triangle.png> <./circle.png>]
+<ray_sphere_triangle.png, id=319, 1003.75pt x 564.1075pt>
+File: ray_sphere_triangle.png Graphic file (type png)
+<use ray_sphere_triangle.png>
+Package pdftex.def Info: ray_sphere_triangle.png  used on input line 312.
+(pdftex.def)             Requested size: 203.83417pt x 114.54962pt.
+<dolphin_mesh.png, id=320, 636.3775pt x 392.46625pt>
+File: dolphin_mesh.png Graphic file (type png)
+<use dolphin_mesh.png>
+Package pdftex.def Info: dolphin_mesh.png  used on input line 324.
+(pdftex.def)             Requested size: 158.54152pt x 97.77496pt.
+<normal_mesh.png, id=327, 1003.75pt x 564.1075pt>
+File: normal_mesh.png Graphic file (type png)
+<use normal_mesh.png>
+Package pdftex.def Info: normal_mesh.png  used on input line 332.
+(pdftex.def)             Requested size: 244.59961pt x 137.46298pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 327--334
+
+ []
+
+[9 <./ray_sphere_triangle.png> <./dolphin_mesh.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 339--344
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 339--344
+
+ []
+
+<inverse_square_law.png, id=343, 1284.8pt x 855.195pt>
+File: inverse_square_law.png Graphic file (type png)
+<use inverse_square_law.png>
+Package pdftex.def Info: inverse_square_law.png  used on input line 348.
+(pdftex.def)             Requested size: 226.48395pt x 150.74445pt.
+[10 <./normal_mesh.png>]
+<diffuse_reflection.png, id=358, 1003.75pt x 564.1075pt>
+File: diffuse_reflection.png Graphic file (type png)
+<use diffuse_reflection.png>
+Package pdftex.def Info: diffuse_reflection.png  used on input line 370.
+(pdftex.def)             Requested size: 226.48395pt x 127.28023pt.
+ [11 <./inverse_square_law.png>]
+<diffuse_ambient_reflection.png, id=372, 1003.75pt x 564.1075pt>
+File: diffuse_ambient_reflection.png Graphic file (type png)
+<use diffuse_ambient_reflection.png>
+Package pdftex.def Info: diffuse_ambient_reflection.png  used on input line 386
+.
+(pdftex.def)             Requested size: 226.48395pt x 127.28023pt.
+<r_vector_v_vector.png, id=373, 754.82pt x 510.90875pt>
+File: r_vector_v_vector.png Graphic file (type png)
+<use r_vector_v_vector.png>
+Package pdftex.def Info: r_vector_v_vector.png  used on input line 393.
+(pdftex.def)             Requested size: 117.76874pt x 79.71236pt.
+
+Underfull \hbox (badness 1635) in paragraph at lines 394--394
+\OT1/cmr/m/n/10.95 vec-tor $[]$ and other use-ful vec-tors
+ []
+
+[12 <./diffuse_reflection.png> <./diffuse_ambient_reflection.png> <./r_vector_v
+_vector.png>]
+<diffuse_ambient_specular_reflection.png, id=391, 1003.75pt x 564.1075pt>
+File: diffuse_ambient_specular_reflection.png Graphic file (type png)
+<use diffuse_ambient_specular_reflection.png>
+Package pdftex.def Info: diffuse_ambient_specular_reflection.png  used on input
+ line 412.
+(pdftex.def)             Requested size: 226.48395pt x 127.28023pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 418--419
+
+ []
+
+<shadow_ray_problem.png, id=392, 1003.75pt x 564.1075pt>
+File: shadow_ray_problem.png Graphic file (type png)
+<use shadow_ray_problem.png>
+Package pdftex.def Info: shadow_ray_problem.png  used on input line 423.
+(pdftex.def)             Requested size: 226.48395pt x 127.28023pt.
+<shadow_ray_problem_fix.png, id=393, 1003.75pt x 564.1075pt>
+File: shadow_ray_problem_fix.png Graphic file (type png)
+<use shadow_ray_problem_fix.png>
+Package pdftex.def Info: shadow_ray_problem_fix.png  used on input line 433.
+(pdftex.def)             Requested size: 226.48395pt x 127.28023pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 427--435
+
+ []
+
+[13 <./diffuse_ambient_specular_reflection.png> <./shadow_ray_problem.png>]
+<aliased_pointlight.png, id=403, 1003.75pt x 564.1075pt>
+File: aliased_pointlight.png Graphic file (type png)
+<use aliased_pointlight.png>
+Package pdftex.def Info: aliased_pointlight.png  used on input line 450.
+(pdftex.def)             Requested size: 203.83417pt x 114.54962pt.
+<aliased_pointlight_zoomed.png, id=404, 1569.865pt x 839.135pt>
+File: aliased_pointlight_zoomed.png Graphic file (type png)
+<use aliased_pointlight_zoomed.png>
+Package pdftex.def Info: aliased_pointlight_zoomed.png  used on input line 451.
+
+(pdftex.def)             Requested size: 212.89546pt x 113.7905pt.
+<antialiasing_1.png, id=405, 437.38406pt x 365.86688pt>
+File: antialiasing_1.png Graphic file (type png)
+<use antialiasing_1.png>
+Package pdftex.def Info: antialiasing_1.png  used on input line 459.
+(pdftex.def)             Requested size: 113.24197pt x 94.72119pt.
+
+[14 <./shadow_ray_problem_fix.png> <./aliased_pointlight.png> <./aliased_pointl
+ight_zoomed.png>]
+<antialiasing_2.png, id=418, 437.38406pt x 365.86688pt>
+File: antialiasing_2.png Graphic file (type png)
+<use antialiasing_2.png>
+Package pdftex.def Info: antialiasing_2.png  used on input line 467.
+(pdftex.def)             Requested size: 113.24197pt x 94.72119pt.
+<antialiased_pointlight.png, id=423, 1003.75pt x 564.1075pt>
+File: antialiased_pointlight.png Graphic file (type png)
+<use antialiased_pointlight.png>
+Package pdftex.def Info: antialiased_pointlight.png  used on input line 477.
+(pdftex.def)             Requested size: 203.83417pt x 114.54962pt.
+<10x_antialiasing.png, id=424, 1178.4025pt x 770.88pt>
+File: 10x_antialiasing.png Graphic file (type png)
+<use 10x_antialiasing.png>
+Package pdftex.def Info: 10x_antialiasing.png  used on input line 478.
+(pdftex.def)             Requested size: 176.6572pt x 115.55643pt.
+<texture_mapping.png, id=425, 584.93532pt x 248.42813pt>
+File: texture_mapping.png Graphic file (type png)
+<use texture_mapping.png>
+Package pdftex.def Info: texture_mapping.png  used on input line 488.
+(pdftex.def)             Requested size: 317.07614pt x 134.66852pt.
+ [15 <./antialiasing_1.png> <./antialiasing_2.png> <./antialiased_pointlight.pn
+g> <./10x_antialiasing.png>]
+<textured_triangles.png, id=440, 1003.75pt x 564.1075pt>
+File: textured_triangles.png Graphic file (type png)
+<use textured_triangles.png>
+Package pdftex.def Info: textured_triangles.png  used on input line 516.
+(pdftex.def)             Requested size: 226.48395pt x 127.28023pt.
+ [16 <./texture_mapping.png>]
+<textured_sphere.png, id=451, 1003.75pt x 564.1075pt>
+File: textured_sphere.png Graphic file (type png)
+<use textured_sphere.png>
+Package pdftex.def Info: textured_sphere.png  used on input line 529.
+(pdftex.def)             Requested size: 203.83417pt x 114.54962pt.
+
+[17 <./textured_triangles.png> <./textured_sphere.png>]
+<translation.png, id=462, 356.83313pt x 329.73187pt>
+File: translation.png Graphic file (type png)
+<use translation.png>
+Package pdftex.def Info: translation.png  used on input line 554.
+(pdftex.def)             Requested size: 113.80779pt x 113.80792pt.
+<scale.png, id=467, 322.95656pt x 329.73187pt>
+File: scale.png Graphic file (type png)
+<use scale.png>
+Package pdftex.def Info: scale.png  used on input line 568.
+(pdftex.def)             Requested size: 113.81017pt x 113.80792pt.
+
+Underfull \hbox (badness 1371) in paragraph at lines 569--569
+\OT1/cmr/m/n/10.95 is scaled to a re-sult-
+ []
+
+<rotation.png, id=472, 322.95656pt x 329.73187pt>
+File: rotation.png Graphic file (type png)
+<use rotation.png>
+Package pdftex.def Info: rotation.png  used on input line 593.
+(pdftex.def)             Requested size: 126.83044pt x 129.49046pt.
+[18 <./translation.png> <./scale.png>] [19 <./rotation.png>]
+<camera_rays.png, id=514, 1004.75375pt x 687.56876pt>
+File: camera_rays.png Graphic file (type png)
+<use camera_rays.png>
+Package pdftex.def Info: camera_rays.png  used on input line 647.
+(pdftex.def)             Requested size: 181.18784pt x 123.98784pt.
+<fov.png, id=519, 1027.84pt x 849.1725pt>
+File: fov.png Graphic file (type png)
+<use fov.png>
+Package pdftex.def Info: fov.png  used on input line 657.
+(pdftex.def)             Requested size: 113.24197pt x 93.55179pt.
+ [20 <./camera_rays.png> <./fov.png>]
+<camera3.png, id=538, 1003.75pt x 564.1075pt>
+File: camera3.png Graphic file (type png)
+<use camera3.png>
+Package pdftex.def Info: camera3.png  used on input line 690.
+(pdftex.def)             Requested size: 135.89174pt x 76.36641pt.
+<camera1.png, id=539, 1003.75pt x 564.1075pt>
+File: camera1.png Graphic file (type png)
+<use camera1.png>
+Package pdftex.def Info: camera1.png  used on input line 691.
+(pdftex.def)             Requested size: 135.89174pt x 76.36641pt.
+<camera2.png, id=540, 1003.75pt x 564.1075pt>
+File: camera2.png Graphic file (type png)
+<use camera2.png>
+Package pdftex.def Info: camera2.png  used on input line 692.
+(pdftex.def)             Requested size: 135.89174pt x 76.36641pt.
+<aabb.png, id=541, 347.2975pt x 453.695pt>
+File: aabb.png Graphic file (type png)
+<use aabb.png>
+Package pdftex.def Info: aabb.png  used on input line 702.
+(pdftex.def)             Requested size: 90.5922pt x 118.3456pt.
+<aabb1.png, id=548, 465.74pt x 401.5pt>
+File: aabb1.png Graphic file (type png)
+<use aabb1.png>
+Package pdftex.def Info: aabb1.png  used on input line 712.
+(pdftex.def)             Requested size: 158.54152pt x 136.6736pt.
+<aabb2.png, id=549, 511.9125pt x 498.36188pt>
+File: aabb2.png Graphic file (type png)
+<use aabb2.png>
+Package pdftex.def Info: aabb2.png  used on input line 713.
+(pdftex.def)             Requested size: 158.54152pt x 154.3461pt.
+ [21 <./camera3.png> <./camera1.png> <./camera2.png> <./aabb.png>]
+<aabb3.png, id=565, 1052.43187pt x 490.08093pt>
+File: aabb3.png Graphic file (type png)
+<use aabb3.png>
+Package pdftex.def Info: aabb3.png  used on input line 721.
+(pdftex.def)             Requested size: 317.07614pt x 147.65356pt.
+ [22 <./aabb1.png> <./aabb2.png> <./aabb3.png>]
+<cubescene.png, id=581, 1003.75pt x 564.1075pt>
+File: cubescene.png Graphic file (type png)
+<use cubescene.png>
+Package pdftex.def Info: cubescene.png  used on input line 747.
+(pdftex.def)             Requested size: 226.48395pt x 127.28023pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 757--757
+[]\OT1/cmr/m/n/10.95 Ray-mesh in-ter-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 757--757
+[]\OT1/cmr/m/n/10.95 Ray-triangle
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 757--758
+[]\OT1/cmr/m/n/10.95 Time taken to
+ []
+
+<bunnyscene.png, id=582, 1003.75pt x 564.1075pt>
+File: bunnyscene.png Graphic file (type png)
+<use bunnyscene.png>
+Package pdftex.def Info: bunnyscene.png  used on input line 769.
+(pdftex.def)             Requested size: 226.48395pt x 127.28023pt.
+[23 <./cubescene.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 779--779
+[]\OT1/cmr/m/n/10.95 Ray-mesh in-ter-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 779--779
+[]\OT1/cmr/m/n/10.95 Ray-triangle
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 779--780
+[]\OT1/cmr/m/n/10.95 Time taken to
+ []
+
+<teapotscene.png, id=592, 1003.75pt x 564.1075pt>
+File: teapotscene.png Graphic file (type png)
+<use teapotscene.png>
+Package pdftex.def Info: teapotscene.png  used on input line 791.
+(pdftex.def)             Requested size: 226.48395pt x 127.28023pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 801--801
+[]\OT1/cmr/m/n/10.95 Ray-mesh in-ter-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 801--801
+[]\OT1/cmr/m/n/10.95 Ray-triangle
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 801--802
+[]\OT1/cmr/m/n/10.95 Time taken to
+ []
+
+<point_light_hard_shadows.png, id=595, 1003.75pt x 564.1075pt>
+File: point_light_hard_shadows.png Graphic file (type png)
+<use point_light_hard_shadows.png>
+Package pdftex.def Info: point_light_hard_shadows.png  used on input line 818.
+(pdftex.def)             Requested size: 181.18439pt x 101.81902pt.
+[24 <./bunnyscene.png> <./teapotscene.png>]
+<softshadows.png, id=606, 513.92pt x 385.44pt>
+File: softshadows.png Graphic file (type png)
+<use softshadows.png>
+Package pdftex.def Info: softshadows.png  used on input line 826.
+(pdftex.def)             Requested size: 135.89174pt x 101.91762pt.
+<arealight1.png, id=611, 400.49625pt x 213.04594pt>
+File: arealight1.png Graphic file (type png)
+<use arealight1.png>
+Package pdftex.def Info: arealight1.png  used on input line 834.
+(pdftex.def)             Requested size: 181.18439pt x 96.3834pt.
+<arealight2.png, id=612, 1003.75pt x 564.1075pt>
+File: arealight2.png Graphic file (type png)
+<use arealight2.png>
+Package pdftex.def Info: arealight2.png  used on input line 842.
+(pdftex.def)             Requested size: 181.18439pt x 101.81902pt.
+ [25 <./point_light_hard_shadows.png> <./softshadows.png> <./arealight1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 845--850
+
+ []
+
+<arealight3.png, id=626, 1003.75pt x 564.1075pt>
+File: arealight3.png Graphic file (type png)
+<use arealight3.png>
+Package pdftex.def Info: arealight3.png  used on input line 858.
+(pdftex.def)             Requested size: 181.18439pt x 101.81902pt.
+<wrongshadows.png, id=627, 695.59875pt x 443.6575pt>
+File: wrongshadows.png Graphic file (type png)
+<use wrongshadows.png>
+Package pdftex.def Info: wrongshadows.png  used on input line 859.
+(pdftex.def)             Requested size: 165.33577pt x 105.45097pt.
+<arealight4.png, id=628, 412.54124pt x 335.75438pt>
+File: arealight4.png Graphic file (type png)
+<use arealight4.png>
+Package pdftex.def Info: arealight4.png  used on input line 867.
+(pdftex.def)             Requested size: 181.18439pt x 147.46085pt.
+[26 <./arealight2.png> <./arealight3.png> <./wrongshadows.png>]
+<arealight5.png, id=637, 1003.75pt x 564.1075pt>
+File: arealight5.png Graphic file (type png)
+<use arealight5.png>
+Package pdftex.def Info: arealight5.png  used on input line 880.
+(pdftex.def)             Requested size: 226.48395pt x 127.28023pt.
+<arealight6.png, id=638, 1003.75pt x 564.1075pt>
+File: arealight6.png Graphic file (type png)
+<use arealight6.png>
+Package pdftex.def Info: arealight6.png  used on input line 888.
+(pdftex.def)             Requested size: 158.54152pt x 89.09702pt.
+<noisy.png, id=639, 670.505pt x 412.54124pt>
+File: noisy.png Graphic file (type png)
+<use noisy.png>
+Package pdftex.def Info: noisy.png  used on input line 889.
+(pdftex.def)             Requested size: 144.95303pt x 89.17934pt.
+ [27 <./arealight4.png> <./arealight5.png> <./arealight6.png> <./noisy.png>]
+<arealight7.png, id=650, 1003.75pt x 564.1075pt>
+File: arealight7.png Graphic file (type png)
+<use arealight7.png>
+Package pdftex.def Info: arealight7.png  used on input line 898.
+(pdftex.def)             Requested size: 226.48395pt x 127.28023pt.
+
+(./Project_Report_Adil_Rabbani.bbl
+Underfull \hbox (badness 1057) in paragraph at lines 14--26
+[]\OT1/cmr/m/n/10.95 Buck, J.  (2019).  \OT1/cmr/m/it/10.95 Area lights: The ra
+y tracer chal-lenge.  \OT1/cmr/m/n/10.95 Re-trieved from []$\OT1/cmtt/m/n/10.95
+ http ://
+ []
+
+[28 <./arealight7.png>]
+Underfull \hbox (badness 2035) in paragraph at lines 396--409
+\OT1/cmr/m/n/10.95 trieved from []$\OT1/cmtt/m/n/10.95 https :// cg [] .informa
+tik [] .uni [] -freiburg [] .de / course [] []notes / graphics [] []02 []
+ []
+
+
+Underfull \hbox (badness 2189) in paragraph at lines 445--458
+[]\OT1/cmr/m/n/10.95 Wikipedia.  (2021b).  \OT1/cmr/m/it/10.95 Ar-ti-cle on lam
+-bert's co-sine law.  \OT1/cmr/m/n/10.95 Re-trieved from []$\OT1/cmtt/m/n/10.95
+ https ://
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 445--458
+\OT1/cmtt/m/n/10.95 en [] .wikipedia [] .org / wiki / Lambert % 27s [] []cosine
+ [] []law# : [] : text = In % 20optics % 2C %
+ []
+
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 908.
+ [29]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 908.
+ (./Project_Report_Adil_Rabbani.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 908.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 908.
+Package rerunfilecheck Info: File `Project_Report_Adil_Rabbani.out' has not cha
+nged.
+(rerunfilecheck)             Checksum: 8249D3B542CB748A1A9856A204D1C8F1;2465.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 908.
+ ) 
+Here is how much of TeX's memory you used:
+ 9630 strings out of 481239
+ 147476 string characters out of 5920378
+ 417265 words of memory out of 5000000
+ 24485 multiletter control sequences out of 15000+600000
+ 543064 words of font info for 64 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 41i,12n,45p,1485b,447s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy8.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on Project_Report_Adil_Rabbani.pdf (29 pages, 7211357 bytes).
+PDF statistics:
+ 808 PDF objects out of 1000 (max. 8388607)
+ 621 compressed objects within 7 object streams
+ 221 named destinations out of 1000 (max. 500000)
+ 580 words of extra memory for PDF output out of 10000 (max. 10000000)
+

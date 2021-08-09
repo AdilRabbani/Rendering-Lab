@@ -2,8 +2,79 @@
 #define TRIANGLE_H
 
 #include "hittable.h"
-#include "vec3.h"
 #include "texture.h"
+
+inline void triangle_rotate_in_x(point3 &p1, point3 &p2, point3 &p3,
+                          double rotate_angle_x) {
+
+  double v1_x, v2_x, v3_x;
+  double v1_y, v2_y, v3_y;
+  double v1_z, v2_z, v3_z;
+
+  v1_x = p1.x();
+  v1_y = p1.y() * cos(rotate_angle_x) + p1.z() * sin(rotate_angle_x);
+  v1_z = p1.y() * (-sin(rotate_angle_x)) + p1.z() * cos(rotate_angle_x);
+
+  v2_x = p2.x();
+  v2_y = p2.y() * cos(rotate_angle_x) + p2.z() * sin(rotate_angle_x);
+  v2_z = p2.y() * (-sin(rotate_angle_x)) + p2.z() * cos(rotate_angle_x);
+
+  v3_x = p3.x();
+  v3_y = p3.y() * cos(rotate_angle_x) + p3.z() * sin(rotate_angle_x);
+  v3_z = p3.y() * (-sin(rotate_angle_x)) + p3.z() * cos(rotate_angle_x);
+
+  p1 = vec3(v1_x, v1_y, v1_z);
+  p2 = vec3(v2_x, v2_y, v2_z);
+  p3 = vec3(v3_x, v3_y, v3_z);
+}
+
+inline void triangle_rotate_in_y(point3 &p1, point3 &p2, point3 &p3,
+                          double rotate_angle_y) {
+
+  double v1_x, v2_x, v3_x;
+  double v1_y, v2_y, v3_y;
+  double v1_z, v2_z, v3_z;
+
+  v1_x = p1.x() * cos(rotate_angle_y) + p1.z() * -sin(rotate_angle_y);
+  v1_y = p1.y();
+  v1_z = p1.x() * (sin(rotate_angle_y)) + p1.z() * cos(rotate_angle_y);
+
+  v2_x = p2.x() * cos(rotate_angle_y) + p2.z() * -sin(rotate_angle_y);
+  v2_y = p2.y();
+  v2_z = p2.x() * (sin(rotate_angle_y)) + p2.z() * cos(rotate_angle_y);
+
+  v3_x = p3.x() * cos(rotate_angle_y) + p3.z() * -sin(rotate_angle_y);
+  v3_y = p3.y();
+  v3_z = p3.x() * (sin(rotate_angle_y)) + p3.z() * cos(rotate_angle_y);
+
+  p1 = vec3(v1_x, v1_y, v1_z);
+  p2 = vec3(v2_x, v2_y, v2_z);
+  p3 = vec3(v3_x, v3_y, v3_z);
+}
+
+inline void triangle_rotate_in_z(point3 &p1, point3 &p2, point3 &p3,
+                          double rotate_angle_z) {
+
+  double v1_x, v2_x, v3_x;
+  double v1_y, v2_y, v3_y;
+  double v1_z, v2_z, v3_z;
+
+  v1_x = p1.x() * cos(rotate_angle_z) + p1.y() * sin(rotate_angle_z);
+  v1_y = p1.x() * (-sin(rotate_angle_z)) + p1.y() * cos(rotate_angle_z);
+  v1_z = p1.z();
+
+  v2_x = p2.x() * cos(rotate_angle_z) + p2.y() * sin(rotate_angle_z);
+  v2_y = p2.x() * (-sin(rotate_angle_z)) + p2.y() * cos(rotate_angle_z);
+  v2_z = p2.z();
+
+  v3_x = p3.x() * cos(rotate_angle_z) + p3.y() * sin(rotate_angle_z);
+  v3_y = p3.x() * (-sin(rotate_angle_z)) + p3.y() * cos(rotate_angle_z);
+  v3_z = p3.z();
+
+  p1 = vec3(v1_x, v1_y, v1_z);
+  p2 = vec3(v2_x, v2_y, v2_z);
+  p3 = vec3(v3_x, v3_y, v3_z);
+}
 
 class triangle {
 public:
@@ -16,18 +87,37 @@ public:
     has_texture = false;
   }
 
-  triangle(point3 p0_, point3 p1_, point3 p2_, color m, texture t) {
+  triangle(point3 p0_, point3 p1_, point3 p2_, texture t) {
     p0 = p0_;
     p1 = p1_;
     p2 = p2_;
-    albedo = m;
     tex = t;
     has_texture = true;
-    std::cout << "Hey this has texture!" << std::endl;
   }
 
-  bool hit(const ray &r, double t_min, double t_max,
-                   hit_record &rec);
+  void transform(vec3 translate_by, vec3 scale_by, vec3 rotate_by) {
+
+    double rotate_x = rotate_by.x() * 0.01745;
+    double rotate_y = rotate_by.y() * 0.01745;
+    double rotate_z = rotate_by.z() * 0.01745;
+
+    triangle_rotate_in_z(p0, p1, p2, rotate_z);
+    triangle_rotate_in_x(p0, p1, p2, rotate_x);
+    triangle_rotate_in_y(p0, p1, p2, rotate_y);
+
+    p0 = vec3(p0.x() * scale_by.x(), p0.y() * scale_by.y(),
+              p0.z() * scale_by.z());
+    p1 = vec3(p1.x() * scale_by.x(), p1.y() * scale_by.y(),
+              p1.z() * scale_by.z());
+    p2 = vec3(p2.x() * scale_by.x(), p2.y() * scale_by.y(),
+              p2.z() * scale_by.z());
+
+    p0 = p0 + translate_by;
+    p1 = p1 + translate_by;
+    p2 = p2 + translate_by;
+  }
+
+  bool hit(const ray &r, double t_min, double t_max, hit_record &rec);
 
 public:
   point3 p0;
@@ -38,27 +128,29 @@ public:
   texture tex;
 };
 
-bool triangle::hit(const ray &r, double t_min, double t_max,
-                   hit_record &rec){
-  const vec3 p0_to_p1 = p1 - p0; // edge 1
-  const vec3 p0_to_p2 = p2 - p0; // edge 2
+// Special thanks to author Inigo Quilez:
+// https://www.iquilezles.org/www/articles/intersectors/intersectors.htm
 
-  vec3 p0_to_ray_origin = r.origin() - p0; // vector (direction) from one of the points on triangle to ray origin
-  vec3 normal = cross(p0_to_p1, p0_to_p2); // normal vector to the plane
+bool triangle::hit(const ray &r, double t_min, double t_max, hit_record &rec) {
 
-  vec3 q = cross(p0_to_ray_origin, r.direction()); // vector (direction) to the intersection point
+  const vec3 p0_to_p1 = p1 - p0;
+  const vec3 p0_to_p2 = p2 - p0;
 
-  double determinant = 1 / dot(r.direction(), normal); // determinant 1 / (N . r)
+  vec3 p0_to_ray_origin = r.origin() - p0;
+  vec3 normal = cross(p0_to_p1, p0_to_p2);
 
-  double u_ = determinant * dot(-q, p0_to_p2); // compute u
+  vec3 q = cross(p0_to_ray_origin, r.direction());
+
+  double determinant = 1 / dot(r.direction(), normal);
+
+  double u_ = determinant * dot(-q, p0_to_p2);
   if (u_ < 0.0 || u_ > 1.0)
     return false;
-  double v_ = determinant * dot(q, p0_to_p1); // compute v
+  double v_ = determinant * dot(q, p0_to_p1);
   if (v_ < 0.0 || (u_ + v_) > 1.0)
     return false;
-  double t = determinant * dot(-normal, p0_to_ray_origin); // compute t which is -(N . origin + D) / (N . r) because n is // in the opposite direction of ray, we use -n
+  double t = determinant * dot(-normal, p0_to_ray_origin);
 
-  // Find the nearest root that lies in the acceptable range.
   if (t < t_min || t_max < t) {
     return false;
   }
@@ -71,18 +163,10 @@ bool triangle::hit(const ray &r, double t_min, double t_max,
   rec.set_face_normal(r, unit_vector(normal));
 
   if (has_texture) {
-      int height = tex.texture_image_data.y_size();
-      int width = tex.texture_image_data.x_size();
-      double red = (double)(tex.texture_image_data[(int)round((rec.v) *  height)][(int)round(rec.u * width)].red / 255.0);
-      double green = (double)(tex.texture_image_data[(int)round((rec.v) *  height)][(int)round(rec.u * width)].green / 255.0);
-      double blue = (double)(tex.texture_image_data[(int)round((rec.v) *  height)][(int)round(rec.u * width)].blue / 255.0);
-      rec.albedo = color(red, green, blue);
+    rec.albedo = tex.get_texel(rec.u, rec.v);
+  } else {
+    rec.albedo = albedo;
   }
-  else {
-      rec.albedo = albedo;
-  }
-
-  rec.name = "triangle";
 
   return true;
 }
