@@ -31,8 +31,13 @@ public:
 
   bool hit(const ray &r, double t_min, double t_max, hit_record &rec);
 
-  void translate(vec3 translate_by) { center = center + translate_by; }
-  void scale(double scale_by) { radius = radius * scale_by; }
+  void transform(vec3 translate_by, double scale_by, vec3 rotate_by) {
+
+    center = center + translate_by;
+    radius = radius * scale_by;
+    sphere_aabb = aabb(center - vec3(radius, radius, radius), center + vec3(radius, radius, radius));
+
+  }
 
 public:
   point3 center;
