@@ -736,8 +736,8 @@ Since we can intersect triangles now with our ray-triangle intersection. We can 
 	Now that we have an AABB implementation we can analyze the difference it makes when using AABBs as a first intersection test to encapsulate meshes in our scenes. When a mesh is loaded in the ray tracer, we will compute its min and max vertices as discussed in the previous section and create an axis-aligned bounding box for it. For every ray that goes into the scene from the camera's origin, if the ray doesn't hit the AABB of the mesh, it also would not hit the mesh itself and so we return from our hit function without doing any expensive computation (ray-triangle intersections). We will use three different scenes for this purpose and evaluate them by first rendering the scene without AABBs and then afterwards rendering the same scene using AABBs. Each of the three scenes were using 5x anti-aliasing, has a plane made up of two triangles with three point lights illuminating the scene:
 	\begin{enumerate}
 		\item The first scene uses a cube as a mesh made up of 12 triangles.
-		\item The second scene uses the stanford bunny as a mesh made up of 4, 968 triangles.
-		\item The third scene uses the utah teapot as a mesh made up of 6, 320 triangles.
+		\item The second scene uses the stanford bunny \cite{stanfordbunny} as a mesh made up of 4, 968 triangles.
+		\item The third scene uses the utah teapot \cite{utahteapot} as a mesh made up of 6, 320 triangles.
 	\end{enumerate}
 	We will calculate the number of \textbf{ray-mesh intersection} tests which is the number of times it is checked if a ray hits the mesh. We will also be calculating the number of \textbf{ray-triangle intersection} tests which is the number of times it is checked if a ray hits any of the triangles in the mesh. The counter for ray-triangle intersection tests does not take into account the checks for the two triangles that make up the plane as we are not using AABBs to enclose individual triangles. Note that the render times might vary on the machine used to render. These were the results I got on my machine.
 	\subsubsection{Scene 1 - Cube}
@@ -767,7 +767,7 @@ Since we can intersect triangles now with our ray-triangle intersection. We can 
 		\centering
 		\captionsetup{justification=centering}
 		\includegraphics[width=.5\textwidth]{bunnyscene}\quad
-		\caption{Image rendered of a slightly rotated cube.}
+		\caption{Image rendered of a stanford bunny.}
 	\end{figure}
 	
 	\begin{table}[h]
@@ -807,7 +807,7 @@ Since we can intersect triangles now with our ray-triangle intersection. We can 
 	\end{table}
 
 	\noindent
-	It is quite obvious that using AABBs greatly reduces the time it takes to render an image. For the scenes tested, it can be seen that the time was halved from when the scene was rendered without using AABBs. The intersection tests were also greatly reduced when using AABBs.
+	It is quite obvious that using AABBs greatly reduces the time it takes to render an image. For the scenes tested, it can be seen that the time was halved from when the scenes were rendered without using AABBs. The intersection tests were also greatly reduced when using AABBs.
 	
 	\section{Area lights}
 	This section is inspired by the online chapter on \textbf{Area Lights} from the book \textbf{The Ray Tracer Challenge} \cite{TRTChallenge}.

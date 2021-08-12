@@ -463,6 +463,29 @@ Wikipedia%
 }{%
 {\protect \APACyear {2021}}%
 {\protect \APACexlab {{\protect \BCnt {3}}}}}]{%
+utahteapot}
+\APACinsertmetastar {%
+utahteapot}%
+\begin{APACrefauthors}%
+Wikipedia.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021{\protect \BCnt {3}}}{}{}.
+\newblock
+\APACrefbtitle {Article on Utah Teapot.} {Article on utah teapot.}
+\newblock
+\begin{APACrefURL} \url{https://en.wikipedia.org/wiki/Utah_teapot}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wikipedia%
+}{%
+Wikipedia%
+}{%
+{\protect \APACyear {2021}}%
+{\protect \APACexlab {{\protect \BCnt {4}}}}}]{%
 cramersrule}
 \APACinsertmetastar {%
 cramersrule}%
@@ -471,7 +494,7 @@ Wikipedia.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{2021{\protect \BCnt {3}}}{}{}.
+\APACrefYearMonthDay{2021{\protect \BCnt {4}}}{}{}.
 \newblock
 \APACrefbtitle {Cramer's Rule.} {Cramer's rule.}
 \newblock
@@ -485,7 +508,7 @@ Wikipedia%
 Wikipedia%
 }{%
 {\protect \APACyear {2021}}%
-{\protect \APACexlab {{\protect \BCnt {4}}}}}]{%
+{\protect \APACexlab {{\protect \BCnt {5}}}}}]{%
 fieldofview}
 \APACinsertmetastar {%
 fieldofview}%
@@ -494,7 +517,7 @@ Wikipedia.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{2021{\protect \BCnt {4}}}{}{}.
+\APACrefYearMonthDay{2021{\protect \BCnt {5}}}{}{}.
 \newblock
 \APACrefbtitle {Field of view.} {Field of view.}
 \newblock
@@ -509,7 +532,7 @@ Wikipedia%
 Wikipedia%
 }{%
 {\protect \APACyear {2021}}%
-{\protect \APACexlab {{\protect \BCnt {5}}}}}]{%
+{\protect \APACexlab {{\protect \BCnt {6}}}}}]{%
 inversesquarelaw}
 \APACinsertmetastar {%
 inversesquarelaw}%
@@ -518,7 +541,7 @@ Wikipedia.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{2021{\protect \BCnt {5}}}{}{}.
+\APACrefYearMonthDay{2021{\protect \BCnt {6}}}{}{}.
 \newblock
 \APACrefbtitle {Inverse Square Law.} {Inverse square law.}
 \newblock
@@ -533,7 +556,7 @@ Wikipedia%
 Wikipedia%
 }{%
 {\protect \APACyear {2021}}%
-{\protect \APACexlab {{\protect \BCnt {6}}}}}]{%
+{\protect \APACexlab {{\protect \BCnt {7}}}}}]{%
 penumbra}
 \APACinsertmetastar {%
 penumbra}%
@@ -542,7 +565,7 @@ Wikipedia.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{2021{\protect \BCnt {6}}}{}{}.
+\APACrefYearMonthDay{2021{\protect \BCnt {7}}}{}{}.
 \newblock
 \APACrefbtitle {Penumbra.} {Penumbra.}
 \newblock
@@ -557,7 +580,7 @@ Wikipedia%
 Wikipedia%
 }{%
 {\protect \APACyear {2021}}%
-{\protect \APACexlab {{\protect \BCnt {7}}}}}]{%
+{\protect \APACexlab {{\protect \BCnt {8}}}}}]{%
 phong}
 \APACinsertmetastar {%
 phong}%
@@ -566,7 +589,7 @@ Wikipedia.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{2021{\protect \BCnt {7}}}{}{}.
+\APACrefYearMonthDay{2021{\protect \BCnt {8}}}{}{}.
 \newblock
 \APACrefbtitle {Phong Reflection Model.} {Phong reflection model.}
 \newblock
@@ -580,7 +603,7 @@ Wikipedia%
 Wikipedia%
 }{%
 {\protect \APACyear {2021}}%
-{\protect \APACexlab {{\protect \BCnt {8}}}}}]{%
+{\protect \APACexlab {{\protect \BCnt {9}}}}}]{%
 ppmformat}
 \APACinsertmetastar {%
 ppmformat}%
@@ -589,7 +612,7 @@ Wikipedia.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{2021{\protect \BCnt {8}}}{}{}.
+\APACrefYearMonthDay{2021{\protect \BCnt {9}}}{}{}.
 \newblock
 \APACrefbtitle {PPM.} {Ppm.}
 \newblock
@@ -602,7 +625,7 @@ Wikipedia%
 Wikipedia%
 }{%
 {\protect \APACyear {2021}}%
-{\protect \APACexlab {{\protect \BCnt {9}}}}}]{%
+{\protect \APACexlab {{\protect \BCnt {10}}}}}]{%
 trianglemesh}
 \APACinsertmetastar {%
 trianglemesh}%
@@ -611,7 +634,7 @@ Wikipedia.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{2021{\protect \BCnt {9}}}{}{}.
+\APACrefYearMonthDay{2021{\protect \BCnt {10}}}{}{}.
 \newblock
 \APACrefbtitle {Triangle mesh.} {Triangle mesh.}
 \newblock

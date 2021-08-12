@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.6)  9 AUG 2021 18:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.6)  12 AUG 2021 18:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -802,7 +802,7 @@ File: aabb3.png Graphic file (type png)
 Package pdftex.def Info: aabb3.png  used on input line 721.
 (pdftex.def)             Requested size: 317.07614pt x 147.65356pt.
  [22 <./aabb1.png> <./aabb2.png> <./aabb3.png>]
-<cubescene.png, id=581, 1003.75pt x 564.1075pt>
+<cubescene.png, id=585, 1003.75pt x 564.1075pt>
 File: cubescene.png Graphic file (type png)
 <use cubescene.png>
 Package pdftex.def Info: cubescene.png  used on input line 747.
@@ -822,7 +822,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 757--758
 []\OT1/cmr/m/n/10.95 Time taken to
  []
 
-<bunnyscene.png, id=582, 1003.75pt x 564.1075pt>
+<bunnyscene.png, id=586, 1003.75pt x 564.1075pt>
 File: bunnyscene.png Graphic file (type png)
 <use bunnyscene.png>
 Package pdftex.def Info: bunnyscene.png  used on input line 769.
@@ -842,7 +842,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 779--780
 []\OT1/cmr/m/n/10.95 Time taken to
  []
 
-<teapotscene.png, id=592, 1003.75pt x 564.1075pt>
+<teapotscene.png, id=597, 1003.75pt x 564.1075pt>
 File: teapotscene.png Graphic file (type png)
 <use teapotscene.png>
 Package pdftex.def Info: teapotscene.png  used on input line 791.
@@ -862,23 +862,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 801--802
 []\OT1/cmr/m/n/10.95 Time taken to
  []
 
-<point_light_hard_shadows.png, id=595, 1003.75pt x 564.1075pt>
+<point_light_hard_shadows.png, id=600, 1003.75pt x 564.1075pt>
 File: point_light_hard_shadows.png Graphic file (type png)
 <use point_light_hard_shadows.png>
 Package pdftex.def Info: point_light_hard_shadows.png  used on input line 818.
 (pdftex.def)             Requested size: 181.18439pt x 101.81902pt.
 [24 <./bunnyscene.png> <./teapotscene.png>]
-<softshadows.png, id=606, 513.92pt x 385.44pt>
+<softshadows.png, id=611, 513.92pt x 385.44pt>
 File: softshadows.png Graphic file (type png)
 <use softshadows.png>
 Package pdftex.def Info: softshadows.png  used on input line 826.
 (pdftex.def)             Requested size: 135.89174pt x 101.91762pt.
-<arealight1.png, id=611, 400.49625pt x 213.04594pt>
+<arealight1.png, id=616, 400.49625pt x 213.04594pt>
 File: arealight1.png Graphic file (type png)
 <use arealight1.png>
 Package pdftex.def Info: arealight1.png  used on input line 834.
 (pdftex.def)             Requested size: 181.18439pt x 96.3834pt.
-<arealight2.png, id=612, 1003.75pt x 564.1075pt>
+<arealight2.png, id=617, 1003.75pt x 564.1075pt>
 File: arealight2.png Graphic file (type png)
 <use arealight2.png>
 Package pdftex.def Info: arealight2.png  used on input line 842.
@@ -888,39 +888,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 845--850
 
  []
 
-<arealight3.png, id=626, 1003.75pt x 564.1075pt>
+<arealight3.png, id=631, 1003.75pt x 564.1075pt>
 File: arealight3.png Graphic file (type png)
 <use arealight3.png>
 Package pdftex.def Info: arealight3.png  used on input line 858.
 (pdftex.def)             Requested size: 181.18439pt x 101.81902pt.
-<wrongshadows.png, id=627, 695.59875pt x 443.6575pt>
+<wrongshadows.png, id=632, 695.59875pt x 443.6575pt>
 File: wrongshadows.png Graphic file (type png)
 <use wrongshadows.png>
 Package pdftex.def Info: wrongshadows.png  used on input line 859.
 (pdftex.def)             Requested size: 165.33577pt x 105.45097pt.
-<arealight4.png, id=628, 412.54124pt x 335.75438pt>
+<arealight4.png, id=633, 412.54124pt x 335.75438pt>
 File: arealight4.png Graphic file (type png)
 <use arealight4.png>
 Package pdftex.def Info: arealight4.png  used on input line 867.
 (pdftex.def)             Requested size: 181.18439pt x 147.46085pt.
 [26 <./arealight2.png> <./arealight3.png> <./wrongshadows.png>]
-<arealight5.png, id=637, 1003.75pt x 564.1075pt>
+<arealight5.png, id=642, 1003.75pt x 564.1075pt>
 File: arealight5.png Graphic file (type png)
 <use arealight5.png>
 Package pdftex.def Info: arealight5.png  used on input line 880.
 (pdftex.def)             Requested size: 226.48395pt x 127.28023pt.
-<arealight6.png, id=638, 1003.75pt x 564.1075pt>
+<arealight6.png, id=643, 1003.75pt x 564.1075pt>
 File: arealight6.png Graphic file (type png)
 <use arealight6.png>
 Package pdftex.def Info: arealight6.png  used on input line 888.
 (pdftex.def)             Requested size: 158.54152pt x 89.09702pt.
-<noisy.png, id=639, 670.505pt x 412.54124pt>
+<noisy.png, id=644, 670.505pt x 412.54124pt>
 File: noisy.png Graphic file (type png)
 <use noisy.png>
 Package pdftex.def Info: noisy.png  used on input line 889.
 (pdftex.def)             Requested size: 144.95303pt x 89.17934pt.
  [27 <./arealight4.png> <./arealight5.png> <./arealight6.png> <./noisy.png>]
-<arealight7.png, id=650, 1003.75pt x 564.1075pt>
+<arealight7.png, id=656, 1003.75pt x 564.1075pt>
 File: arealight7.png Graphic file (type png)
 <use arealight7.png>
 Package pdftex.def Info: arealight7.png  used on input line 898.
@@ -969,10 +969,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 908.
  ) 
 Here is how much of TeX's memory you used:
- 9630 strings out of 481239
- 147476 string characters out of 5920378
- 417265 words of memory out of 5000000
- 24485 multiletter control sequences out of 15000+600000
+ 9634 strings out of 481239
+ 147530 string characters out of 5920378
+ 417362 words of memory out of 5000000
+ 24488 multiletter control sequences out of 15000+600000
  543064 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,12n,45p,1485b,447s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -993,10 +993,10 @@ r6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Project_Report_Adil_Rabbani.pdf (29 pages, 7211357 bytes).
+Output written on Project_Report_Adil_Rabbani.pdf (29 pages, 7211652 bytes).
 PDF statistics:
- 808 PDF objects out of 1000 (max. 8388607)
- 621 compressed objects within 7 object streams
- 221 named destinations out of 1000 (max. 500000)
+ 815 PDF objects out of 1000 (max. 8388607)
+ 628 compressed objects within 7 object streams
+ 222 named destinations out of 1000 (max. 500000)
  580 words of extra memory for PDF output out of 10000 (max. 10000000)
 

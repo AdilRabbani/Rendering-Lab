@@ -29,45 +29,45 @@ Warning--entry type for "scratchapixel" isn't style-file defined
 Warning--entry type for "stackoverflow" isn't style-file defined
 --line 160 of file References.bib
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
-You've used 27 entries,
+You've used 28 entries,
             6951 wiz_defined-function locations,
-            1387 strings with 14142 characters,
-and the built_in function-call counts, 41537 in all, are:
-= -- 5597
-> -- 329
-< -- 1514
-+ -- 1301
-- -- 91
-* -- 2201
-:= -- 6379
-add.period$ -- 107
-call.type$ -- 27
-change.case$ -- 549
+            1390 strings with 14216 characters,
+and the built_in function-call counts, 42854 in all, are:
+= -- 5775
+> -- 340
+< -- 1559
++ -- 1331
+- -- 96
+* -- 2270
+:= -- 6568
+add.period$ -- 111
+call.type$ -- 28
+change.case$ -- 574
 chr.to.int$ -- 0
-cite$ -- 54
-duplicate$ -- 1031
-empty$ -- 1939
-format.name$ -- 506
-if$ -- 8828
+cite$ -- 56
+duplicate$ -- 1062
+empty$ -- 2009
+format.name$ -- 520
+if$ -- 9125
 int.to.chr$ -- 0
-int.to.str$ -- 103
+int.to.str$ -- 108
 missing$ -- 0
-newline$ -- 625
-num.names$ -- 216
-pop$ -- 1242
+newline$ -- 647
+num.names$ -- 224
+pop$ -- 1314
 preamble$ -- 1
-purify$ -- 110
+purify$ -- 114
 quote$ -- 0
-skip$ -- 3136
+skip$ -- 3211
 stack$ -- 0
-substring$ -- 1440
-swap$ -- 521
-text.length$ -- 70
+substring$ -- 1473
+swap$ -- 536
+text.length$ -- 73
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 2736
+type$ -- 2816
 warning$ -- 0
-while$ -- 173
+while$ -- 178
 width$ -- 0
-write$ -- 710
+write$ -- 734
 (There were 8 warnings)
