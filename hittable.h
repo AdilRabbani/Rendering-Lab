@@ -16,6 +16,7 @@ struct hit_record {
   bool front_face;
   double u = -1;
   double v = -1;
+  std::string name;
 
   inline void set_face_normal(const ray &r, const vec3 &outward_normal) {
     front_face = dot(r.direction(), outward_normal) < 0;

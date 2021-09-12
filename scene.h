@@ -133,7 +133,7 @@ public:
   }
 
   color ray_color(const ray &r, double t_min, double t_max, double u,
-                  double v) {
+                  double v, int depth) {
 
     hit_record hit;
 
@@ -169,6 +169,12 @@ public:
               scene_area_lights[i].intensity, intensity_at_point,
               scene_area_lights.size() / number_of_area_lights, 2);
         }
+
+        // vec3 R = reflect(unit_vector(r.direction()), hit.normal);
+
+        // if (hit.name == "triangle") {
+        //   hit_color += 0.8 * ray_color(ray(hit.p + hit.normal * 0.05, R), t_min, t_max, u, v, depth - 1) + (ambient * apply_ambient);
+        // }
 
         return hit_color + (ambient * apply_ambient);
       }
@@ -303,6 +309,7 @@ public:
 
   void render_scene(int image_width, int image_height, int samples_per_pixel,
                     camera cam, std::ostream &file_to_save_image) {
+    int depth = 3;
     for (int j = image_height - 1; j >= 0; --j) {
       double percent_complete = (image_height - j);
       percent_complete = percent_complete / image_height;
@@ -317,7 +324,7 @@ public:
           auto v = (j + random_double()) / (image_height - 1);
           ray r = cam.get_ray(u, v);
           pixel_color += ray_color(r, 0.001, infinity, (double)i / image_width,
-                                   (double)j / image_height);
+                                   (double)j / image_height, depth);
         }
 
         write_color(file_to_save_image, pixel_color, samples_per_pixel);

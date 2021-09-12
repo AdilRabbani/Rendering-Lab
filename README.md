@@ -34,7 +34,23 @@ There are some other constants that can be set in the file `constants.h`
 There are some example renders in the folder `example renders`. The animated ones were converted to a gif using a photo editor. The ray tracer would only create frames one by one.
 
 The external libraries are saved in the folder `libraries` and some parts taken from [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) in the folder `RTIOW`. `aabb.h` is also placed in `Scratchapixel` as I'm using the same implementation explained there. There are some other places which are quite similar to how they were explained in [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) but it's rather difficult to separate everything as I also did a lot of changes.
-## Thanks to
+
+| Scene 1        | Scene 2        | Scene 3  |
+| ------------- |:-------------:| -----:|
+| <img src="renders/scene1.png" alt="drawing" width="300"/>| <img src="renders/scene2.png" alt="drawing" width="300"/> | $1600 |
+
+| <h4 style='text-align:center;'>Scene 4 (Point Lights)</h4>       | <h4 style='text-align:center;'>Scene 5</h4>        | <h4 style='text-align:center;'>Scene 6</h4>  |
+| ------------- |:-------------:| -----:|
+| <img src="example renders/rotation.gif" alt="drawing" width="300"/>| <img src="example renders/scene5.png" alt="drawing" width="300"/> | <img src="example renders/scene6.png" alt="drawing" width="300"/> |
+
+| <h4 style='text-align:center;'>Scene 7 (Point Lights)</h4>       | <h4 style='text-align:center;'>Scene 7 (Area Lights)</h4>        | <h4 style='text-align:center;'>Scene 8</h4>  |
+| ------------- |:-------------:| -----:|
+| <img src="example renders/scene7_pointlight.png" alt="drawing" width="300"/>| <img src="example renders/scene7_arealight.png" alt="drawing" width="300"/> | <img src="example renders/camera.gif" alt="drawing" width="300"/> |
+
+| <h4 style='text-align:center;'>Scene 9 (Point Lights)</h4>       | <h4 style='text-align:center;'>Scene 9 (Area Lights)</h4>        | <h4 style='text-align:center;'>Scene 10</h4>  |
+| ------------- |:-------------:| -----:|
+| <img src="example renders/pointlight.gif" alt="drawing" width="300"/>| <img src="example renders/arealight.gif" alt="drawing" width="300"/> | <img src="example renders/scene10.png" alt="drawing" width="300"/> |
+
 1. [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
 1. [Scratchapixel](https://www.scratchapixel.com/) for properly explaining all the concepts and the [AABB](https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-box-intersection) implementation.
 1. [Inigo Quilez](https://www.iquilezles.org/www/articles/intersectors/intersectors.htm) for the ray-triangle intersection method.

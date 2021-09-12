@@ -124,7 +124,7 @@ inline void scene3() {
   scene.add_mesh(teapot);
 
   std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/scene2.ppm");
+  file_to_save_image.open("renders/scene3.ppm");
 
   camera cam(point3(0, 2, 6), point3(0, 0, -1), vec3(0, 1, 0), 45,
              aspect_ratio);
@@ -149,7 +149,7 @@ inline void scene3() {
   scene.clear_scene();
 }
 
-inline void scene4() {
+inline void scene4(bool area_light) {
   const auto aspect_ratio = 16.0 / 9.0;
   const int image_width = 1000;
   const int image_height = static_cast<int>(image_width / aspect_ratio);
@@ -165,16 +165,26 @@ inline void scene4() {
     scene.add_triangle(triangle(point3(5, -1, 2.5), point3(-5, -1, 2.5),
                                 point3(5, -1, -6), color(0.2, 0.2, 0.2)));
 
-    scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
-    scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, -1)));
-    scene.add_point_light(PointLight(color(1, 1, 1), 10, vec3(0, 2, -1)));
+    if (!area_light) {
+      scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
+      scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, -1)));
+      scene.add_point_light(PointLight(color(1, 1, 1), 10, vec3(0, 2, -1)));
+    }
+    else {
+      scene.add_area_light(AreaLight(color(0, 1, 1), 30, vec3(-2, 2, -1), 1),
+                       3);
+      scene.add_area_light(AreaLight(color(1, 1, 0), 30, vec3(2, 2, -1), 1),
+                       3);
+      scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 2, -1), 1),
+                       2);
+    }
 
     mesh cube("models/cube.obj", vec3(1, 1, 1), vec3(0, 0, -1),
               vec3(k * 3, k * 3, k * 3), color(0.18, 0.3, 1));
     scene.add_mesh(cube);
 
     std::ofstream file_to_save_image;
-    file_to_save_image.open("renders/animated/rotation/scene4_" +
+    file_to_save_image.open("renders/animated/rotation/area_light/scene4_" +
                             std::to_string(image_counter) + ".ppm");
 
     camera cam(point3(0, 2, 6), point3(0, 0, -1), vec3(0, 1, 0), 45,
@@ -304,7 +314,7 @@ inline void scene6() {
 
 inline void scene7(bool area_light) {
   const auto aspect_ratio = 16.0 / 9.0;
-  const int image_width = 1000;
+  const int image_width = 2000;
   const int image_height = static_cast<int>(image_width / aspect_ratio);
   const int samples_per_pixel = 15;
 
@@ -313,6 +323,7 @@ inline void scene7(bool area_light) {
   texture mars("textures/mars.ppm");
   texture grass("textures/grass.ppm");
   texture background("textures/stars.ppm");
+  texture milkyway("textures/milky_way.ppm");
 
   Scene scene(1, 1, 1, 1, background);
 
@@ -334,7 +345,7 @@ inline void scene7(bool area_light) {
     scene.add_area_light(AreaLight(color(1, 1, 1), 30, vec3(-2, 2, -1), 1), 3);
     scene.add_area_light(AreaLight(color(1, 1, 1), 30, vec3(2, 2, -1), 1), 3);
     scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 2, -1), 1), 3);
-    file_to_save_image.open("renders/scene7_arealight.ppm");
+    file_to_save_image.open("renders/scene7_arealight_diffuse.ppm");
   } else {
     scene.add_point_light(PointLight(color(1, 1, 1), 30, vec3(-2, 2, -1)));
     scene.add_point_light(PointLight(color(1, 1, 1), 30, vec3(2, 2, -1)));
@@ -481,6 +492,54 @@ inline void scene9(bool area_light) {
     image_counter = image_counter + 1;
     scene.clear_scene();
   }
+}
+
+inline void scene10() {
+  const auto aspect_ratio = 16.0 / 9.0;
+  const int image_width = 1000;
+  const int image_height = static_cast<int>(image_width / aspect_ratio);
+  const int samples_per_pixel = 15;
+
+  Scene scene(1, 1, 1, 1);
+
+  scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
+                              point3(-5, -1, 2.5), color(0.2, 0.2, 0.2)));
+  scene.add_triangle(triangle(point3(5, -1, 2.5), point3(-5, -1, 2.5),
+                              point3(5, -1, -6), color(0.2, 0.2, 0.2)));
+
+  scene.add_area_light(AreaLight(color(0, 1, 1), 30, vec3(-2, 2, -1), 1), 3);
+  scene.add_area_light(AreaLight(color(1, 1, 0), 30, vec3(2, 2, -1), 1), 3);
+  scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 2, -1), 1), 3);
+  scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 0, 0.5), 1), 6);
+
+  mesh bunny("models/suzanne.obj", vec3(1.25, 1.25, 1.25), vec3(-0.75, -0.35, -1),
+             vec3(0, 0, 0), color(0.18, 0.3, 1));
+  scene.add_mesh(bunny);
+
+  std::ofstream file_to_save_image;
+  file_to_save_image.open("renders/scene10.ppm");
+
+  camera cam(point3(0, 2, 6), point3(0, 0, -1), vec3(0, 1, 0), 45,
+             aspect_ratio);
+
+  file_to_save_image << "P3\n"
+                     << image_width << " " << image_height << "\n255\n";
+
+  auto t1 = high_resolution_clock::now();
+  scene.render_scene(image_width, image_height, samples_per_pixel, cam,
+                     file_to_save_image);
+  auto t2 = high_resolution_clock::now();
+  duration<double, std::milli> ms_double = t2 - t1;
+  std::cout << "\nTime taken to render the image: "
+            << (ms_double.count() / 1000) << " seconds\n";
+  std::cout << "Ray-mesh intersection tests: " << scene.get_ray_mesh_tests()
+            << std::endl;
+  std::cout << "Ray-triangle intersection tests: "
+            << scene.get_ray_triangle_tests() << std::endl;
+  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
+            << std::endl << std::endl;
+
+  scene.clear_scene();
 }
 
 #endif

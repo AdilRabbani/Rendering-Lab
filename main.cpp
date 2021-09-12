@@ -20,4 +20,4 @@ using std::chrono::high_resolution_clock;
 #include "demoscenes/demoscenes.h"
 #include "scene.h"
 
-int main() { scene7(true); }
+int main() { scene3(); }
