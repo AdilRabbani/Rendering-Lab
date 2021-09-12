@@ -321,9 +321,9 @@ inline void scene7(bool area_light) {
   texture earth("textures/2k_earth_daymap.ppm");
   texture jupiter("textures/jupiter.ppm");
   texture mars("textures/mars.ppm");
-  texture grass("textures/grass.ppm");
+  // texture grass("textures/grass.ppm");
   texture background("textures/stars.ppm");
-  texture milkyway("textures/milky_way.ppm");
+  // texture milkyway("textures/milky_way.ppm");
 
   Scene scene(1, 1, 1, 1, background);
 
@@ -345,7 +345,7 @@ inline void scene7(bool area_light) {
     scene.add_area_light(AreaLight(color(1, 1, 1), 30, vec3(-2, 2, -1), 1), 3);
     scene.add_area_light(AreaLight(color(1, 1, 1), 30, vec3(2, 2, -1), 1), 3);
     scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 2, -1), 1), 3);
-    file_to_save_image.open("renders/scene7_arealight_diffuse.ppm");
+    file_to_save_image.open("renders/scene7_arealight.ppm");
   } else {
     scene.add_point_light(PointLight(color(1, 1, 1), 30, vec3(-2, 2, -1)));
     scene.add_point_light(PointLight(color(1, 1, 1), 30, vec3(2, 2, -1)));

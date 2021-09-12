@@ -309,7 +309,7 @@ public:
 
   void render_scene(int image_width, int image_height, int samples_per_pixel,
                     camera cam, std::ostream &file_to_save_image) {
-    int depth = 3;
+    int depth = 1;
     for (int j = image_height - 1; j >= 0; --j) {
       double percent_complete = (image_height - j);
       percent_complete = percent_complete / image_height;
