@@ -37,20 +37,21 @@ The external libraries are saved in the folder `libraries` and some parts taken 
 
 | Scene 1        | Scene 2        | Scene 3  |
 | ------------- |:-------------:| -----:|
-| <img src="renders/scene1.png" alt="drawing" width="300"/>| <img src="renders/scene2.png" alt="drawing" width="300"/> | $1600 |
+| <img src="renders/scene1.png" alt="drawing" width="350"/>| <img src="renders/scene2.png" alt="drawing" width="350"/> | <img src="renders/scene3.png" alt="drawing" width="350"/> |
 
-| <h4 style='text-align:center;'>Scene 4 (Point Lights)</h4>       | <h4 style='text-align:center;'>Scene 5</h4>        | <h4 style='text-align:center;'>Scene 6</h4>  |
+| <h4 style='text-align:center;'>Scene 4 (Point Lights)</h4>       | <h4 style='text-align:center;'>Scene 5 (uses Area Lights)</h4>        | <h4 style='text-align:center;'>Scene 6 (uses Area Lights)</h4>  |
 | ------------- |:-------------:| -----:|
-| <img src="example renders/rotation.gif" alt="drawing" width="300"/>| <img src="example renders/scene5.png" alt="drawing" width="300"/> | <img src="example renders/scene6.png" alt="drawing" width="300"/> |
+| <img src="example renders/rotation.gif" alt="drawing" width="350"/>| <img src="example renders/scene5.png" alt="drawing" width="350"/> | <img src="example renders/scene6.png" alt="drawing" width="350"/> |
 
 | <h4 style='text-align:center;'>Scene 7 (Point Lights)</h4>       | <h4 style='text-align:center;'>Scene 7 (Area Lights)</h4>        | <h4 style='text-align:center;'>Scene 8</h4>  |
 | ------------- |:-------------:| -----:|
-| <img src="example renders/scene7_pointlight.png" alt="drawing" width="300"/>| <img src="example renders/scene7_arealight.png" alt="drawing" width="300"/> | <img src="example renders/camera.gif" alt="drawing" width="300"/> |
+| <img src="example renders/scene7_pointlight.png" alt="drawing" width="350"/>| <img src="example renders/scene7_arealight.png" alt="drawing" width="350"/> | <img src="example renders/camera.gif" alt="drawing" width="350"/> |
 
-| <h4 style='text-align:center;'>Scene 9 (Point Lights)</h4>       | <h4 style='text-align:center;'>Scene 9 (Area Lights)</h4>        | <h4 style='text-align:center;'>Scene 10</h4>  |
+| <h4 style='text-align:center;'>Scene 9 (Point Lights)</h4>       | <h4 style='text-align:center;'>Scene 9 (Area Lights)</h4>        | <h4 style='text-align:center;'>Scene 10 (uses Area Lights)</h4>  |
 | ------------- |:-------------:| -----:|
-| <img src="example renders/pointlight.gif" alt="drawing" width="300"/>| <img src="example renders/arealight.gif" alt="drawing" width="300"/> | <img src="example renders/scene10.png" alt="drawing" width="300"/> |
+| <img src="example renders/pointlight.gif" alt="drawing" width="350"/>| <img src="example renders/arealight.gif" alt="drawing" width="350"/> | <img src="example renders/scene10.png" alt="drawing" width="350"/> |
 
+## Thanks to
 1. [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
 1. [Scratchapixel](https://www.scratchapixel.com/) for properly explaining all the concepts and the [AABB](https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-box-intersection) implementation.
 1. [Inigo Quilez](https://www.iquilezles.org/www/articles/intersectors/intersectors.htm) for the ray-triangle intersection method.
@@ -58,6 +59,7 @@ The external libraries are saved in the folder `libraries` and some parts taken 
 1. The other solar textures were taken from https://www.solarsystemscope.com/textures/.
 1. The `cube` and `teapot` model in `models` were taken from https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html.
 1. The `bunny` model was taken from https://graphics.stanford.edu/~mdfisher/Data/Meshes/bunny.obj.
+1. The blender suzanne model was taken from https://github.com/OpenGLInsights/OpenGLInsightsCode/blob/master/Chapter%2026%20Indexing%20Multiple%20Vertex%20Arrays/article/suzanne.obj
 1. PNM image library: https://github.com/ToruNiina/pnm/blob/master/pnm.hpp
 1. TinyObjLoader: https://github.com/tinyobjloader/tinyobjloader
 
