@@ -100,10 +100,7 @@ public:
     double rotate_x = rotate_by.x() * 0.01745;
     double rotate_y = rotate_by.y() * 0.01745;
     double rotate_z = rotate_by.z() * 0.01745;
-
-    triangle_rotate_in_z(p0, p1, p2, rotate_z);
-    triangle_rotate_in_x(p0, p1, p2, rotate_x);
-    triangle_rotate_in_y(p0, p1, p2, rotate_y);
+    
 
     p0 = vec3(p0.x() * scale_by.x(), p0.y() * scale_by.y(),
               p0.z() * scale_by.z());
@@ -115,6 +112,10 @@ public:
     p0 = p0 + translate_by;
     p1 = p1 + translate_by;
     p2 = p2 + translate_by;
+
+    triangle_rotate_in_z(p0, p1, p2, rotate_z);
+    triangle_rotate_in_x(p0, p1, p2, rotate_x);
+    triangle_rotate_in_y(p0, p1, p2, rotate_y);
   }
 
   bool hit(const ray &r, double t_min, double t_max, hit_record &rec);

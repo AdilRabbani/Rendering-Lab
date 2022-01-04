@@ -92,4 +92,62 @@ inline vec3 unit_vector(vec3 v) { return v / v.length(); }
 
 vec3 reflect(const vec3 &v, const vec3 &n) { return v - 2 * dot(v, n) * n; }
 
+inline vec3 get_minimum_vector_for_aabb(const vec3 &vector_1, const vec3 &vector_2) {
+  
+  vec3 minimum_vector;
+  double min_x, min_y, min_z;
+
+  if (vector_1.x() < vector_2.x()) {
+    min_x = vector_1.x();
+  }
+  else {
+    min_x = vector_2.x();
+  }
+
+  if (vector_1.y() < vector_2.y()) {
+    min_y = vector_1.y();
+  }
+  else {
+    min_y = vector_2.y();
+  }
+
+  if (vector_1.z() < vector_2.z()) {
+    min_z = vector_1.z();
+  }
+  else {
+    min_z = vector_2.z();
+  }
+
+  return vec3(min_x, min_y, min_z);
+}
+
+inline vec3 get_maximum_vector_for_aabb(const vec3 &vector_1, const vec3 &vector_2) {
+  
+  vec3 maximum_vector;
+  double max_x, max_y, max_z;
+
+  if (vector_1.x() > vector_2.x()) {
+    max_x = vector_1.x();
+  }
+  else {
+    max_x = vector_2.x();
+  }
+
+  if (vector_1.y() > vector_2.y()) {
+    max_y = vector_1.y();
+  }
+  else {
+    max_y = vector_2.y();
+  }
+
+  if (vector_1.z() > vector_2.z()) {
+    max_z = vector_1.z();
+  }
+  else {
+    max_z = vector_2.z();
+  }
+
+  return vec3(max_x, max_y, max_z);
+}
+
 #endif
