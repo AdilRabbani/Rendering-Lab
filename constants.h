@@ -12,6 +12,9 @@ const double SPECULAR_K_SPEC = 0.1;
 const double AMBIENT_CONSTANT = 0.05;
 const bool USE_SHADOWS = true;
 const bool NORMAL_MODE = false;
+const bool DEBUG_GRID = false;
+const bool USE_UNIFORM_GRIDS = true;
+const double AREA_LIGHTS_SPREAD = 0.05; // previously 0.1
 
 // Special thanks to Ray Tracing in One Weekend:
 // https://raytracing.github.io/books/RayTracingInOneWeekend.html

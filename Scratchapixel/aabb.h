@@ -16,7 +16,7 @@ public:
     max_ = point_b;
   }
 
-  bool intersect(const ray &r);
+  bool intersect(const ray &r, double &tmin_, double &tmax);
 
   point3 min_;
   point3 max_;
@@ -25,7 +25,7 @@ public:
 // Special thanks to scratchapixel:
 // https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-box-intersection
 
-bool aabb::intersect(const ray &r) {
+bool aabb::intersect(const ray &r, double &tmin_, double &tmax_) {
 
   double tmin = (min_.x() - r.orig.x()) / r.dir.x();
   double tmax = (max_.x() - r.orig.x()) / r.dir.x();
@@ -62,6 +62,9 @@ bool aabb::intersect(const ray &r) {
 
   if (tzmax < tmax)
     tmax = tzmax;
+
+  tmin_ = tmin;
+  tmax_ = tmax;
 
   return true;
 }
