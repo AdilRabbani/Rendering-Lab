@@ -149,5 +149,4 @@ inline vec3 get_maximum_vector_for_aabb(const vec3 &vector_1, const vec3 &vector
 
   return vec3(max_x, max_y, max_z);
 }
-
 #endif

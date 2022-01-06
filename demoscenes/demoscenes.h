@@ -637,609 +637,6 @@ inline void scene11() {
   const auto aspect_ratio = 16.0 / 9.0;
   const int image_width = 1000;
   const int image_height = static_cast<int>(image_width / aspect_ratio);
-  const int samples_per_pixel = 5;
-
-  Scene scene(1, 1, 1, 1);
-
-  // scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
-  //                             point3(-5, -1, 2.5), color(0.2, 0.2, 0.2)));
-  // scene.add_triangle(triangle(point3(5, -1, 2.5), point3(-5, -1, 2.5),
-  //                             point3(5, -1, -6), color(0.2, 0.2, 0.2)));
-
-  scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
-  scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, -1)));
-  scene.add_point_light(PointLight(color(1, 1, 1), 10, vec3(0, 2, -1)));
-
-  scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5)));
-
-  scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(-2.5, -2, 0.5)));
-
-  mesh teapot("models/stanford-bunny.obj", vec3(18, 18, 18), vec3(-0.5, 0.5, -1.5),
-              vec3(0, 0, 0), color(0.8, 0.8, 0.8));
-  scene.add_mesh(teapot);
-
-  std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/scene11_uniform_grids__2__3.ppm");
-
-  camera cam(point3(0, 2, 6), point3(0, 0, -1), vec3(0, 1, 0), 45,
-             aspect_ratio);
-
-  file_to_save_image << "P3\n"
-                     << image_width << " " << image_height << "\n255\n";
-
-  auto t1 = high_resolution_clock::now();
-  scene.render_scene(image_width, image_height, samples_per_pixel, cam,
-                     file_to_save_image);
-  auto t2 = high_resolution_clock::now();
-  duration<double, std::milli> ms_double = t2 - t1;
-  std::cout << "\nTime taken to render the image: "
-            << (ms_double.count() / 1000) << " seconds\n";
-  // std::cout << "Ray-mesh intersection tests: " << scene.get_ray_mesh_tests()
-  //           << std::endl;
-  std::cout << "Ray-triangle intersection tests: "
-            << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
-
-  scene.clear_scene();
-}
-
-inline void scene12() {
-  const auto aspect_ratio = 16.0 / 9.0;
-  const int image_width = 1000;
-  const int image_height = static_cast<int>(image_width / aspect_ratio);
-  const int samples_per_pixel = 2;
-
-  Scene scene(1, 1, 1, 1);
-
-  // scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
-  //                             point3(-5, -1, 2.5), color(0.2, 0.2, 0.2)));
-  // scene.add_triangle(triangle(point3(5, -1, 2.5), point3(-5, -1, 2.5),
-  //                             point3(5, -1, -6), color(0.2, 0.2, 0.2)));
-
-  scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
-  scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, -1)));
-  scene.add_point_light(PointLight(color(1, 1, 1), 10, vec3(0, 2, -1)));
-
-  scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5)));
-
-  mesh teapot("models/xyzrgb_dragon.obj", vec3(0.03, 0.03, 0.03), vec3(-1.5, -0.7, -1.5),
-              vec3(0, 0, 0), color(0.8, 0.8, 0.8));
-  scene.add_mesh(teapot);
-
-  std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/scene12_uniform_grids.ppm");
-
-  camera cam(point3(0, 2, 6), point3(0, 0, -1), vec3(0, 1, 0), 45,
-             aspect_ratio);
-
-  file_to_save_image << "P3\n"
-                     << image_width << " " << image_height << "\n255\n";
-
-  auto t1 = high_resolution_clock::now();
-  scene.render_scene(image_width, image_height, samples_per_pixel, cam,
-                     file_to_save_image);
-  auto t2 = high_resolution_clock::now();
-  duration<double, std::milli> ms_double = t2 - t1;
-  std::cout << "\nTime taken to render the image: "
-            << (ms_double.count() / 1000) << " seconds\n";
-  // std::cout << "Ray-mesh intersection tests: " << scene.get_ray_mesh_tests()
-  //           << std::endl;
-  std::cout << "Ray-triangle intersection tests: "
-            << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
-
-  scene.clear_scene();
-}
-
-inline void scene13() {
-  const auto aspect_ratio = 16.0 / 9.0;
-  const int image_width = 1000;
-  const int image_height = static_cast<int>(image_width / aspect_ratio);
-  const int samples_per_pixel = 3;
-
-  Scene scene(1, 1, 1, 1);
-
-  scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
-                              point3(5, 5, -6), color(0.2, 0.2, 0.2)));
-
-  scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, 5, -6),
-                              point3(-5, 5, -6), color(0.2, 0.2, 0.2)));
-
-  scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
-                              point3(-5, -1, 2.5), color(0.2, 0.2, 0.2)));
-  scene.add_triangle(triangle(point3(5, -1, 2.5), point3(-5, -1, 2.5),
-                              point3(5, -1, -6), color(0.2, 0.2, 0.2)));
-
-  scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
-  scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, -1)));
-  scene.add_point_light(PointLight(color(1, 1, 1), 10, vec3(0, 2, -1)));
-  scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(-2.5, 2, 0.5)));
-
-  mesh teapot("models/lucy.obj", vec3(0.0025, 0.0025, 0.0025), vec3(-0.4, 0.32, -1.5),
-              vec3(90, 180, 0), color(0.8, 0.8, 0.8));
-  scene.add_mesh(teapot);
-
-  std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/scene13_uniform_grids_shadows.ppm");
-
-  camera cam(point3(0, 4, 8.5), point3(0, 0, -1), vec3(0, 1, 0), 45,
-             aspect_ratio);
-
-  file_to_save_image << "P3\n"
-                     << image_width << " " << image_height << "\n255\n";
-
-  auto t1 = high_resolution_clock::now();
-  scene.render_scene(image_width, image_height, samples_per_pixel, cam,
-                     file_to_save_image);
-  auto t2 = high_resolution_clock::now();
-  duration<double, std::milli> ms_double = t2 - t1;
-  std::cout << "\nTime taken to render the image: "
-            << (ms_double.count() / 1000) << " seconds\n";
-  // std::cout << "Ray-mesh intersection tests: " << scene.get_ray_mesh_tests()
-  //           << std::endl;
-  std::cout << "Ray-triangle intersection tests: "
-            << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
-
-  scene.clear_scene();
-}
-
-inline void scene14() {
-  const auto aspect_ratio = 16.0 / 9.0;
-  const int image_width = 500;
-  const int image_height = static_cast<int>(image_width / aspect_ratio);
-  const int samples_per_pixel = 3;
-
-  Scene scene(1, 1, 1, 1);
-
-  scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, -1, -6),
-                              point3(6, 5, -6), color(0.2, 0.2, 0.2)));
-
-  scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, 5, -6),
-                              point3(-6, 5, -6), color(0.2, 0.2, 0.2)));
-
-  scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, -1, -6),
-                              point3(-6, -1, 2.5), color(0.2, 0.2, 0.2)));
-  scene.add_triangle(triangle(point3(6, -1, 2.5), point3(-6, -1, 2.5),
-                              point3(6, -1, -6), color(0.2, 0.2, 0.2)));
-
-  // scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
-  // scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, -1)));
-  // scene.add_point_light(PointLight(color(1, 1, 1), 10, vec3(0, 2, -1)));
-  // scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(-2.5, 2, 0.5)));
-  // scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5)));
-
-  scene.add_area_light(AreaLight(color(0, 1, 1), 30, vec3(-2, 2, -1), 1), 3);
-  scene.add_area_light(AreaLight(color(1, 1, 0), 30, vec3(2, 2, -1), 1), 3);
-  scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 2, -1), 1), 3);
-
-  scene.add_area_light(AreaLight(color(0.6, 0.5, 0.4), 30, vec3(-2.5, 2, 0.5), 1), 3);
-  scene.add_area_light(AreaLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5), 1), 3);
-
-  // mesh teapot("models/lucy.obj", vec3(0.0025, 0.0025, 0.0025), vec3(-0.4, 0.32, -1.5),
-  //             vec3(90, 180, 0), color(0.8, 0.8, 0.8));
-  // scene.add_mesh(teapot);
-
-  // mesh teapot("models/teapot.obj", vec3(0.5, 0.5, 0.5), vec3(-0.75, 0, -1.5),
-  //             vec3(0, 0, 0), color(0.9, 0.2, 0.2));
-  // scene.add_mesh(teapot);
-
-  mesh teapot("models/teapot.obj", vec3(0.025, 0.025, 0.025), vec3(-0.5, 1.6, -1),
-              vec3(0, 0, 0), color(0.9, 0.2, 0.2));
-  scene.add_mesh(teapot);
-
-  // mesh bunny("models/bunny.obj", vec3(15, 15, 15), vec3(-3.5, 0.5, -1),
-  //            vec3(0, 0, 0), color(0.8, 0.8, 0.8));
-  // scene.add_mesh(bunny);
-
-  // mesh suzanne("models/suzanne.obj", vec3(1, 1, 1), vec3(2.5, -0.5, -1),
-  //            vec3(0, 30, 0), color(0.18, 0.3, 1));
-  // scene.add_mesh(suzanne);
-
-  std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/scene14_uniform_grids_shadows_area_light_teapot.ppm");
-
-  camera cam(point3(0, 4, 8.5), point3(0, 0, -1), vec3(0, 1, 0), 45,
-             aspect_ratio);
-
-  file_to_save_image << "P3\n"
-                     << image_width << " " << image_height << "\n255\n";
-
-  auto t1 = high_resolution_clock::now();
-  scene.render_scene(image_width, image_height, samples_per_pixel, cam,
-                     file_to_save_image);
-  auto t2 = high_resolution_clock::now();
-  duration<double, std::milli> ms_double = t2 - t1;
-  std::cout << "\nTime taken to render the image: "
-            << (ms_double.count() / 1000) << " seconds\n";
-  // std::cout << "Ray-mesh intersection tests: " << scene.get_ray_mesh_tests()
-  //           << std::endl;
-  std::cout << "Ray-triangle intersection tests: "
-            << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
-
-  scene.clear_scene();
-}
-
-inline void scene15() {
-  const auto aspect_ratio = 16.0 / 9.0;
-  const int image_width = 1200;
-  const int image_height = static_cast<int>(image_width / aspect_ratio);
-  const int samples_per_pixel = 3;
-
-  Scene scene(1, 1, 1, 1);
-
-  scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, -1, -6),
-                              point3(6, 5, -6), color(0.2, 0.2, 0.2)));
-
-  scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, 5, -6),
-                              point3(-6, 5, -6), color(0.2, 0.2, 0.2)));
-
-  scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, -1, -6),
-                              point3(-6, -1, 2.5), color(0.2, 0.2, 0.2)));
-  scene.add_triangle(triangle(point3(6, -1, 2.5), point3(-6, -1, 2.5),
-                              point3(6, -1, -6), color(0.2, 0.2, 0.2)));
-
-  // scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
-  // scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, -1)));
-  // scene.add_point_light(PointLight(color(1, 1, 1), 10, vec3(0, 2, -1)));
-  // scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(-2.5, 2, 0.5)));
-  // scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5)));
-
-  scene.add_area_light(AreaLight(color(0, 1, 1), 30, vec3(-2, 2, -1), 1), 3);
-  scene.add_area_light(AreaLight(color(1, 1, 0), 30, vec3(2, 2, -1), 1), 3);
-  scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 2, -1), 1), 3);
-
-  scene.add_area_light(AreaLight(color(0.6, 0.5, 0.4), 30, vec3(-2.5, 2, 0.5), 1), 3);
-  scene.add_area_light(AreaLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5), 1), 3);
-
-  mesh teapot("models/teapot.obj", vec3(0.5, 0.5, 0.5), vec3(-0.75, 0, -0.5),
-              vec3(0, 0, 0), color(0.9, 0.2, 0.2));
-  scene.add_mesh(teapot);
-
-  mesh bunny("models/bunny.obj", vec3(15, 15, 15), vec3(-4, 0.5, 0),
-             vec3(0, -30, 0), color(0.8, 0.8, 0.8));
-  scene.add_mesh(bunny);
-
-  mesh suzanne("models/suzanne.obj", vec3(1, 1, 1), vec3(2.5, -0.5, -0.25),
-             vec3(0, 30, 0), color(0.18, 0.3, 1));
-  scene.add_mesh(suzanne);
-
-  mesh pine_tree_1("models/pine_tree.obj", vec3(0.0035, 0.0035, 0.0035), vec3(2, 0.5, -3),
-              vec3(0, 0, 0), color(0, 0.9, 0.45));
-  scene.add_mesh(pine_tree_1);
-
-  mesh pine_tree_2("models/pine_tree.obj", vec3(0.0035, 0.0035, 0.0035), vec3(-3.5, 0.5, -3),
-              vec3(0, 0, 0), color(0, 0.9, 0.45));
-  scene.add_mesh(pine_tree_2);
-
-  mesh lucy("models/lucy.obj", vec3(0.0025, 0.0025, 0.0025), vec3(-0.4, 0.32, -2.5),
-              vec3(90, 180, 0), color(0.3, 0.3, 0.3));
-  scene.add_mesh(lucy);
-
-  std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/scene15_with_lucy_uniform_grids_area_lights.ppm");
-
-  camera cam(point3(0, 4, 8.5), point3(0, 0, -1), vec3(0, 1, 0), 45,
-             aspect_ratio);
-
-  file_to_save_image << "P3\n"
-                     << image_width << " " << image_height << "\n255\n";
-
-  auto t1 = high_resolution_clock::now();
-  scene.render_scene(image_width, image_height, samples_per_pixel, cam,
-                     file_to_save_image);
-  auto t2 = high_resolution_clock::now();
-  duration<double, std::milli> ms_double = t2 - t1;
-  std::cout << "\nTime taken to render the image: "
-            << (ms_double.count() / 1000) << " seconds\n";
-  // std::cout << "Ray-mesh intersection tests: " << scene.get_ray_mesh_tests()
-  //           << std::endl;
-  std::cout << "Ray-triangle intersection tests: "
-            << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
-
-  scene.clear_scene();
-}
-
-inline void scene16() {
-  const auto aspect_ratio = 16.0 / 9.0;
-  const int image_width = 1200;
-  const int image_height = static_cast<int>(image_width / aspect_ratio);
-  const int samples_per_pixel = 3;
-
-  Scene scene(1, 1, 1, 1);
-
-  scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, -1, -6),
-                              point3(6, 5, -6), color(0.2, 0.2, 0.2)));
-
-  scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, 5, -6),
-                              point3(-6, 5, -6), color(0.2, 0.2, 0.2)));
-
-  scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, -1, -6),
-                              point3(-6, -1, 2.5), color(0.2, 0.2, 0.2)));
-
-  scene.add_triangle(triangle(point3(6, -1, 2.5), point3(-6, -1, 2.5),
-                              point3(6, -1, -6), color(0.2, 0.2, 0.2)));
-
-  // scene.add_point_light(PointLight(color(1, 1, 1), 70, vec3(0, 2, 5)));
-
-  // scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
-  // scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, -1)));
-  // scene.add_point_light(PointLight(color(1, 1, 1), 10, vec3(0, 2, -1)));
-  // scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(-2.5, 2, 0.5)));
-  // scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5)));
-
-  // scene.add_area_light(AreaLight(color(0, 1, 1), 30, vec3(-2, 2, -1), 1), 3);
-  // scene.add_area_light(AreaLight(color(1, 1, 0), 30, vec3(2, 2, -1), 1), 3);
-  // scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 2, -1), 1), 3);
-
-  // scene.add_area_light(AreaLight(color(0.6, 0.5, 0.4), 30, vec3(-2.5, 2, 0.5), 1), 3);
-  // scene.add_area_light(AreaLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5), 1), 3);
-
-  // scene.add_area_light(AreaLight(color(1, 1, 1), 70, vec3(0, 2, 5), 1), 3);
-
-
-  scene.add_area_light(AreaLight(color(1, 1, 1), 60, vec3(0, 2, 5), 1), 10);
-
-  // mesh teapot("models/teapot.obj", vec3(0.5, 0.5, 0.5), vec3(-0.75, 0, -1.2),
-  //             vec3(0, 0, 0), color(0.9, 0.2, 0.2));
-  // scene.add_mesh(teapot);
-
-  mesh teapot("models/teapot.obj", vec3(0.02, 0.02, 0.02), vec3(-0.5, 1, -1),
-              vec3(0, 0, 0), color(0.9, 0.2, 0.2));
-  scene.add_mesh(teapot);
-
-  mesh bunny("models/stanford-bunny.obj", vec3(15, 15, 15), vec3(-4, 0.5, 0),
-             vec3(0, -30, 0), color(0.8, 0.8, 0.8));
-  scene.add_mesh(bunny);
-
-  mesh suzanne("models/suzanne.obj", vec3(1, 1, 1), vec3(2.5, -0.5, -0.25),
-             vec3(0, 30, 0), color(0.18, 0.3, 1));
-  scene.add_mesh(suzanne);
-
-  mesh pine_tree_1("models/pine_tree.obj", vec3(0.0035, 0.0035, 0.0035), vec3(2, 0.5, -3),
-              vec3(0, 0, 0), color(0, 0.9, 0.45));
-  scene.add_mesh(pine_tree_1);
-
-  mesh pine_tree_2("models/pine_tree.obj", vec3(0.0035, 0.0035, 0.0035), vec3(-3.5, 0.5, -3),
-              vec3(0, 0, 0), color(0, 0.9, 0.45));
-  scene.add_mesh(pine_tree_2);
-
-  mesh lucy("models/lucy.obj", vec3(0.0025, 0.0025, 0.0025), vec3(-0.4, 0.32, -2.8),
-              vec3(90, 180, 0), color(0.3, 0.3, 0.3));
-  scene.add_mesh(lucy);
-
-  mesh xyz_dragon("models/xyzrgb_dragon.obj", vec3(0.02, 0.02, 0.02), vec3(0.85, -0.9, 0.8),
-              vec3(0, 140, 0), color(0.4, 0.4, 0.8));
-  scene.add_mesh(xyz_dragon);
-
-  std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/scene16_uniform_grids_single_area_light.ppm");
-
-  camera cam(point3(0, 4, 7.5), point3(0, 0, -1), vec3(0, 1, 0), 45,
-             aspect_ratio);
-
-  file_to_save_image << "P3\n"
-                     << image_width << " " << image_height << "\n255\n";
-
-  auto t1 = high_resolution_clock::now();
-  scene.render_scene(image_width, image_height, samples_per_pixel, cam,
-                     file_to_save_image);
-  auto t2 = high_resolution_clock::now();
-  duration<double, std::milli> ms_double = t2 - t1;
-  std::cout << "\nTime taken to render the image: "
-            << (ms_double.count() / 1000) << " seconds\n";
-  // std::cout << "Ray-mesh intersection tests: " << scene.get_ray_mesh_tests()
-  //           << std::endl;
-  std::cout << "Ray-triangle intersection tests: "
-            << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
-
-  scene.clear_scene();
-}
-
-inline void scene17() {
-  const auto aspect_ratio = 16.0 / 9.0;
-  const int image_width = 500;
-  const int image_height = static_cast<int>(image_width / aspect_ratio);
-  const int samples_per_pixel = 1;
-
-  int image_counter = 0;
-
-  for (int i = 0; i < 20; i++) {
-    Scene scene(1, 1, 1, 1);
-
-    scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, -1, -6),
-                                point3(6, 5, -6), color(0.2, 0.2, 0.2)));
-
-    scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, 5, -6),
-                                point3(-6, 5, -6), color(0.2, 0.2, 0.2)));
-
-    scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, -1, -6),
-                                point3(-6, -1, 2.5), color(0.2, 0.2, 0.2)));
-    scene.add_triangle(triangle(point3(6, -1, 2.5), point3(-6, -1, 2.5),
-                                point3(6, -1, -6), color(0.2, 0.2, 0.2)));
-
-    scene.add_point_light(PointLight(color(0.8, 0.8, 0.1), 30, vec3(-4, 2, 6)));
-    scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(4, 2, 6)));
-
-    mesh teapot("models/suzanne.obj", vec3(0.5, 0.5, 0.5), vec3(-0.5, 1.2, -1),
-                vec3(0, i * 10, 0), color(0.9, 0.2, 0.2));
-    scene.add_mesh(teapot);
-
-    std::ofstream file_to_save_image;
-    file_to_save_image.open("renders/animated/uniform_grids_tests/scene17_uniform_grids" + std::to_string(image_counter) + ".ppm");
-
-    camera cam(point3(0, 3, 7.5), point3(0, 0, -1), vec3(0, 1, 0), 45,
-              aspect_ratio);
-
-    file_to_save_image << "P3\n"
-                      << image_width << " " << image_height << "\n255\n";
-
-    auto t1 = high_resolution_clock::now();
-    scene.render_scene(image_width, image_height, samples_per_pixel, cam,
-                      file_to_save_image);
-    auto t2 = high_resolution_clock::now();
-    duration<double, std::milli> ms_double = t2 - t1;
-    std::cout << "\nTime taken to render the image: "
-              << (ms_double.count() / 1000) << " seconds\n";
-    // std::cout << "Ray-mesh intersection tests: " << scene.get_ray_mesh_tests()
-    //           << std::endl;
-    std::cout << "Ray-triangle intersection tests: "
-              << scene.get_ray_triangle_tests() << std::endl;
-    std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-              << std::endl << std::endl;
-
-    scene.clear_scene();
-    image_counter = image_counter + 1;
-  }
-}
-
-inline void scene18() {
-  const auto aspect_ratio = 16.0 / 9.0;
-  const int image_width = 800;
-  const int image_height = static_cast<int>(image_width / aspect_ratio);
-  const int samples_per_pixel = 2;
-
-  Scene scene(1, 1, 1, 0);
-
-  scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
-                              point3(-5, -1, 2.5), color(0.2, 0.2, 0.2)));
-  scene.add_triangle(triangle(point3(5, -1, 2.5), point3(-5, -1, 2.5),
-                              point3(5, -1, -6), color(0.2, 0.2, 0.2)));
-
-  scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
-                              point3(5, 5, -6), color(0.2, 0.2, 0.2)));
-
-  scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, 5, -6),
-                              point3(-5, 5, -6), color(0.2, 0.2, 0.2)));
-
-  scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
-  scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, -1)));
-  scene.add_point_light(PointLight(color(1, 1, 1), 50, vec3(0, 2, 5)));
-
-  mesh pine_tree_1("models/pine_tree.obj", vec3(0.0035, 0.0035, 0.0035), vec3(2, 0.5, -3),
-              vec3(0, 0, 0), color(0, 0.9, 0.45));
-  scene.add_mesh(pine_tree_1);
-
-  mesh pine_tree_2("models/pine_tree.obj", vec3(0.0035, 0.0035, 0.0035), vec3(-3.5, 0.5, -3),
-              vec3(0, 0, 0), color(0, 0.9, 0.45));
-  scene.add_mesh(pine_tree_2);
-
-  mesh pine_tree_3("models/pine_tree.obj", vec3(0.0035, 0.0035, 0.0035), vec3(-0.75, 0.5, -1),
-              vec3(0, 0, 0), color(0, 0.9, 0.45));
-  scene.add_mesh(pine_tree_3);
-
-  mesh pine_tree_4("models/pine_tree.obj", vec3(0.0025, 0.0025, 0.0025), vec3(2, 0, 1),
-              vec3(0, 0, 0), color(0, 0.7, 0.55));
-  scene.add_mesh(pine_tree_4);
-
-  mesh pine_tree_5("models/pine_tree.obj", vec3(0.0025, 0.0025, 0.0025), vec3(-2.75, 0, 1),
-              vec3(0, 0, 0), color(0, 0.7, 0.55));
-  scene.add_mesh(pine_tree_5);
-
-  std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/analysis/uniform_grids/scene18_without_uniform_grids.ppm");
-
-  camera cam(point3(0, 2, 7.5), point3(0, 0, -1), vec3(0, 1, 0), 45,
-             aspect_ratio);
-
-  file_to_save_image << "P3\n"
-                     << image_width << " " << image_height << "\n255\n";
-
-  auto t1 = high_resolution_clock::now();
-  scene.render_scene(image_width, image_height, samples_per_pixel, cam,
-                     file_to_save_image);
-  auto t2 = high_resolution_clock::now();
-  duration<double, std::milli> ms_double = t2 - t1;
-  std::cout << "\nTime taken to render the image: "
-            << (ms_double.count() / 1000) << " seconds\n";
-  std::cout << "Ray-triangle intersection tests: "
-            << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
-
-  scene.clear_scene();
-}
-
-inline void scene19() {
-  const auto aspect_ratio = 16.0 / 9.0;
-  const int image_width = 800;
-  const int image_height = static_cast<int>(image_width / aspect_ratio);
-  const int samples_per_pixel = 2;
-
-  Scene scene(1, 1, 1, 0);
-
-  scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
-                              point3(-5, -1, 2.5), color(0.2, 0.2, 0.2)));
-  scene.add_triangle(triangle(point3(5, -1, 2.5), point3(-5, -1, 2.5),
-                              point3(5, -1, -6), color(0.2, 0.2, 0.2)));
-
-  scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
-                              point3(5, 5, -6), color(0.2, 0.2, 0.2)));
-
-  scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, 5, -6),
-                              point3(-5, 5, -6), color(0.2, 0.2, 0.2)));
-
-  scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
-  scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, -1)));
-  scene.add_point_light(PointLight(color(1, 1, 1), 50, vec3(0, 2, 5)));
-
-  mesh pine_tree_1("models/pine_tree.obj", vec3(0.0035, 0.0035, 0.0035), vec3(2, 0.5, -3),
-              vec3(0, 0, 0), color(0, 0.9, 0.45));
-  scene.add_mesh(pine_tree_1);
-
-  mesh pine_tree_2("models/pine_tree.obj", vec3(0.0035, 0.0035, 0.0035), vec3(-3.5, 0.5, -3),
-              vec3(0, 0, 0), color(0, 0.9, 0.45));
-  scene.add_mesh(pine_tree_2);
-
-  mesh teapot("models/teapot1.obj", vec3(0.6, 0.6, 0.6), vec3(-0.75, 0, -1.5),
-              vec3(0, 0, 0), color(0.9, 0.2, 0.2));
-  scene.add_mesh(teapot);
-
-  mesh pine_tree_4("models/pine_tree.obj", vec3(0.0025, 0.0025, 0.0025), vec3(2, 0, 1),
-              vec3(0, 0, 0), color(0, 0.7, 0.55));
-  scene.add_mesh(pine_tree_4);
-
-  mesh pine_tree_5("models/pine_tree.obj", vec3(0.0025, 0.0025, 0.0025), vec3(-2.75, 0, 1),
-              vec3(0, 0, 0), color(0, 0.7, 0.55));
-  scene.add_mesh(pine_tree_5);
-
-  std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/analysis/uniform_grids/scene19_without_uniform_grids.ppm");
-
-  camera cam(point3(0, 2, 7.5), point3(0, 0, -1), vec3(0, 1, 0), 45,
-             aspect_ratio);
-
-  file_to_save_image << "P3\n"
-                     << image_width << " " << image_height << "\n255\n";
-
-  auto t1 = high_resolution_clock::now();
-  scene.render_scene(image_width, image_height, samples_per_pixel, cam,
-                     file_to_save_image);
-  auto t2 = high_resolution_clock::now();
-  duration<double, std::milli> ms_double = t2 - t1;
-  std::cout << "\nTime taken to render the image: "
-            << (ms_double.count() / 1000) << " seconds\n";
-  std::cout << "Ray-triangle intersection tests: "
-            << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
-
-  scene.clear_scene();
-}
-
-inline void scene20() {
-  const auto aspect_ratio = 16.0 / 9.0;
-  const int image_width = 1000;
-  const int image_height = static_cast<int>(image_width / aspect_ratio);
   const int samples_per_pixel = 2;
 
   int image_counter = 0;
@@ -1295,97 +692,172 @@ inline void scene20() {
   }
 }
 
-// #include <thread>
+inline void scene12() {
+  const auto aspect_ratio = 16.0 / 9.0;
+  const int image_width = 200;
+  const int image_height = static_cast<int>(image_width / aspect_ratio);
+  const int samples_per_pixel = 3;
 
-// inline void scene1_multi_threaded() {
+  Scene scene(1, 1, 1, 1);
 
-//   const auto aspect_ratio = 16.0 / 9.0;
-//   const int image_width = 1000;
-//   const int image_height = static_cast<int>(image_width / aspect_ratio);
-//   const int samples_per_pixel = 1;
+  scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, -1, -6),
+                              point3(6, 5, -6), color(0.2, 0.2, 0.2)));
 
-//   Scene scene(1, 1, 1, 1);
+  scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, 5, -6),
+                              point3(-6, 5, -6), color(0.2, 0.2, 0.2)));
 
-//   scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
-//                               point3(5, 5, -6), color(0.2, 0.2, 0.2)));
+  scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, -1, -6),
+                              point3(-6, -1, 2.5), color(0.2, 0.2, 0.2)));
 
-//   scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, 5, -6),
-//                               point3(-5, 5, -6), color(0.2, 0.2, 0.2)));
+  scene.add_triangle(triangle(point3(6, -1, 2.5), point3(-6, -1, 2.5),
+                              point3(6, -1, -6), color(0.2, 0.2, 0.2)));
 
-//   scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
-//                               point3(-5, -1, 2.5), color(0.2, 0.2, 0.2)));
-//   scene.add_triangle(triangle(point3(5, -1, 2.5), point3(-5, -1, 2.5),
-//                               point3(5, -1, -6), color(0.2, 0.2, 0.2)));
+  // scene.add_point_light(PointLight(color(1, 1, 1), 70, vec3(0, 2, 5)));
 
-//   scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
-//   scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, -1)));
-//   scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5)));
-//   scene.add_point_light(PointLight(color(1, 1, 1), 10, vec3(0, 2, -1)));
+  // scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
+  // scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, -1)));
+  // scene.add_point_light(PointLight(color(1, 1, 1), 10, vec3(0, 2, -1)));
+  // scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(-2.5, 2, 0.5)));
+  // scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5)));
 
-//   mesh cube("models/cube.obj", vec3(1, 1, 1), vec3(0, 0, -1), vec3(0, 45, 25),
-//             color(0.18, 0.3, 1));
-//   // mesh cube2("models/cube.obj", vec3(1, 1, 1), vec3(2, 0, -1), vec3(0, 45, 25),
-//   //           color(0.18, 0.3, 1));
-//   // mesh cube3("models/cube.obj", vec3(1, 1, 1), vec3(-2, 0, -1), vec3(0, 45, 25),
-//   //           color(0.18, 0.3, 1));
-//   scene.add_mesh(cube);
-//   // scene.add_mesh(cube2);
-//   // scene.add_mesh(cube3);
+  scene.add_area_light(AreaLight(color(0, 1, 1), 30, vec3(-2, 2, -1), 1), 3);
+  scene.add_area_light(AreaLight(color(1, 1, 0), 30, vec3(2, 2, -1), 1), 3);
+  scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 2, -1), 1), 3);
 
-//   std::ofstream file_to_save_image;
-//   file_to_save_image.open("renders/scene1_multithreaded.ppm");
+  // scene.add_area_light(AreaLight(color(0.6, 0.5, 0.4), 30, vec3(-2.5, 2, 0.5), 1), 3);
+  // scene.add_area_light(AreaLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5), 1), 3);
 
-//   camera cam(point3(0, 4, 8), point3(0, 0, -1), vec3(0, 1, 0), 45,
-//              aspect_ratio);
-
-//   file_to_save_image << "P3\n"
-//                      << image_width << " " << image_height << "\n255\n";
-
-//   scene.create_scene_bounding_box();
-//   scene.compute_grid_resolution_and_C();
+  scene.add_area_light(AreaLight(color(1, 1, 1), 40, vec3(0, 2, 5), 1), 3);
 
 
-//   int thread_width[2] = {0, 0};
-//   int thread_height[2] = {0, 0};
+  // scene.add_area_light(AreaLight(color(1, 1, 1), 60, vec3(0, 2, 5), 1), 10);
 
-//   int current_width = 0;
-//   int current_height = 0;
+  // mesh teapot("models/teapot.obj", vec3(0.5, 0.5, 0.5), vec3(-0.75, 0, -1.2),
+  //             vec3(0, 0, 0), color(0.9, 0.2, 0.2));
+  // scene.add_mesh(teapot);
 
-//   for (int i = 0; i < 2; i++) {
-//       current_width = current_width + (image_width / 2);
-//       current_height = current_height + (image_height / 2);
-//       thread_width[i] = current_width;
-//       thread_height[i] = current_height;
-//   }
-  
-//   std::thread threads[4];
+  mesh teapot("models/teapot.obj", vec3(0.02, 0.02, 0.02), vec3(-0.5, 1, -1),
+              vec3(0, 0, 0), color(0.9, 0.2, 0.2));
+  scene.add_mesh(teapot);
 
-//   threads[0] = std::thread(&Scene::render_scene_multi_threading, scene, 0, thread_width[0], 0, thread_height[0], samples_per_pixel, cam, file_to_save_image);
-//   threads[1] = std::thread(&Scene::render_scene_multi_threading, scene, thread_width[0], thread_width[1], 0, thread_height[0], samples_per_pixel, cam, file_to_save_image);
-//   threads[2] = std::thread(&Scene::render_scene_multi_threading, scene, 0, thread_width[0], thread_height[0], thread_height[1], samples_per_pixel, cam, file_to_save_image);
-//   threads[3] = std::thread(&Scene::render_scene_multi_threading, scene, thread_width[0], thread_width[1], thread_height[0], thread_height[1], samples_per_pixel, cam, file_to_save_image);
+  mesh bunny("models/stanford-bunny.obj", vec3(15, 15, 15), vec3(-4, 0.5, 0),
+             vec3(0, -30, 0), color(0.8, 0.8, 0.8));
+  scene.add_mesh(bunny);
 
-//   threads[0].join();
-//     threads[1].join();
-//     threads[2].join();
-//     threads[3].join();
+  mesh suzanne("models/suzanne.obj", vec3(1, 1, 1), vec3(2.5, -0.5, -0.25),
+             vec3(0, 30, 0), color(0.18, 0.3, 1));
+  scene.add_mesh(suzanne);
 
-//   // auto t1 = high_resolution_clock::now();
-//   // scene.run_multi_threaded_rendering(image_width, image_height, samples_per_pixel, cam,
-//   //                    file_to_save_image);
+  mesh pine_tree_1("models/pine_tree.obj", vec3(0.0035, 0.0035, 0.0035), vec3(2, 0.5, -3),
+              vec3(0, 0, 0), color(0, 0.9, 0.45));
+  scene.add_mesh(pine_tree_1);
 
-//   scene.save_image(image_width, image_height, samples_per_pixel, file_to_save_image);
-//   // auto t2 = high_resolution_clock::now();
-//   // duration<double, std::milli> ms_double = t2 - t1;
-//   // std::cout << "\nTime taken to render the image: "
-//   //           << (ms_double.count() / 1000) << " seconds\n";
-//   // std::cout << "Ray-mesh intersection tests: " << scene.get_ray_mesh_tests()
-//   //           << std::endl;
-//   // std::cout << "Ray-triangle intersection tests: "
-//   //           << scene.get_ray_triangle_tests() << std::endl;
-//   // std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-//   //           << std::endl << std::endl;
+  mesh pine_tree_2("models/pine_tree.obj", vec3(0.0035, 0.0035, 0.0035), vec3(-3.5, 0.5, -3),
+              vec3(0, 0, 0), color(0, 0.9, 0.45));
+  scene.add_mesh(pine_tree_2);
 
-//   scene.clear_scene();
-// }
+  mesh lucy("models/lucy.obj", vec3(0.0025, 0.0025, 0.0025), vec3(-0.4, 0.32, -2.8),
+              vec3(90, 180, 0), color(0.3, 0.3, 0.3));
+  scene.add_mesh(lucy);
+
+  mesh xyz_dragon("models/xyzrgb_dragon.obj", vec3(0.02, 0.02, 0.02), vec3(0.85, -0.9, 0.8),
+              vec3(0, 140, 0), color(0.4, 0.4, 0.8));
+  scene.add_mesh(xyz_dragon);
+
+  std::ofstream file_to_save_image;
+  file_to_save_image.open("renders/analysis/scene16_uniform_grids_area_light.ppm");
+
+  camera cam(point3(0, 2, 7.5), point3(0, 0, -1), vec3(0, 1, 0), 45,
+             aspect_ratio);
+
+  file_to_save_image << "P3\n"
+                     << image_width << " " << image_height << "\n255\n";
+
+  auto t1 = high_resolution_clock::now();
+  scene.render_scene(image_width, image_height, samples_per_pixel, cam,
+                     file_to_save_image);
+  auto t2 = high_resolution_clock::now();
+  duration<double, std::milli> ms_double = t2 - t1;
+  std::cout << "\nTime taken to render the image: "
+            << (ms_double.count() / 1000) << " seconds\n";
+  // std::cout << "Ray-mesh intersection tests: " << scene.get_ray_mesh_tests()
+  //           << std::endl;
+  std::cout << "Ray-triangle intersection tests: "
+            << scene.get_ray_triangle_tests() << std::endl;
+  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
+            << std::endl << std::endl;
+
+  scene.clear_scene();
+}
+
+inline void bvh_test_scene() {
+  const auto aspect_ratio = 16.0 / 9.0;
+  const int image_width = 800;
+  const int image_height = static_cast<int>(image_width / aspect_ratio);
+  const int samples_per_pixel = 2;
+
+  Scene scene(1, 1, 1, 0);
+
+  // texture earth("textures/2k_earth_daymap.ppm");
+  // texture jupiter("textures/jupiter.ppm");
+  // texture mars("textures/mars.ppm");
+
+  // sphere sphere_1(point3(0, 2, -2), 0.8, earth);
+  // sphere sphere_2(point3(2, 2, -2), 0.6, jupiter);
+  // sphere sphere_3(point3(-2, 2, -2), 0.6, mars);
+
+  // scene.add_sphere(sphere_1);
+  // scene.add_sphere(sphere_2);
+  // scene.add_sphere(sphere_3);
+
+  // scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
+  //                             point3(5, 5, -6), color(0.2, 0.2, 0.2)));
+
+  // scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, 5, -6),
+  //                             point3(-5, 5, -6), color(0.2, 0.2, 0.2)));
+
+  // scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
+  //                             point3(-5, -1, 2.5), color(0.2, 0.2, 0.2)));
+  // scene.add_triangle(triangle(point3(5, -1, 2.5), point3(-5, -1, 2.5),
+  //                             point3(5, -1, -6), color(0.2, 0.2, 0.2)));
+
+  // scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
+  // scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, -1)));
+  scene.add_point_light(PointLight(color(1, 1, 1), 50, vec3(0, 2, 5)));
+
+  // scene.add_point_light(PointLight(color(1, 1, 1), 70, vec3(0, 2, 5)));
+
+  mesh cube("models/cube.obj", vec3(1, 1, 1), vec3(0, 0, -1), vec3(0, 45, 25),
+            color(0.18, 0.3, 1));
+  mesh cube2("models/cube.obj", vec3(0.8, 0.8, 0.8), vec3(2, 0, -1), vec3(0, 45, 25),
+            color(0.9, 0.2, 0.2));
+  mesh cube3("models/cube.obj", vec3(0.8, 0.8, 0.8), vec3(-2, 0, -1), vec3(0, 45, 25),
+            color(0.8, 0.8, 0.2));
+  scene.add_mesh(cube);
+  scene.add_mesh(cube2);
+  scene.add_mesh(cube3);
+
+  std::ofstream file_to_save_image;
+  file_to_save_image.open("renders/analysis/bvh/bvh_test.ppm");
+
+  camera cam(point3(0, 2, 7.5), point3(0, 0, -1), vec3(0, 1, 0), 45,
+             aspect_ratio);
+
+  file_to_save_image << "P3\n"
+                     << image_width << " " << image_height << "\n255\n";
+
+  auto t1 = high_resolution_clock::now();
+  scene.render_scene(image_width, image_height, samples_per_pixel, cam,
+                     file_to_save_image);
+  auto t2 = high_resolution_clock::now();
+  duration<double, std::milli> ms_double = t2 - t1;
+  std::cout << "\nTime taken to render the image: "
+            << (ms_double.count() / 1000) << " seconds\n";
+  std::cout << "Ray-triangle intersection tests: "
+            << scene.get_ray_triangle_tests() << std::endl;
+  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
+            << std::endl << std::endl;
+
+  scene.clear_scene();
+}
 #endif

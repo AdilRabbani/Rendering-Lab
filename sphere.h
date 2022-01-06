@@ -9,7 +9,7 @@
 // Special thanks to Ray Tracing in One Weekend:
 // https://raytracing.github.io/books/RayTracingInOneWeekend.html
 
-class sphere {
+class sphere : public primitive {
 public:
   sphere() {}
   sphere(point3 cen, double r, color m) {
@@ -29,7 +29,7 @@ public:
     // std::cout << sphere_aabb.min_ << " " << sphere_aabb.max_ << std::endl;
   }
 
-  bool hit(const ray &r, double t_min, double t_max, hit_record &rec);
+  virtual bool hit(const ray &r, double t_min, double t_max, hit_record &rec) const override;
 
   void transform(vec3 translate_by, double scale_by, vec3 rotate_by) {
 
@@ -48,7 +48,7 @@ public:
   aabb sphere_aabb;
 };
 
-bool sphere::hit(const ray &r, double t_min, double t_max, hit_record &rec) {
+bool sphere::hit(const ray &r, double t_min, double t_max, hit_record &rec) const {
 
   vec3 oc = r.origin() - center;
   auto a = r.direction().length_squared();
