@@ -2,24 +2,22 @@
 #define BVHNODE_H
 
 #include "Scratchapixel/aabb.h"
-
+#include "primitive.h"
+#include <memory>
 class BVHNode {
 
 public:
     BVHNode() {
         this->left = this->right = NULL;
-        this->split_axis = -1;
-        this->n_primitives = -1;
-        this->split_axis = -1;
+        this->is_leaf = false;
     };
 
 public:
         BVHNode *left;
         BVHNode *right;
-        std::vector<aabb> aabbs;
-        int split_axis;
-        int primitive_offset;
-        int n_primitives;
+        std::vector<std::shared_ptr<primitive>> primitives;
+        aabb node_aabb;
+        bool is_leaf;
 };
 
 #endif

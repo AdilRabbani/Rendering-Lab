@@ -827,15 +827,23 @@ inline void bvh_test_scene() {
 
   // scene.add_point_light(PointLight(color(1, 1, 1), 70, vec3(0, 2, 5)));
 
+  // mesh suzanne("models/suzanne.obj", vec3(1, 1, 1), vec3(2.5, -0.5, -0.25),
+  //            vec3(0, 30, 0), color(0.18, 0.3, 1));
+  // scene.add_mesh(suzanne);
+
+  // mesh lucy("models/lucy.obj", vec3(0.0025, 0.0025, 0.0025), vec3(-0.4, 0.32, -2.8),
+  //             vec3(90, 180, 0), color(0.3, 0.3, 0.3));
+  // scene.add_mesh(lucy);
+
   mesh cube("models/cube.obj", vec3(1, 1, 1), vec3(0, 0, -1), vec3(0, 45, 25),
             color(0.18, 0.3, 1));
-  mesh cube2("models/cube.obj", vec3(0.8, 0.8, 0.8), vec3(2, 0, -1), vec3(0, 45, 25),
-            color(0.9, 0.2, 0.2));
-  mesh cube3("models/cube.obj", vec3(0.8, 0.8, 0.8), vec3(-2, 0, -1), vec3(0, 45, 25),
-            color(0.8, 0.8, 0.2));
+  // mesh cube2("models/cube.obj", vec3(0.8, 0.8, 0.8), vec3(2, 0, -1), vec3(0, 45, 25),
+  //           color(0.9, 0.2, 0.2));
+  // mesh cube3("models/cube.obj", vec3(0.8, 0.8, 0.8), vec3(-2, 0, -1), vec3(0, 45, 25),
+  //           color(0.8, 0.8, 0.2));
   scene.add_mesh(cube);
-  scene.add_mesh(cube2);
-  scene.add_mesh(cube3);
+  // scene.add_mesh(cube2);
+  // scene.add_mesh(cube3);
 
   std::ofstream file_to_save_image;
   file_to_save_image.open("renders/analysis/bvh/bvh_test.ppm");

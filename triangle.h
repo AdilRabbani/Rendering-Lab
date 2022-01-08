@@ -1,6 +1,7 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
+#include "primitive.h"
 #include "hittable.h"
 #include "texture.h"
 
@@ -85,6 +86,7 @@ public:
     p2 = p2_;
     albedo = m;
     has_texture = false;
+    center = point3((p0.x() + p1.x() + p2.x()) / 3, (p0.y() + p1.y() + p2.y()) / 3, (p0.z() + p1.z() + p2.z()) / 3);
   }
 
   triangle(point3 p0_, point3 p1_, point3 p2_, texture t) {
@@ -93,6 +95,7 @@ public:
     p2 = p2_;
     tex = t;
     has_texture = true;
+    center = point3((p0.x() + p1.x() + p2.x()) / 3, (p0.y() + p1.y() + p2.y()) / 3, (p0.z() + p1.z() + p2.z()) / 3);
   }
 
   void transform(vec3 translate_by, vec3 scale_by, vec3 rotate_by) {
@@ -115,14 +118,28 @@ public:
     p0 = p0 + translate_by;
     p1 = p1 + translate_by;
     p2 = p2 + translate_by;
+    center = point3((p0.x() + p1.x() + p2.x()) / 3, (p0.y() + p1.y() + p2.y()) / 3, (p0.z() + p1.z() + p2.z()) / 3);
   }
 
   virtual bool hit(const ray &r, double t_min, double t_max, hit_record &rec) const override;
+
+  virtual aabb construct_aabb() override {
+    vec3 max_of_two = get_maximum_vector_for_aabb(p0, p1);
+    vec3 aabb_max = get_maximum_vector_for_aabb(p2, max_of_two);
+    vec3 min_of_two = get_minimum_vector_for_aabb(p0, p1);
+    vec3 aabb_min = get_minimum_vector_for_aabb(p2, min_of_two);
+    return aabb(aabb_min, aabb_max);
+  }
+
+  virtual vec3 get_center() override {
+    return center;
+  }
 
 public:
   point3 p0;
   point3 p1;
   point3 p2;
+  point3 center;
   color albedo;
   bool has_texture;
   texture tex;

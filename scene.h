@@ -18,6 +18,7 @@
 #include <fstream>
 #include <functional>
 #include <iostream>
+#include <memory>
 #include <ostream>
 #include <string>
 #include <vector>
@@ -325,6 +326,13 @@ public:
             }
           } 
         }
+      } else if (USE_BVH) {
+        if (scene_bvh.traverse_bvh(scene_bvh.root, r, scene_tmin, scene_tmax, hit)) {
+          if (NORMAL_MODE) {
+            return 0.5 * (hit.normal + color(1, 1, 1));
+          }
+        }
+
       } else {
           if (object_hit(r, t_min, t_max, hit)) {
             if (NORMAL_MODE) {
@@ -815,13 +823,10 @@ public:
 
     for (std::size_t j = 0; j < scene_triangles.size(); ++j) {
 
-      vec3 max_of_two = get_maximum_vector_for_aabb(scene_triangles[j].p0, scene_triangles[j].p1);
-      vec3 aabb_max = get_maximum_vector_for_aabb(scene_triangles[j].p2, max_of_two);
-      vec3 min_of_two = get_minimum_vector_for_aabb(scene_triangles[j].p0, scene_triangles[j].p1);
-      vec3 aabb_min = get_minimum_vector_for_aabb(scene_triangles[j].p2, min_of_two);
-
-      aabb resultant_aabb = aabb(aabb_min, aabb_max);
+      aabb resultant_aabb = scene_triangles[j].construct_aabb();
       scene_aabbs.push_back(resultant_aabb);
+
+      scene_primitives.push_back(std::make_shared<triangle>(scene_triangles[j]));
 
       if (j == 0) {
         
@@ -853,6 +858,7 @@ public:
     for (std::size_t j = 0; j < scene_spheres.size(); ++j) {
       
       scene_aabbs.push_back(scene_spheres[j].sphere_aabb);
+      scene_primitives.push_back(std::make_shared<sphere>(scene_spheres[j]));
       
       if (first_found) {
         objects_counter++;
@@ -881,13 +887,10 @@ public:
 
     for (std::size_t j = 0; j < scene_meshes.size(); ++j) {
       for (std::size_t k = 0; k < scene_meshes[j].mesh_triangles.size(); ++k) {
-        vec3 max_of_two = get_maximum_vector_for_aabb(scene_meshes[j].mesh_triangles[k].p0, scene_meshes[j].mesh_triangles[k].p1);
-        vec3 aabb_max = get_maximum_vector_for_aabb(scene_meshes[j].mesh_triangles[k].p2, max_of_two);
-        vec3 min_of_two = get_minimum_vector_for_aabb(scene_meshes[j].mesh_triangles[k].p0, scene_meshes[j].mesh_triangles[k].p1);
-        vec3 aabb_min = get_minimum_vector_for_aabb(scene_meshes[j].mesh_triangles[k].p2, min_of_two);
 
-        aabb resultant_aabb = aabb(aabb_min, aabb_max);
+        aabb resultant_aabb = scene_meshes[j].mesh_triangles[k].construct_aabb();
         scene_aabbs.push_back(resultant_aabb);
+        scene_primitives.push_back(std::make_shared<triangle>(scene_meshes[j].mesh_triangles[k]));
 
         if (j == 0) {
           
@@ -917,6 +920,12 @@ public:
       }
     }
 
+    // primitive *prim;
+    // triangle t(point3(-3, -1, -6), point3(3, -1, -6),
+    //                           point3(0, 1, -6), color(0.2, 0.2, 0.2));
+    // prim = &t;
+    // std::cout << std::endl << "Center of a triangle by pointer: " << prim->get_center() << std::endl;
+
     // Now we have all aabbs for all individual triangles, spheres and meshes in the scene
 
     std::cout << std::endl << "Number of AABBs: " << scene_aabbs.size() << std::endl << std::endl;
@@ -928,13 +937,13 @@ public:
     std::cout << std::endl << "Min AABB in y: " << scene_aabbs[id_of_prim_min_y].max_ << std::endl;
     std::cout << std::endl << "Min AABB in z: " << scene_aabbs[id_of_prim_min_z].max_ << std::endl;
 
-    vec3 centroid_max_x = scene_aabbs[id_of_prim_max_x].max_ / 2;
-    vec3 centroid_max_y = scene_aabbs[id_of_prim_max_y].max_ / 2;
-    vec3 centroid_max_z = scene_aabbs[id_of_prim_max_z].max_ / 2;
+    vec3 centroid_max_x = (scene_aabbs[id_of_prim_max_x].min_ + scene_aabbs[id_of_prim_max_x].max_) / 2;
+    vec3 centroid_max_y = (scene_aabbs[id_of_prim_max_y].min_ + scene_aabbs[id_of_prim_max_y].max_) / 2;
+    vec3 centroid_max_z = (scene_aabbs[id_of_prim_max_z].min_ + scene_aabbs[id_of_prim_max_z].max_) / 2;
 
-    vec3 centroid_min_x = scene_aabbs[id_of_prim_min_x].max_ / 2;
-    vec3 centroid_min_y = scene_aabbs[id_of_prim_min_y].max_ / 2;
-    vec3 centroid_min_z = scene_aabbs[id_of_prim_min_z].max_ / 2;
+    vec3 centroid_min_x = (scene_aabbs[id_of_prim_min_x].min_ + scene_aabbs[id_of_prim_min_x].max_) / 2;
+    vec3 centroid_min_y = (scene_aabbs[id_of_prim_min_y].min_ + scene_aabbs[id_of_prim_min_y].max_) / 2;
+    vec3 centroid_min_z = (scene_aabbs[id_of_prim_min_z].min_ + scene_aabbs[id_of_prim_min_z].max_) / 2;
 
     double extent_in_x = sqrt(pow(centroid_max_x.x() - centroid_min_x.x(), 2) + 
                               pow(centroid_max_x.y() - centroid_min_x.y(), 2) + 
@@ -968,13 +977,13 @@ public:
 
     vec3 midpoint;
     if (first_split_axis == 0) {
-      midpoint = centroid_max_x / 2;
+      midpoint = centroid_min_x + centroid_max_x / 2;
     }
     else if (first_split_axis == 1) {
-      midpoint = centroid_max_y / 2;
+      midpoint = centroid_min_y + centroid_max_y / 2;
     }
     else {
-      midpoint = centroid_max_z / 2;
+      midpoint = centroid_min_z + centroid_max_z / 2;
     }
 
     std::cout << "Midpoint: " << midpoint << std::endl;
@@ -983,7 +992,7 @@ public:
     std::vector<aabb> right;
 
     auto it = std::partition(scene_aabbs.begin(), scene_aabbs.end(), [&first_split_axis, &midpoint](aabb temp_aabb){
-      return temp_aabb.max_.e[first_split_axis] <= midpoint.e[first_split_axis];
+      return temp_aabb.max_.e[first_split_axis] < midpoint.e[first_split_axis];
     });
 
     std::vector<aabb>::iterator it2;
@@ -1005,8 +1014,13 @@ public:
     std::cout << "Primitives in right node: " << right.size() << std::endl;
     std::cout << std::endl;
 
-    BVH bvh;
-    bvh.init(scene_aabbs, first_split_axis, 0, scene_aabbs.size());
+    std::cout << "Scene primitives: " << scene_primitives.size() << std::endl;
+
+    scene_bvh.init(scene_primitives, 0, scene_primitives.size(), scene_aabb);
+    scene_bvh.build(scene_bvh.root, 0, scene_primitives.size());
+
+    std::cout << "Printing AABBS in BVH: " << std::endl;
+    scene_bvh.print_aabbs(scene_bvh.root, 0);
 
   }
 
@@ -1066,7 +1080,9 @@ public:
       std::cout << "\nTime taken to construct uniform grid: "
               << (ms_double.count() / 1000) << " seconds\n";
     }
+    create_scene_bounding_box();
     construct_bvh();
+
     int depth = 1;
     for (int j = image_height - 1; j >= 0; --j) {
       double percent_complete = (image_height - j);
@@ -1124,6 +1140,8 @@ public:
 
   aabb scene_aabb;
   std::vector<aabb> scene_aabbs;
+  std::vector<std::shared_ptr<primitive>> scene_primitives;
+  BVH scene_bvh;
 };
 
 #endif
