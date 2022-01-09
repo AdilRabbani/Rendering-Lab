@@ -694,7 +694,7 @@ inline void scene11() {
 
 inline void scene12() {
   const auto aspect_ratio = 16.0 / 9.0;
-  const int image_width = 200;
+  const int image_width = 800;
   const int image_height = static_cast<int>(image_width / aspect_ratio);
   const int samples_per_pixel = 3;
 
@@ -765,7 +765,7 @@ inline void scene12() {
   scene.add_mesh(xyz_dragon);
 
   std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/analysis/scene16_uniform_grids_area_light.ppm");
+  file_to_save_image.open("renders/analysis/bvh/scene12_bvh.ppm");
 
   camera cam(point3(0, 2, 7.5), point3(0, 0, -1), vec3(0, 1, 0), 45,
              aspect_ratio);
@@ -810,16 +810,16 @@ inline void bvh_test_scene() {
   // scene.add_sphere(sphere_2);
   // scene.add_sphere(sphere_3);
 
-  // scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
-  //                             point3(5, 5, -6), color(0.2, 0.2, 0.2)));
+  scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
+                              point3(5, 5, -6), color(0.2, 0.2, 0.2)));
 
-  // scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, 5, -6),
-  //                             point3(-5, 5, -6), color(0.2, 0.2, 0.2)));
+  scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, 5, -6),
+                              point3(-5, 5, -6), color(0.2, 0.2, 0.2)));
 
-  // scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
-  //                             point3(-5, -1, 2.5), color(0.2, 0.2, 0.2)));
-  // scene.add_triangle(triangle(point3(5, -1, 2.5), point3(-5, -1, 2.5),
-  //                             point3(5, -1, -6), color(0.2, 0.2, 0.2)));
+  scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
+                              point3(-5, -1, 2.5), color(0.2, 0.2, 0.2)));
+  scene.add_triangle(triangle(point3(5, -1, 2.5), point3(-5, -1, 2.5),
+                              point3(5, -1, -6), color(0.2, 0.2, 0.2)));
 
   // scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
   // scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, -1)));
@@ -835,18 +835,18 @@ inline void bvh_test_scene() {
   //             vec3(90, 180, 0), color(0.3, 0.3, 0.3));
   // scene.add_mesh(lucy);
 
-  mesh cube("models/cube.obj", vec3(1, 1, 1), vec3(0, 0, -1), vec3(0, 45, 25),
-            color(0.18, 0.3, 1));
+  // mesh cube("models/cube.obj", vec3(1, 1, 1), vec3(0, 0, -1), vec3(0, 45, 25),
+  //           color(0.18, 0.3, 1));
   // mesh cube2("models/cube.obj", vec3(0.8, 0.8, 0.8), vec3(2, 0, -1), vec3(0, 45, 25),
   //           color(0.9, 0.2, 0.2));
   // mesh cube3("models/cube.obj", vec3(0.8, 0.8, 0.8), vec3(-2, 0, -1), vec3(0, 45, 25),
   //           color(0.8, 0.8, 0.2));
-  scene.add_mesh(cube);
+  // scene.add_mesh(cube);
   // scene.add_mesh(cube2);
   // scene.add_mesh(cube3);
 
   std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/analysis/bvh/bvh_test.ppm");
+  file_to_save_image.open("renders/analysis/bvh/bvh_test_.ppm");
 
   camera cam(point3(0, 2, 7.5), point3(0, 0, -1), vec3(0, 1, 0), 45,
              aspect_ratio);

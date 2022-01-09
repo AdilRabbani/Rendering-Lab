@@ -327,9 +327,21 @@ public:
           } 
         }
       } else if (USE_BVH) {
+        scene_bvh.hits.clear();
         if (scene_bvh.traverse_bvh(scene_bvh.root, r, scene_tmin, scene_tmax, hit)) {
+          hit_record closest_hit;
+          for (std::size_t j = 0; j < scene_bvh.hits.size(); ++j) {
+            if (j == 0) {
+              closest_hit = scene_bvh.hits[j];
+            }
+            else {
+              if (closest_hit.t > scene_bvh.hits[j].t) {
+                closest_hit = scene_bvh.hits[j];
+              }
+            }
+          }
           if (NORMAL_MODE) {
-            return 0.5 * (hit.normal + color(1, 1, 1));
+            return 0.5 * (closest_hit.normal + color(1, 1, 1));
           }
         }
 
@@ -1019,8 +1031,8 @@ public:
     scene_bvh.init(scene_primitives, 0, scene_primitives.size(), scene_aabb);
     scene_bvh.build(scene_bvh.root, 0, scene_primitives.size());
 
-    std::cout << "Printing AABBS in BVH: " << std::endl;
-    scene_bvh.print_aabbs(scene_bvh.root, 0);
+    // std::cout << "Printing AABBS in BVH: " << std::endl;
+    // scene_bvh.print_aabbs(scene_bvh.root, 0);
 
   }
 

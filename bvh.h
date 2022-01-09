@@ -2,6 +2,7 @@
 #define BVH_H
 
 #include "bvh_node.h"
+#include "hittable.h"
 #include <algorithm>
 #include <cstddef>
 #include <cstdlib>
@@ -11,6 +12,7 @@ class BVH {
 
 public:
     BVHNode *root;
+    std::vector<hit_record> hits;
     
     BVH(){
         root = NULL;
@@ -51,6 +53,18 @@ public:
         }
 
         else if (primitives.size() == 2) {
+
+            srand(time(NULL));
+            int random_split = rand() % (2 + 1 - 0) + 0;
+
+            std::sort(primitives.begin(), primitives.end(), 
+            [&random_split](const std::shared_ptr<primitive> a1, const std::shared_ptr<primitive> a2) {
+                aabb box1 = a1->construct_aabb();
+                aabb box2 = a2->construct_aabb();
+                return box1.min_.e[random_split] < box2.min_.e[random_split];
+                // return a1->get_center().e[random_split] < a2->get_center().e[random_split];
+            });
+
             root->left = new BVHNode;
             root->left->primitives = std::vector<std::shared_ptr<primitive>>(primitives.begin(), primitives.end() - 1);
             root->left->node_aabb = aabb(primitives[0]->construct_aabb());
@@ -63,17 +77,15 @@ public:
         }
 
         else {
-            // srand(time(NULL));
-            // int random_split = rand() % (2 + 1 - 0) + 0;
-
-            int random_split = 1;
+            srand(time(NULL));
+            int random_split = rand() % (2 + 1 - 0) + 0;
 
             std::sort(primitives.begin(), primitives.end(), 
             [&random_split](const std::shared_ptr<primitive> a1, const std::shared_ptr<primitive> a2) {
-                // aabb box1 = a1->construct_aabb();
-                // aabb box2 = a2->construct_aabb();
-                // return box1.min_.e[random_split] < box2.min_.e[random_split];
-                return a1->get_center().e[random_split] < a2->get_center().e[random_split];
+                aabb box1 = a1->construct_aabb();
+                aabb box2 = a2->construct_aabb();
+                return box1.min_.e[random_split] < box2.min_.e[random_split];
+                // return a1->get_center().e[random_split] < a2->get_center().e[random_split];
             });
 
             int mid = primitives.size() / 2;
@@ -105,7 +117,7 @@ public:
             root->left->node_aabb = aabb(left_node_aabb_min, left_node_aabb_max);
 
             root->right = new BVHNode;
-            root->right->primitives = std::vector<std::shared_ptr<primitive>>(primitives.begin() + mid, primitives.end());
+            root->right->primitives = std::vector<std::shared_ptr<primitive>>(primitives.begin() + (mid), primitives.end());
 
             for (size_t j = 0; j < root->right->primitives.size(); j++) {
                 aabb primitive_aabb = root->right->primitives[j]->construct_aabb();
@@ -125,7 +137,7 @@ public:
             root->right->node_aabb = aabb(right_node_aabb_min, right_node_aabb_max);
 
             build(root->left, first, mid);
-            build(root->right, mid, last);
+            build(root->right, (mid), last);
         }
     }
 
@@ -137,31 +149,34 @@ public:
 
         if (root->is_leaf) {
             if (root->primitives.size() == 1) {
-                // hit_record temp_hit = hit;
-                // bool hit_anything = false;
-                // double closest_so_far = scene_tmax;
-                if (root->primitives[0]->hit(r, scene_tmin, scene_tmax, hit)) { 
-                    // closest_so_far = temp_hit.t;
-                    // hit = temp_hit;
-                    // hit_anything = true;
+                hit_record temp_hit = hit;
+                bool hit_anything = false;
+                double closest_so_far = scene_tmax;
+                if (root->primitives[0]->hit(r, scene_tmin, closest_so_far, temp_hit)) {
+                    closest_so_far = temp_hit.t;
+                    hit = temp_hit;
+                    hits.push_back(hit);
+                    hit_anything = true;
                 }
-                return true;
+                return hit_anything;
             }
             else if (root->primitives.size() == 2) {
-                // hit_record temp_hit = hit;
-                // bool hit_anything = false;
-                // double closest_so_far = scene_tmax;
-                if (root->primitives[0]->hit(r, scene_tmin, scene_tmax, hit)) {
-                    // closest_so_far = temp_hit.t;
-                    // hit = temp_hit;
-                    // hit_anything = true;
+                hit_record temp_hit = hit;
+                bool hit_anything = false;
+                double closest_so_far = scene_tmax;
+                if (root->primitives[0]->hit(r, scene_tmin, closest_so_far, temp_hit)) {
+                    closest_so_far = temp_hit.t;
+                    hit = temp_hit;
+                    hits.push_back(hit);
+                    hit_anything = true;
                 }
-                if (root->primitives[1]->hit(r, scene_tmin, scene_tmax, hit)) {
-                    // closest_so_far = temp_hit.t;
-                    // hit = temp_hit;
-                    // hit_anything = true;
+                if (root->primitives[1]->hit(r, scene_tmin, closest_so_far, hit)) {
+                    closest_so_far = temp_hit.t;
+                    hit = temp_hit;
+                    hits.push_back(hit);
+                    hit_anything = true;
                 }
-                return true;
+                return hit_anything;
             }
         }
 
@@ -169,19 +184,6 @@ public:
         bool right_hit = traverse_bvh(root->right, r, scene_tmin, left_hit ? hit.t : scene_tmax, hit);
 
         return left_hit || right_hit;
-
-        // hit_record temp_hit = hit;
-        // bool hit_anything = false;
-        // double closest_so_far = scene_tmax;
-
-        // if (root->left->node_aabb.intersect(r, scene_tmin, scene_tmax)) {
-        //     if (root->left->left->node_aabb.intersect(r, scene_tmin, scene_tmax)) {
-        //         if (root->left->left->left->node_aabb.intersect(r, scene_tmin, scene_tmax)) {
-                    
-        //         }
-        //     }
-        // }
-        // return hit_anything;
     }
 
     void print_aabbs(BVHNode *root, int count) {
