@@ -328,7 +328,7 @@ public:
         }
       } else if (USE_BVH) {
         scene_bvh.hits.clear();
-        if (scene_bvh.traverse_bvh(scene_bvh.root, r, scene_tmin, scene_tmax, hit)) {
+        if (scene_bvh.traverse_bvh(scene_bvh.root, r, scene_tmin, scene_tmax, 0.01, 10000, hit)) {
           hit_record closest_hit;
           for (std::size_t j = 0; j < scene_bvh.hits.size(); ++j) {
             if (j == 0) {
@@ -342,6 +342,34 @@ public:
           }
           if (NORMAL_MODE) {
             return 0.5 * (closest_hit.normal + color(1, 1, 1));
+          } else {
+            color albedo;
+
+              albedo = closest_hit.albedo;
+
+              color diffuse(0, 0, 0);
+              color specular(0, 0, 0);
+              color ambient(0, 0, 0);
+              double intensity_at_point;
+
+              for (std::size_t i = 0; i < scene_point_lights.size(); ++i) {
+                calculate_illumination_and_shadows(
+                    r, closest_hit, hit_color, albedo, ambient, diffuse, specular,
+                    scene_point_lights[i].position, scene_point_lights[i].light_color,
+                    scene_point_lights[i].intensity, intensity_at_point, 1, 1);
+              }
+
+              for (std::size_t i = 0; i < scene_area_lights.size(); ++i) {
+                vec3 random_sample_area_light =
+                    scene_area_lights[i].getRandomSample();
+                calculate_illumination_and_shadows(
+                    r, closest_hit, hit_color, albedo, ambient, diffuse, specular,
+                    random_sample_area_light, scene_area_lights[i].light_color,
+                    scene_area_lights[i].intensity, intensity_at_point,
+                    scene_area_lights.size() / number_of_area_lights, 2);
+              }
+
+              return hit_color + (ambient * apply_ambient);
           }
         }
 
@@ -1062,6 +1090,14 @@ public:
         }
       }
 
+      else if (USE_BVH) {
+        scene_bvh.shadow_ray_hit = false;
+        if (scene_bvh.traverse_bvh(scene_bvh.root, shadow_ray, scene_tmin, scene_tmax, 0.01, (light_position - hit.p).length(), hit)) {
+          shadow_hit_or_not = false;
+          scene_bvh.shadow_ray_hit = false;
+        }
+      }
+
       else if (object_hit(shadow_ray, 0.01, (light_position - hit.p).length(), hit)) {
         shadow_hit_or_not = false;
       }
@@ -1092,8 +1128,16 @@ public:
       std::cout << "\nTime taken to construct uniform grid: "
               << (ms_double.count() / 1000) << " seconds\n";
     }
-    create_scene_bounding_box();
-    construct_bvh();
+
+    if (USE_BVH) {
+      auto t1 = high_resolution_clock::now();
+      create_scene_bounding_box();
+      construct_bvh();
+      auto t2 = high_resolution_clock::now();
+      duration<double, std::milli> ms_double = t2 - t1;
+      std::cout << "\nTime taken to construct bvh: "
+              << (ms_double.count() / 1000) << " seconds\n";
+    }
 
     int depth = 1;
     for (int j = image_height - 1; j >= 0; --j) {

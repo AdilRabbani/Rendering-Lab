@@ -13,9 +13,11 @@ class BVH {
 public:
     BVHNode *root;
     std::vector<hit_record> hits;
+    bool shadow_ray_hit;
     
     BVH(){
         root = NULL;
+        shadow_ray_hit = false;
     };
     ~BVH() {
         destroy_bvh();
@@ -39,6 +41,9 @@ public:
     void build(BVHNode *root, int first, int last) {
         
         auto primitives = root->primitives;
+
+        std::cerr << "\rPrimitive size till now: " << primitives.size()
+                << " " << std::flush;
 
         if (primitives.size() == 1) {
             root->left = new BVHNode;
@@ -141,7 +146,21 @@ public:
         }
     }
 
-    bool traverse_bvh(BVHNode *root, const ray &r, double &scene_tmin, double &scene_tmax, hit_record &hit) {
+    bool traverse_bvh(BVHNode *root, const ray &r, 
+                      double scene_tmin, 
+                      double scene_tmax,
+                      const double shadow_tmin,
+                      const double shadow_tmax, 
+                      hit_record &hit) {
+
+        if (r.shadow_ray) {
+            scene_tmin = shadow_tmin;
+            scene_tmax = shadow_tmax;
+        }
+
+        if (r.shadow_ray && shadow_ray_hit) {
+            return true;
+        }
 
         if (!root->node_aabb.intersect(r, scene_tmin, scene_tmax)) {
             return false;
@@ -153,6 +172,10 @@ public:
                 bool hit_anything = false;
                 double closest_so_far = scene_tmax;
                 if (root->primitives[0]->hit(r, scene_tmin, closest_so_far, temp_hit)) {
+                    if (r.shadow_ray) {
+                        shadow_ray_hit = true;
+                        return true;
+                    }
                     closest_so_far = temp_hit.t;
                     hit = temp_hit;
                     hits.push_back(hit);
@@ -165,12 +188,20 @@ public:
                 bool hit_anything = false;
                 double closest_so_far = scene_tmax;
                 if (root->primitives[0]->hit(r, scene_tmin, closest_so_far, temp_hit)) {
+                    if (r.shadow_ray) {
+                        shadow_ray_hit = true;
+                        return true;
+                    }
                     closest_so_far = temp_hit.t;
                     hit = temp_hit;
                     hits.push_back(hit);
                     hit_anything = true;
                 }
                 if (root->primitives[1]->hit(r, scene_tmin, closest_so_far, hit)) {
+                    if (r.shadow_ray) {
+                        shadow_ray_hit = true;
+                        return true;
+                    }
                     closest_so_far = temp_hit.t;
                     hit = temp_hit;
                     hits.push_back(hit);
@@ -180,8 +211,8 @@ public:
             }
         }
 
-        bool left_hit = traverse_bvh(root->left, r, scene_tmin, scene_tmax, hit);
-        bool right_hit = traverse_bvh(root->right, r, scene_tmin, left_hit ? hit.t : scene_tmax, hit);
+        bool left_hit = traverse_bvh(root->left, r, scene_tmin, scene_tmax, shadow_tmin, shadow_tmax, hit);
+        bool right_hit = traverse_bvh(root->right, r, scene_tmin, left_hit ? hit.t : scene_tmax, shadow_tmin, left_hit ? hit.t : shadow_tmax, hit);
 
         return left_hit || right_hit;
     }

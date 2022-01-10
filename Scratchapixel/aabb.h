@@ -27,14 +27,22 @@ public:
 
 bool aabb::intersect(const ray &r, double &tmin_, double &tmax_) {
 
-  double tmin = (min_.x() - r.orig.x()) / r.dir.x();
-  double tmax = (max_.x() - r.orig.x()) / r.dir.x();
+  double inv_dir_x = 1.0f / r.dir.x();
+
+  double tmin = (min_.x() - r.orig.x()) * inv_dir_x;
+  double tmax = (max_.x() - r.orig.x()) * inv_dir_x;
+
+  // std::cout << "dir_x: " << r.dir.x() << std::endl;
 
   if (tmin > tmax)
     std::swap(tmin, tmax);
 
-  double tymin = (min_.y() - r.orig.y()) / r.dir.y();
-  double tymax = (max_.y() - r.orig.y()) / r.dir.y();
+  double inv_dir_y = 1.0f / r.dir.y();
+
+  double tymin = (min_.y() - r.orig.y()) * inv_dir_y;
+  double tymax = (max_.y() - r.orig.y()) * inv_dir_y;
+
+  // std::cout << "dir_y: " << r.dir.y() << std::endl;
 
   if (tymin > tymax)
     std::swap(tymin, tymax);
@@ -48,8 +56,12 @@ bool aabb::intersect(const ray &r, double &tmin_, double &tmax_) {
   if (tymax < tmax)
     tmax = tymax;
 
-  double tzmin = (min_.z() - r.orig.z()) / r.dir.z();
-  double tzmax = (max_.z() - r.orig.z()) / r.dir.z();
+  double inv_dir_z = 1.0f / r.dir.z();
+
+  double tzmin = (min_.z() - r.orig.z()) * inv_dir_z;
+  double tzmax = (max_.z() - r.orig.z()) * inv_dir_z;
+
+  // std::cout << "dir_z: " << r.dir.z() << std::endl;
 
   if (tzmin > tzmax)
     std::swap(tzmin, tzmax);
@@ -63,10 +75,13 @@ bool aabb::intersect(const ray &r, double &tmin_, double &tmax_) {
   if (tzmax < tmax)
     tmax = tzmax;
 
-  tmin_ = tmin;
-  tmax_ = tmax;
-
+  if (!r.shadow_ray) {
+    tmin_ = tmin;
+    tmax_ = tmax;
+  }
+  
   return true;
+
 }
 
 #endif

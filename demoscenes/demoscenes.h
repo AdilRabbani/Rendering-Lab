@@ -700,16 +700,16 @@ inline void scene12() {
 
   Scene scene(1, 1, 1, 1);
 
-  scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, -1, -6),
+  scene.add_triangle(triangle(point3(-6, -1, -6 + 0.0001), point3(6, -1, -6),
                               point3(6, 5, -6), color(0.2, 0.2, 0.2)));
 
-  scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, 5, -6),
+  scene.add_triangle(triangle(point3(-6, -1, -6 + 0.0001), point3(6, 5, -6),
                               point3(-6, 5, -6), color(0.2, 0.2, 0.2)));
 
-  scene.add_triangle(triangle(point3(-6, -1, -6), point3(6, -1, -6),
+  scene.add_triangle(triangle(point3(-6, -1 + 0.0001, -6), point3(6, -1, -6),
                               point3(-6, -1, 2.5), color(0.2, 0.2, 0.2)));
 
-  scene.add_triangle(triangle(point3(6, -1, 2.5), point3(-6, -1, 2.5),
+  scene.add_triangle(triangle(point3(6, -1 + 0.0001, 2.5), point3(-6, -1, 2.5),
                               point3(6, -1, -6), color(0.2, 0.2, 0.2)));
 
   // scene.add_point_light(PointLight(color(1, 1, 1), 70, vec3(0, 2, 5)));
@@ -720,14 +720,18 @@ inline void scene12() {
   // scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(-2.5, 2, 0.5)));
   // scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5)));
 
+
+
   scene.add_area_light(AreaLight(color(0, 1, 1), 30, vec3(-2, 2, -1), 1), 3);
   scene.add_area_light(AreaLight(color(1, 1, 0), 30, vec3(2, 2, -1), 1), 3);
   scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 2, -1), 1), 3);
 
+
+
   // scene.add_area_light(AreaLight(color(0.6, 0.5, 0.4), 30, vec3(-2.5, 2, 0.5), 1), 3);
   // scene.add_area_light(AreaLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5), 1), 3);
 
-  scene.add_area_light(AreaLight(color(1, 1, 1), 40, vec3(0, 2, 5), 1), 3);
+  scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 2, 5), 1), 3);
 
 
   // scene.add_area_light(AreaLight(color(1, 1, 1), 60, vec3(0, 2, 5), 1), 10);
@@ -756,18 +760,18 @@ inline void scene12() {
               vec3(0, 0, 0), color(0, 0.9, 0.45));
   scene.add_mesh(pine_tree_2);
 
-  mesh lucy("models/lucy.obj", vec3(0.0025, 0.0025, 0.0025), vec3(-0.4, 0.32, -2.8),
-              vec3(90, 180, 0), color(0.3, 0.3, 0.3));
-  scene.add_mesh(lucy);
+  // mesh lucy("models/lucy.obj", vec3(0.0025, 0.0025, 0.0025), vec3(-0.4, 0.32, -2.8),
+  //             vec3(90, 180, 0), color(0.3, 0.3, 0.3));
+  // scene.add_mesh(lucy);
 
-  mesh xyz_dragon("models/xyzrgb_dragon.obj", vec3(0.02, 0.02, 0.02), vec3(0.85, -0.9, 0.8),
-              vec3(0, 140, 0), color(0.4, 0.4, 0.8));
-  scene.add_mesh(xyz_dragon);
+  // mesh xyz_dragon("models/xyzrgb_dragon.obj", vec3(0.02, 0.02, 0.02), vec3(0.85, -0.9, 0.8),
+  //             vec3(0, 140, 0), color(0.4, 0.4, 0.8));
+  // scene.add_mesh(xyz_dragon);
 
   std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/analysis/bvh/scene12_bvh.ppm");
+  file_to_save_image.open("renders/analysis/bvh/scene12_bvh_new.ppm");
 
-  camera cam(point3(0, 2, 7.5), point3(0, 0, -1), vec3(0, 1, 0), 45,
+  camera cam(point3(0, 3, 7.5), point3(0, 0, -1), vec3(0, 1, 0), 45,
              aspect_ratio);
 
   file_to_save_image << "P3\n"
@@ -792,9 +796,9 @@ inline void scene12() {
 
 inline void bvh_test_scene() {
   const auto aspect_ratio = 16.0 / 9.0;
-  const int image_width = 800;
+  const int image_width = 1000;
   const int image_height = static_cast<int>(image_width / aspect_ratio);
-  const int samples_per_pixel = 2;
+  const int samples_per_pixel = 1;
 
   Scene scene(1, 1, 1, 0);
 
@@ -810,15 +814,16 @@ inline void bvh_test_scene() {
   // scene.add_sphere(sphere_2);
   // scene.add_sphere(sphere_3);
 
-  scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
+  scene.add_triangle(triangle(point3(-5, -1, -6 + 0.0001), point3(5, -1, -6),
                               point3(5, 5, -6), color(0.2, 0.2, 0.2)));
 
-  scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, 5, -6),
+  scene.add_triangle(triangle(point3(-5, -1, -6 + 0.0001), point3(5, 5, -6),
                               point3(-5, 5, -6), color(0.2, 0.2, 0.2)));
 
-  scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
+  scene.add_triangle(triangle(point3(-5, -1 + 0.0001, -6), point3(5, -1, -6),
                               point3(-5, -1, 2.5), color(0.2, 0.2, 0.2)));
-  scene.add_triangle(triangle(point3(5, -1, 2.5), point3(-5, -1, 2.5),
+
+  scene.add_triangle(triangle(point3(5, -1 + 0.0001, 2.5), point3(-5, -1, 2.5),
                               point3(5, -1, -6), color(0.2, 0.2, 0.2)));
 
   // scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
@@ -835,15 +840,19 @@ inline void bvh_test_scene() {
   //             vec3(90, 180, 0), color(0.3, 0.3, 0.3));
   // scene.add_mesh(lucy);
 
-  // mesh cube("models/cube.obj", vec3(1, 1, 1), vec3(0, 0, -1), vec3(0, 45, 25),
-  //           color(0.18, 0.3, 1));
-  // mesh cube2("models/cube.obj", vec3(0.8, 0.8, 0.8), vec3(2, 0, -1), vec3(0, 45, 25),
-  //           color(0.9, 0.2, 0.2));
-  // mesh cube3("models/cube.obj", vec3(0.8, 0.8, 0.8), vec3(-2, 0, -1), vec3(0, 45, 25),
-  //           color(0.8, 0.8, 0.2));
-  // scene.add_mesh(cube);
-  // scene.add_mesh(cube2);
-  // scene.add_mesh(cube3);
+  // mesh lucy("models/dragon.obj", vec3(3, 3, 3), vec3(0, 0, 2),
+  //             vec3(0, 260, 0), color(0.3, 0.3, 0.3));
+  // scene.add_mesh(lucy);
+
+  mesh cube("models/cube.obj", vec3(1, 1, 1), vec3(0, 0, -1), vec3(0, 45, 25),
+            color(0.18, 0.3, 1));
+  mesh cube2("models/cube.obj", vec3(0.8, 0.8, 0.8), vec3(2, 0, -1), vec3(0, 45, 25),
+            color(0.9, 0.2, 0.2));
+  mesh cube3("models/cube.obj", vec3(0.8, 0.8, 0.8), vec3(-2, 0, -1), vec3(0, 45, 25),
+            color(0.8, 0.8, 0.2));
+  scene.add_mesh(cube);
+  scene.add_mesh(cube2);
+  scene.add_mesh(cube3);
 
   std::ofstream file_to_save_image;
   file_to_save_image.open("renders/analysis/bvh/bvh_test_.ppm");
