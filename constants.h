@@ -15,6 +15,8 @@ const bool NORMAL_MODE = false;
 const bool DEBUG_GRID = false;
 const bool USE_UNIFORM_GRIDS = false;
 const bool USE_BVH = true;
+const bool BVH_RANDOM_SPLIT = false;
+const bool BVH_CENTROID_SPLIT = true;
 const double AREA_LIGHTS_SPREAD = 0.05; // previously 0.1
 
 // Special thanks to Ray Tracing in One Weekend:

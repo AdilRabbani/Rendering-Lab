@@ -20,4 +20,6 @@ using std::chrono::high_resolution_clock;
 #include "demoscenes/demoscenes.h"
 #include "scene.h"
 
-int main() { scene12(); }
+int main() { 
+    bvh_test_scene();
+     }

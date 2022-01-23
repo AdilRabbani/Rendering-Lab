@@ -18,6 +18,27 @@ public:
 
   bool intersect(const ray &r, double &tmin_, double &tmax);
 
+  vec3 diagonal () {
+    return max_ - min_;
+  }
+
+  double surface_area () {
+    vec3 d = diagonal();
+    return 2 * (d.x() * d.y() + d.x() * d.z() + d.y() * d.z());
+  }
+
+  int maximum_extent () {
+    vec3 d = diagonal();
+    // std::cout << std::endl << "x: " << d.x() << ", y: " << d.y() << " z: " << d.z() << std::endl;
+    if (d.x() > d.y() && d.x() > d.z()) {
+      return 0;
+    }
+    else if (d.y() > d.z()) {
+      return 1;
+    }
+    else {return 2;};
+  }
+
   point3 min_;
   point3 max_;
 };

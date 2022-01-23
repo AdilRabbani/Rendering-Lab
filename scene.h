@@ -343,7 +343,7 @@ public:
           if (NORMAL_MODE) {
             return 0.5 * (closest_hit.normal + color(1, 1, 1));
           } else {
-            color albedo;
+              color albedo;
 
               albedo = closest_hit.albedo;
 
@@ -369,7 +369,17 @@ public:
                     scene_area_lights.size() / number_of_area_lights, 2);
               }
 
+              if (isnan(hit_color.x()) || isnan(hit_color.y()) || isnan(hit_color.z())) {
+                std::cout << std::endl << "Warning: this hit color is nan at texture coordinate: (" << u << " , " << v << ")" << std::endl;
+                std::cout << "Setting this pixel to black" << std::endl;  
+                hit_color = color(0, 0, 0);
+              }
+
               return hit_color + (ambient * apply_ambient);
+
+              // hit_color = hit_color + (ambient * apply_ambient);
+              // vec3 R = reflect(unit_vector(r.direction()), closest_hit.normal);
+              // return hit_color += 0.8 * ray_color(ray(closest_hit.p + closest_hit.normal * 0.05, R), t_min, t_max, closest_hit.u, closest_hit.v, depth - 1);
           }
         }
 
@@ -799,130 +809,20 @@ public:
 
   }
 
-  int get_maximum_aabb_id(const int axis, const int id_1, const int id_2) {
-    if (axis == 0) {
-      if (scene_aabbs[id_1].max_.x() >= scene_aabbs[id_2].max_.x()) {
-        return id_1;
-      }
-      else {
-        return id_2;
-      }
-    }
-    else if (axis == 1) {
-      if (scene_aabbs[id_1].max_.y() >= scene_aabbs[id_2].max_.y()) {
-        return id_1;
-      }
-      else {
-        return id_2;
-      }
-    }
-    else {
-      if (scene_aabbs[id_1].max_.z() >= scene_aabbs[id_2].max_.z()) {
-        return id_1;
-      }
-      else {
-        return id_2;
-      }
-    }
-  }
-
-  int get_minimum_aabb_id(const int axis, const int id_1, const int id_2) {
-    if (axis == 0) {
-      if (scene_aabbs[id_1].max_.x() <= scene_aabbs[id_2].max_.x()) {
-        return id_1;
-      }
-      else {
-        return id_2;
-      }
-    }
-    else if (axis == 1) {
-      if (scene_aabbs[id_1].max_.y() <= scene_aabbs[id_2].max_.y()) {
-        return id_1;
-      }
-      else {
-        return id_2;
-      }
-    }
-    else {
-      if (scene_aabbs[id_1].max_.z() <= scene_aabbs[id_2].max_.z()) {
-        return id_1;
-      }
-      else {
-        return id_2;
-      }
-    }
-  }
-
   void construct_bvh() {
 
-    int objects_counter = -1;
-    bool first_found = false;
-
-    int id_of_prim_max_x, id_of_prim_max_y, id_of_prim_max_z;
-    int id_of_prim_min_x, id_of_prim_min_y, id_of_prim_min_z;
 
     for (std::size_t j = 0; j < scene_triangles.size(); ++j) {
 
       aabb resultant_aabb = scene_triangles[j].construct_aabb();
       scene_aabbs.push_back(resultant_aabb);
-
       scene_primitives.push_back(std::make_shared<triangle>(scene_triangles[j]));
-
-      if (j == 0) {
-        
-        first_found = true;
-        objects_counter++;
-
-        id_of_prim_max_x = objects_counter;
-        id_of_prim_max_y = objects_counter;
-        id_of_prim_max_z = objects_counter;
-
-        id_of_prim_min_x = objects_counter;
-        id_of_prim_min_y = objects_counter;
-        id_of_prim_min_z = objects_counter;
-      }
-      else {
-        
-        objects_counter++;
-
-        id_of_prim_max_x = get_maximum_aabb_id(0, id_of_prim_max_x, objects_counter);
-        id_of_prim_max_y = get_maximum_aabb_id(1, id_of_prim_max_y, objects_counter);
-        id_of_prim_max_z = get_maximum_aabb_id(2, id_of_prim_max_x, objects_counter);
-
-        id_of_prim_min_x = get_minimum_aabb_id(0, id_of_prim_min_x, objects_counter);
-        id_of_prim_min_y = get_minimum_aabb_id(1, id_of_prim_min_y, objects_counter);
-        id_of_prim_min_z = get_minimum_aabb_id(2, id_of_prim_min_z, objects_counter);
-      }
     }
 
     for (std::size_t j = 0; j < scene_spheres.size(); ++j) {
       
       scene_aabbs.push_back(scene_spheres[j].sphere_aabb);
       scene_primitives.push_back(std::make_shared<sphere>(scene_spheres[j]));
-      
-      if (first_found) {
-        objects_counter++;
-
-        id_of_prim_max_x = get_maximum_aabb_id(0, id_of_prim_max_x, objects_counter);
-        id_of_prim_max_y = get_maximum_aabb_id(1, id_of_prim_max_y, objects_counter);
-        id_of_prim_max_z = get_maximum_aabb_id(2, id_of_prim_max_x, objects_counter);
-
-        id_of_prim_min_x = get_minimum_aabb_id(0, id_of_prim_min_x, objects_counter);
-        id_of_prim_min_y = get_minimum_aabb_id(1, id_of_prim_min_y, objects_counter);
-        id_of_prim_min_z = get_minimum_aabb_id(2, id_of_prim_min_z, objects_counter);
-      }
-      else {
-        first_found = true;
-        objects_counter++;
-
-        id_of_prim_max_x = objects_counter;
-        id_of_prim_max_y = objects_counter;
-        id_of_prim_max_z = objects_counter;
-
-        id_of_prim_min_x = objects_counter;
-        id_of_prim_min_y = objects_counter;
-        id_of_prim_min_z = objects_counter;
-      }
     }
 
     for (std::size_t j = 0; j < scene_meshes.size(); ++j) {
@@ -931,32 +831,6 @@ public:
         aabb resultant_aabb = scene_meshes[j].mesh_triangles[k].construct_aabb();
         scene_aabbs.push_back(resultant_aabb);
         scene_primitives.push_back(std::make_shared<triangle>(scene_meshes[j].mesh_triangles[k]));
-
-        if (j == 0) {
-          
-          first_found = true;
-          objects_counter++;
-
-          id_of_prim_max_x = objects_counter;
-          id_of_prim_max_y = objects_counter;
-          id_of_prim_max_z = objects_counter;
-
-          id_of_prim_min_x = objects_counter;
-          id_of_prim_min_y = objects_counter;
-          id_of_prim_min_z = objects_counter;
-        }
-        else {
-          
-          objects_counter++;
-
-          id_of_prim_max_x = get_maximum_aabb_id(0, id_of_prim_max_x, objects_counter);
-          id_of_prim_max_y = get_maximum_aabb_id(1, id_of_prim_max_y, objects_counter);
-          id_of_prim_max_z = get_maximum_aabb_id(2, id_of_prim_max_x, objects_counter);
-
-          id_of_prim_min_x = get_minimum_aabb_id(0, id_of_prim_min_x, objects_counter);
-          id_of_prim_min_y = get_minimum_aabb_id(1, id_of_prim_min_y, objects_counter);
-          id_of_prim_min_z = get_minimum_aabb_id(2, id_of_prim_min_z, objects_counter);
-        }
       }
     }
 
@@ -968,96 +842,17 @@ public:
 
     // Now we have all aabbs for all individual triangles, spheres and meshes in the scene
 
-    std::cout << std::endl << "Number of AABBs: " << scene_aabbs.size() << std::endl << std::endl;
-    std::cout << std::endl << "Max AABB in x: " << scene_aabbs[id_of_prim_max_x].max_ << std::endl;
-    std::cout << std::endl << "Max AABB in y: " << scene_aabbs[id_of_prim_max_y].max_ << std::endl;
-    std::cout << std::endl << "Max AABB in z: " << scene_aabbs[id_of_prim_max_z].max_ << std::endl;
-
-    std::cout << std::endl << "Min AABB in x: " << scene_aabbs[id_of_prim_min_x].max_ << std::endl;
-    std::cout << std::endl << "Min AABB in y: " << scene_aabbs[id_of_prim_min_y].max_ << std::endl;
-    std::cout << std::endl << "Min AABB in z: " << scene_aabbs[id_of_prim_min_z].max_ << std::endl;
-
-    vec3 centroid_max_x = (scene_aabbs[id_of_prim_max_x].min_ + scene_aabbs[id_of_prim_max_x].max_) / 2;
-    vec3 centroid_max_y = (scene_aabbs[id_of_prim_max_y].min_ + scene_aabbs[id_of_prim_max_y].max_) / 2;
-    vec3 centroid_max_z = (scene_aabbs[id_of_prim_max_z].min_ + scene_aabbs[id_of_prim_max_z].max_) / 2;
-
-    vec3 centroid_min_x = (scene_aabbs[id_of_prim_min_x].min_ + scene_aabbs[id_of_prim_min_x].max_) / 2;
-    vec3 centroid_min_y = (scene_aabbs[id_of_prim_min_y].min_ + scene_aabbs[id_of_prim_min_y].max_) / 2;
-    vec3 centroid_min_z = (scene_aabbs[id_of_prim_min_z].min_ + scene_aabbs[id_of_prim_min_z].max_) / 2;
-
-    double extent_in_x = sqrt(pow(centroid_max_x.x() - centroid_min_x.x(), 2) + 
-                              pow(centroid_max_x.y() - centroid_min_x.y(), 2) + 
-                              pow(centroid_max_x.z() - centroid_min_x.z(), 2));
-
-    double extent_in_y = sqrt(pow(centroid_max_y.x() - centroid_min_y.x(), 2) + 
-                              pow(centroid_max_y.y() - centroid_min_y.y(), 2) + 
-                              pow(centroid_max_y.z() - centroid_min_y.z(), 2));
-
-    double extent_in_z = sqrt(pow(centroid_max_z.x() - centroid_min_z.x(), 2) + 
-                              pow(centroid_max_z.y() - centroid_min_z.y(), 2) + 
-                              pow(centroid_max_z.z() - centroid_min_z.z(), 2));
-
-    std::cout << "Extent in x: " << extent_in_x << std::endl;
-    std::cout << "Extent in y: " << extent_in_y << std::endl;
-    std::cout << "Extent in z: " << extent_in_z << std::endl;
-
-    int first_split_axis = -1;
-
-    if (extent_in_x > extent_in_y && extent_in_x > extent_in_z) {
-      first_split_axis = 0;
-    }
-    else if (extent_in_y > extent_in_z) {
-      first_split_axis = 1;
-    }
-    else {
-      first_split_axis = 2;
-    }
-
-    std::cout << "Splitting in axis: " << first_split_axis << std::endl;
-
-    vec3 midpoint;
-    if (first_split_axis == 0) {
-      midpoint = centroid_min_x + centroid_max_x / 2;
-    }
-    else if (first_split_axis == 1) {
-      midpoint = centroid_min_y + centroid_max_y / 2;
-    }
-    else {
-      midpoint = centroid_min_z + centroid_max_z / 2;
-    }
-
-    std::cout << "Midpoint: " << midpoint << std::endl;
-
-    std::vector<aabb> left;
-    std::vector<aabb> right;
-
-    auto it = std::partition(scene_aabbs.begin(), scene_aabbs.end(), [&first_split_axis, &midpoint](aabb temp_aabb){
-      return temp_aabb.max_.e[first_split_axis] < midpoint.e[first_split_axis];
-    });
-
-    std::vector<aabb>::iterator it2;
-    int left_count = 0;
-    int right_count = 0;
-    std::cout << std::endl;
-    for (it2 = scene_aabbs.begin(); it2 != it; it2++) {
-      // left_count++;
-      left.push_back(*it2);
-      // std::cout << it2->max_ << std::endl;
-    }
-    std::cout << "Primitives in left node: " << left.size() << std::endl;
-    std::cout << std::endl;
-    for (it2 = it; it2 != scene_aabbs.end(); it2++) {
-      // right_count++;
-      right.push_back(*it2);
-      // std::cout << it2->max_ << std::endl;
-    }
-    std::cout << "Primitives in right node: " << right.size() << std::endl;
-    std::cout << std::endl;
-
     std::cout << "Scene primitives: " << scene_primitives.size() << std::endl;
 
     scene_bvh.init(scene_primitives, 0, scene_primitives.size(), scene_aabb);
-    scene_bvh.build(scene_bvh.root, 0, scene_primitives.size());
+
+    if (BVH_RANDOM_SPLIT) {
+      scene_bvh.build(scene_bvh.root, 0, scene_primitives.size());
+    }
+
+    else if (BVH_CENTROID_SPLIT) {
+      scene_bvh.build_centroid_split(scene_bvh.root);
+    }
 
     // std::cout << "Printing AABBS in BVH: " << std::endl;
     // scene_bvh.print_aabbs(scene_bvh.root, 0);

@@ -714,24 +714,24 @@ inline void scene12() {
 
   // scene.add_point_light(PointLight(color(1, 1, 1), 70, vec3(0, 2, 5)));
 
-  // scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
-  // scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, -1)));
-  // scene.add_point_light(PointLight(color(1, 1, 1), 10, vec3(0, 2, -1)));
+  scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
+  scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, -1)));
+  scene.add_point_light(PointLight(color(1, 1, 1), 10, vec3(0, 2, -1)));
   // scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(-2.5, 2, 0.5)));
   // scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5)));
 
 
 
-  scene.add_area_light(AreaLight(color(0, 1, 1), 30, vec3(-2, 2, -1), 1), 3);
-  scene.add_area_light(AreaLight(color(1, 1, 0), 30, vec3(2, 2, -1), 1), 3);
-  scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 2, -1), 1), 3);
+  // scene.add_area_light(AreaLight(color(0, 1, 1), 30, vec3(-2, 2, -1), 1), 3);
+  // scene.add_area_light(AreaLight(color(1, 1, 0), 30, vec3(2, 2, -1), 1), 3);
+  // scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 2, -1), 1), 3);
 
 
 
   // scene.add_area_light(AreaLight(color(0.6, 0.5, 0.4), 30, vec3(-2.5, 2, 0.5), 1), 3);
   // scene.add_area_light(AreaLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5), 1), 3);
 
-  scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 2, 5), 1), 3);
+  // scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 2, 5), 1), 3);
 
 
   // scene.add_area_light(AreaLight(color(1, 1, 1), 60, vec3(0, 2, 5), 1), 10);
@@ -769,7 +769,7 @@ inline void scene12() {
   // scene.add_mesh(xyz_dragon);
 
   std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/analysis/bvh/scene12_bvh_new.ppm");
+  file_to_save_image.open("renders/analysis/bvh/scene12_bvh___.ppm");
 
   camera cam(point3(0, 3, 7.5), point3(0, 0, -1), vec3(0, 1, 0), 45,
              aspect_ratio);
@@ -798,9 +798,9 @@ inline void bvh_test_scene() {
   const auto aspect_ratio = 16.0 / 9.0;
   const int image_width = 1000;
   const int image_height = static_cast<int>(image_width / aspect_ratio);
-  const int samples_per_pixel = 1;
+  const int samples_per_pixel = 3;
 
-  Scene scene(1, 1, 1, 0);
+  Scene scene(1, 1, 1, 1, color(0.678, 0.847, 0.9));
 
   // texture earth("textures/2k_earth_daymap.ppm");
   // texture jupiter("textures/jupiter.ppm");
@@ -814,21 +814,34 @@ inline void bvh_test_scene() {
   // scene.add_sphere(sphere_2);
   // scene.add_sphere(sphere_3);
 
-  scene.add_triangle(triangle(point3(-5, -1, -6 + 0.0001), point3(5, -1, -6),
-                              point3(5, 5, -6), color(0.2, 0.2, 0.2)));
+  // scene.add_triangle(triangle(point3(-5, -1, -6 + 0.0001), point3(5, -1, -6),
+  //                             point3(5, 5, -6), color(0.5, 0.5, 0.5)));
 
-  scene.add_triangle(triangle(point3(-5, -1, -6 + 0.0001), point3(5, 5, -6),
-                              point3(-5, 5, -6), color(0.2, 0.2, 0.2)));
+  // scene.add_triangle(triangle(point3(-5, -1, -6 + 0.0001), point3(5, 5, -6),
+  //                             point3(-5, 5, -6), color(0.5, 0.5, 0.5)));
 
-  scene.add_triangle(triangle(point3(-5, -1 + 0.0001, -6), point3(5, -1, -6),
-                              point3(-5, -1, 2.5), color(0.2, 0.2, 0.2)));
+  // scene.add_triangle(triangle(point3(-5, -1 + 0.0001, -6), point3(5, -1, -6),
+  //                             point3(-5, -1, 2.5), color(0.5, 0.5, 0.5)));
 
-  scene.add_triangle(triangle(point3(5, -1 + 0.0001, 2.5), point3(-5, -1, 2.5),
-                              point3(5, -1, -6), color(0.2, 0.2, 0.2)));
+  // scene.add_triangle(triangle(point3(5, -1 + 0.0001, 2.5), point3(-5, -1, 2.5),
+  //                             point3(5, -1, -6), color(0.5, 0.5, 0.5)));
 
-  // scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, -1)));
-  // scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, -1)));
-  scene.add_point_light(PointLight(color(1, 1, 1), 50, vec3(0, 2, 5)));
+  scene.add_triangle(triangle(point3(-10, -1 + 0.0001, -10), point3(10, -1, -10),
+                              point3(-10, -1, 10), color(0.5, 0.5, 0.5)));
+
+  scene.add_triangle(triangle(point3(10, -1 + 0.0001, 10), point3(-10, -1, 10),
+                              point3(10, -1, -10), color(0.5, 0.5, 0.5)));
+
+  // scene.add_point_light(PointLight(color(0, 1, 1), 30, vec3(-2, 2, 5)));
+  // scene.add_point_light(PointLight(color(1, 1, 0), 30, vec3(2, 2, 5)));
+  scene.add_point_light(PointLight(color(0.95, 0.8, 0.25), 60, vec3(0, 10, 5)));
+  scene.add_point_light(PointLight(color(1, 1, 1), 30, vec3(0, 2, 5)));
+
+  // scene.add_area_light(AreaLight(color(0, 1, 1), 30, vec3(2, 2, 5), 1), 5);
+  // scene.add_area_light(AreaLight(color(1, 1, 0), 30, vec3(-2, 2, 5), 1), 5);
+  // scene.add_area_light(AreaLight(color(1, 1, 1), 30, vec3(0, 2, 5), 1), 5);
+  // scene.add_area_light(AreaLight(color(0.95, 0.8, 0.25), 70, vec3(0, 10, 5), 1), 6);
+  // scene.add_area_light(AreaLight(color(1, 1, 1), 30, vec3(0, 2, 5), 1), 6);
 
   // scene.add_point_light(PointLight(color(1, 1, 1), 70, vec3(0, 2, 5)));
 
@@ -840,24 +853,59 @@ inline void bvh_test_scene() {
   //             vec3(90, 180, 0), color(0.3, 0.3, 0.3));
   // scene.add_mesh(lucy);
 
-  // mesh lucy("models/dragon.obj", vec3(3, 3, 3), vec3(0, 0, 2),
-  //             vec3(0, 260, 0), color(0.3, 0.3, 0.3));
-  // scene.add_mesh(lucy);
+  mesh dragon("models/dragon.obj", vec3(3, 3, 3), vec3(-0.75, -0.25, 2),
+              vec3(0, 260, 0), color(0.9, 0.2, 0.2));
+  scene.add_mesh(dragon);
 
-  mesh cube("models/cube.obj", vec3(1, 1, 1), vec3(0, 0, -1), vec3(0, 45, 25),
-            color(0.18, 0.3, 1));
-  mesh cube2("models/cube.obj", vec3(0.8, 0.8, 0.8), vec3(2, 0, -1), vec3(0, 45, 25),
-            color(0.9, 0.2, 0.2));
-  mesh cube3("models/cube.obj", vec3(0.8, 0.8, 0.8), vec3(-2, 0, -1), vec3(0, 45, 25),
-            color(0.8, 0.8, 0.2));
-  scene.add_mesh(cube);
-  scene.add_mesh(cube2);
-  scene.add_mesh(cube3);
+  mesh bunny("models/stanford-bunny.obj", vec3(15, 15, 15), vec3(-4, 0.5, 0),
+             vec3(0, -30, 0), color(0.8, 0.8, 0.8));
+  scene.add_mesh(bunny);
+
+  // mesh sponza("models/sponza.obj", vec3(0.0005, 0.0005, 0.0005), vec3(0, 0, 0.5),
+  //             vec3(0, 90, 0), color(0.6, 0.6, 0.6));
+  // scene.add_mesh(sponza);
+
+  // mesh serapis("models/serapis.obj", vec3(0.035, 0.035, 0.035), vec3(0, 0.25, 0),
+  //             vec3(90, -60, 0), color(0.2, 0.2, 0.2));
+  // scene.add_mesh(serapis);
+
+
+  // 15, 15 .... 25, 25
+
+  srand(time(0));
+  for (int i = -10; i < 10; i++) {
+    for (int j = -30; j < 30; j++) {
+      int random_scale = (rand() % 5) + 2;
+      std::cout << random_scale << std::endl;
+      mesh grass("models/low_grass.obj", vec3(random_scale, random_scale, random_scale), vec3(j*0.45, -0.8, i), vec3(0, 0, 0), color(0, 0.9, 0.45));
+      scene.add_mesh(grass);
+    }
+  }
+  
+
+  // mesh happy_buddha("models/buddha.obj", vec3(3, 3, 3), vec3(2.75, 0, 1), vec3(0, 220, 0), color(0.87, 0.188, 0.004));
+  // scene.add_mesh(happy_buddha);
+
+  // mesh cube("models/cube.obj", vec3(1, 1, 1), vec3(0, 0, -1), vec3(0, 45, 25),
+  //           color(0.18, 0.3, 1));
+  // mesh cube2("models/cube.obj", vec3(0.8, 0.8, 0.8), vec3(2, 0, -1), vec3(0, 45, 25),
+  //           color(0.9, 0.2, 0.2));
+  // mesh cube3("models/cube.obj", vec3(0.8, 0.8, 0.8), vec3(-2, 0, -1), vec3(0, 45, 25),
+  //           color(0.8, 0.8, 0.2));
+  // scene.add_mesh(cube);
+  // scene.add_mesh(cube2);
+  // scene.add_mesh(cube3);
 
   std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/analysis/bvh/bvh_test_.ppm");
+  file_to_save_image.open("renders/analysis/bvh/bvh_centroid_test_scene.ppm");
 
-  camera cam(point3(0, 2, 7.5), point3(0, 0, -1), vec3(0, 1, 0), 45,
+  // camera cam(point3(0.005, 0.05, -0.75), point3(0, 0, -1), vec3(0, 1, 0), 45,
+  //            aspect_ratio);
+
+  // camera cam(point3(0, 2, 10), point3(0, 0, -1), vec3(0, 1, 0), 45,
+  //            aspect_ratio);
+
+  camera cam(point3(0, 2, 7), point3(0, 0, -1), vec3(0, 1, 0), 45,
              aspect_ratio);
 
   file_to_save_image << "P3\n"
