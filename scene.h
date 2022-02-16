@@ -44,9 +44,15 @@ inline void PhongIllumination(color light_color, vec3 light_position,
                               color &diffuse, color &specular, color &ambient,
                               double &intensity_at_point) {
 
-  vec3 light_dir = light_position - hit.p;
+  vec3 light_dir = light_position - hit.p; 
 
   intensity_at_point = sqrt(light_dir.length());
+
+  // if (isnan(intensity_at_point)) {
+  //   std::cout << std::endl << "Light direction: " << light_dir << std::endl;
+  //   std::cout << "Light position: " << light_position << std::endl;
+  //   std::cout << "Hit position: " << hit.p << std::endl;
+  // }
 
   light_dir = unit_vector(light_dir);
 
@@ -233,12 +239,15 @@ public:
     bool hit_anything = false;
     double closest_so_far = t_max;
 
+    int intersection_tests_for_this_ray = 0;
+
     while (cur_x_index != end_x_index || cur_y_index != end_y_index || cur_z_index != end_z_index) {
 
       int i = (((grid_resolution_y * cur_z_index) + cur_y_index) * grid_resolution_x) + cur_x_index;
 
       for (int j = uniform_grids_C_linearized[i]; j < uniform_grids_C_linearized[i + 1]; ++j) {
         triangle *triangle_test = uniform_grids_L[j].reference;
+        intersection_tests_for_this_ray = intersection_tests_for_this_ray + 1;
         if (triangle_test->hit(r, t_min, closest_so_far, temp_hit)) {
           ray_triangle_tests = ray_triangle_tests + 1;
           hit_anything = true;
@@ -265,6 +274,8 @@ public:
         break;
       }
     }
+
+    intersection_tests_per_intersecting_ray.push_back(intersection_tests_for_this_ray);
 
     return hit_anything;
 
@@ -305,6 +316,11 @@ public:
               color ambient(0, 0, 0);
               double intensity_at_point;
 
+              // if (isnan(hit.p.x()) || isnan(hit.p.y()) || isnan(hit.p.z())) {
+              //   std::cout << std::endl << "Warning: this hit position is nan at texture coordinate: (" << u << " , " << v << ")" << std::endl;
+              //   std::cout << "Setting this pixel to black" << std::endl;  
+              // } 
+
               for (std::size_t i = 0; i < scene_point_lights.size(); ++i) {
                 calculate_illumination_and_shadows(
                     r, hit, hit_color, albedo, ambient, diffuse, specular,
@@ -322,12 +338,19 @@ public:
                     scene_area_lights.size() / number_of_area_lights, 2);
               }
 
+              if (isnan(hit_color.x()) || isnan(hit_color.y()) || isnan(hit_color.z())) {
+                std::cout << std::endl << "Warning: this hit color is nan at texture coordinate: (" << u << " , " << v << ")" << std::endl;
+                std::cout << "Setting this pixel to black" << std::endl;
+                hit_color = color(0, 0, 0);
+              }
+
               return hit_color + (ambient * apply_ambient);
             }
           } 
         }
       } else if (USE_BVH) {
         scene_bvh.hits.clear();
+        scene_bvh.intersection_tests = 0;
         if (scene_bvh.traverse_bvh(scene_bvh.root, r, scene_tmin, scene_tmax, 0.01, 10000, hit)) {
           hit_record closest_hit;
           for (std::size_t j = 0; j < scene_bvh.hits.size(); ++j) {
@@ -340,6 +363,7 @@ public:
               }
             }
           }
+          intersection_tests_per_intersecting_ray.push_back(scene_bvh.intersection_tests);
           if (NORMAL_MODE) {
             return 0.5 * (closest_hit.normal + color(1, 1, 1));
           } else {
@@ -628,7 +652,7 @@ public:
 
     std::cout << "volume of scene bounding box : " << volume_of_scene_bbox << " units" << std::endl;
 
-    double grid_density = 4;
+    double grid_density = 8;
 
     std::cout << "number of objects : " << number_of_objects << std::endl;
 
@@ -811,42 +835,39 @@ public:
 
   void construct_bvh() {
 
-
     for (std::size_t j = 0; j < scene_triangles.size(); ++j) {
 
-      aabb resultant_aabb = scene_triangles[j].construct_aabb();
-      scene_aabbs.push_back(resultant_aabb);
+      // aabb resultant_aabb = scene_triangles[j].construct_aabb();
+      // scene_aabbs.push_back(resultant_aabb);
       scene_primitives.push_back(std::make_shared<triangle>(scene_triangles[j]));
     }
 
     for (std::size_t j = 0; j < scene_spheres.size(); ++j) {
       
-      scene_aabbs.push_back(scene_spheres[j].sphere_aabb);
+      // scene_aabbs.push_back(scene_spheres[j].sphere_aabb);
       scene_primitives.push_back(std::make_shared<sphere>(scene_spheres[j]));
     }
 
     for (std::size_t j = 0; j < scene_meshes.size(); ++j) {
       for (std::size_t k = 0; k < scene_meshes[j].mesh_triangles.size(); ++k) {
 
-        aabb resultant_aabb = scene_meshes[j].mesh_triangles[k].construct_aabb();
-        scene_aabbs.push_back(resultant_aabb);
+        // aabb resultant_aabb = scene_meshes[j].mesh_triangles[k].construct_aabb();
+        // scene_aabbs.push_back(resultant_aabb);
         scene_primitives.push_back(std::make_shared<triangle>(scene_meshes[j].mesh_triangles[k]));
       }
     }
-
-    // primitive *prim;
-    // triangle t(point3(-3, -1, -6), point3(3, -1, -6),
-    //                           point3(0, 1, -6), color(0.2, 0.2, 0.2));
-    // prim = &t;
-    // std::cout << std::endl << "Center of a triangle by pointer: " << prim->get_center() << std::endl;
-
-    // Now we have all aabbs for all individual triangles, spheres and meshes in the scene
 
     std::cout << "Scene primitives: " << scene_primitives.size() << std::endl;
 
     scene_bvh.init(scene_primitives, 0, scene_primitives.size(), scene_aabb);
 
-    if (BVH_RANDOM_SPLIT) {
+    int count = 0;
+
+    if (BVH_SAH_SPLIT) {
+      scene_bvh.build_SAH_split(scene_bvh.root);
+    }
+
+    else if (BVH_RANDOM_SPLIT) {
       scene_bvh.build(scene_bvh.root, 0, scene_primitives.size());
     }
 
@@ -854,8 +875,7 @@ public:
       scene_bvh.build_centroid_split(scene_bvh.root);
     }
 
-    // std::cout << "Printing AABBS in BVH: " << std::endl;
-    // scene_bvh.print_aabbs(scene_bvh.root, 0);
+    // scene_bvh.print_aabbs(scene_bvh.root, count);
 
   }
 
@@ -900,6 +920,11 @@ public:
 
     double actual_intensity = light_intensity / (4 * pi * intensity_at_point);
     actual_intensity = actual_intensity / scale_intensity;
+    // if (isnan(actual_intensity)) {
+    //   std::cout << std::endl << "Actual intensity is nan!\n";
+    //   std::cout << "Light intensity: " << light_intensity << std::endl;
+    //   std::cout << "Intensity at point: " << intensity_at_point << std::endl;
+    // }
     if (USE_SHADOWS) {
       hit_color +=
           shadow_hit_or_not *
@@ -934,7 +959,9 @@ public:
               << (ms_double.count() / 1000) << " seconds\n";
     }
 
+    auto t1 = high_resolution_clock::now();
     int depth = 1;
+    int number_of_rays_sent = 0;
     for (int j = image_height - 1; j >= 0; --j) {
       double percent_complete = (image_height - j);
       percent_complete = percent_complete / image_height;
@@ -948,6 +975,7 @@ public:
           auto u = (i + random_double()) / (image_width - 1);
           auto v = (j + random_double()) / (image_height - 1);
           ray r = cam.get_ray(u, v);
+          number_of_rays_sent = number_of_rays_sent + 1;
           pixel_color += ray_color(r, 0.001, infinity, (double)i / image_width,
                                    (double)j / image_height, depth);
         }
@@ -955,6 +983,20 @@ public:
         write_color(file_to_save_image, pixel_color, samples_per_pixel);
       }
     }
+    auto t2 = high_resolution_clock::now();
+    duration<double, std::milli> ms_double = t2 - t1;
+    std::cout << "\nTime taken to render the image: "
+            << (ms_double.count() / 1000) << " seconds\n";
+
+    unsigned long int total_intersections_per_intersecting_rays = 0;
+    auto const total_intersecting_rays = static_cast<float>(intersection_tests_per_intersecting_ray.size());
+    for (std::size_t j = 0; j < intersection_tests_per_intersecting_ray.size(); j++) {
+      total_intersections_per_intersecting_rays = total_intersections_per_intersecting_rays + intersection_tests_per_intersecting_ray[j];
+    }
+    std::cout << "Number of rays sent: " << number_of_rays_sent << std::endl;
+    std::cout << "Total intersecting rays: " << total_intersecting_rays << std::endl;
+    std::cout << "Total intersection tests for all intersecting rays: " << total_intersections_per_intersecting_rays << std::endl;
+    std::cout << "Average number of intersection tests per intersecting ray: " << total_intersections_per_intersecting_rays / total_intersecting_rays << std::endl;
   }
 
 public:
@@ -993,6 +1035,8 @@ public:
   std::vector<aabb> scene_aabbs;
   std::vector<std::shared_ptr<primitive>> scene_primitives;
   BVH scene_bvh;
+
+  std::vector<int> intersection_tests_per_intersecting_ray;
 };
 
 #endif

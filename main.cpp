@@ -21,5 +21,5 @@ using std::chrono::high_resolution_clock;
 #include "scene.h"
 
 int main() { 
-    bvh_test_scene();
-     }
+    benchmark_scene_1();
+}

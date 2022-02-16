@@ -4,6 +4,7 @@
 #include "../hittable.h"
 #include <algorithm>
 #include <array>
+#include <cmath>
 #include <math.h>
 #include <type_traits>
 
@@ -37,6 +38,14 @@ public:
       return 1;
     }
     else {return 2;};
+  }
+
+  point3 offset (point3 point) {
+    vec3 o = point - min_;
+    if (max_.x() > min_.x()) o.e[0] /= max_.x() - min_.x();
+    if (max_.y() > min_.y()) o.e[1] /= max_.y() - min_.y();
+    if (max_.z() > min_.z()) o.e[2] /= max_.z() - min_.z();
+    return o;
   }
 
   point3 min_;

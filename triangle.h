@@ -1,9 +1,11 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
+#include "RTIOW/vec3.h"
 #include "primitive.h"
 #include "hittable.h"
 #include "texture.h"
+#include <cmath>
 
 inline void triangle_rotate_in_x(point3 &p1, point3 &p2, point3 &p3,
                           double rotate_angle_x) {
@@ -160,6 +162,10 @@ bool triangle::hit(const ray &r, double t_min, double t_max, hit_record &rec) co
 
   double determinant = 1 / dot(r.direction(), normal);
 
+  if (std::isinf(determinant)) {
+    return false;
+  }
+
   double u_ = determinant * dot(-q, p0_to_p2);
   if (u_ < 0.0 || u_ > 1.0)
     return false;
@@ -173,9 +179,22 @@ bool triangle::hit(const ray &r, double t_min, double t_max, hit_record &rec) co
   }
 
   rec.t = t;
+  // if (isnan(rec.t)) {
+  //   std::cout << std::endl << "Warning: this triangle was hit but the hit constant t is nan :(\n";
+  //   std::cout << "Ray direction: " << r.direction() << std::endl;
+  //   std::cout << "Determinant: " << determinant << std::endl;
+  //   std::cout << "dot product with -normal and point0 to ray origin: " << dot(-normal, p0_to_ray_origin) << std::endl;
+  //   std::cout << "t: " << rec.t << std::endl;
+  //   std::cout << "t_min: " << t_min << std::endl;
+  //   std::cout << "t_max: " << t_max << std::endl;
+  // }
   rec.p = r.at(rec.t);
   rec.u = u_;
   rec.v = v_;
+
+  // if (isnan(rec.p.x()) || isnan(rec.p.y()) || isnan(rec.p.z())) {
+  //   std::cout << std::endl << "Warning: this triangle was hit but the hit position is nan :(\n";
+  // }
 
   rec.set_face_normal(r, unit_vector(normal));
 
