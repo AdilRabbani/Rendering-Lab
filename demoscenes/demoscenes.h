@@ -1215,7 +1215,7 @@ inline void benchmark_scene_1() {
   const auto aspect_ratio = 16.0 / 9.0;
   const int image_width = 1000;
   const int image_height = static_cast<int>(image_width / aspect_ratio);
-  const int samples_per_pixel = 3;
+  const int samples_per_pixel = 5;
 
   Scene scene(1, 1, 1, 1);
 
@@ -1236,12 +1236,12 @@ inline void benchmark_scene_1() {
   // scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(-2.5, 2, 0.5)));
   // scene.add_point_light(PointLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5)));
 
-  scene.add_area_light(AreaLight(color(0, 1, 1), 30, vec3(-2, 2, -1), 1), 3);
-  scene.add_area_light(AreaLight(color(1, 1, 0), 30, vec3(2, 2, -1), 1), 3);
-  scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 2, -1), 1), 3);
+  scene.add_area_light(AreaLight(color(0, 1, 1), 30, vec3(-2, 2, -1), 1), 4);
+  scene.add_area_light(AreaLight(color(1, 1, 0), 30, vec3(2, 2, -1), 1), 4);
+  scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 2, -1), 1), 4);
 
-  scene.add_area_light(AreaLight(color(0.6, 0.5, 0.4), 30, vec3(-2.5, 2, 0.5), 1), 3);
-  scene.add_area_light(AreaLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5), 1), 3);
+  scene.add_area_light(AreaLight(color(0.6, 0.5, 0.4), 30, vec3(-2.5, 2, 0.5), 1), 4);
+  scene.add_area_light(AreaLight(color(0.6, 0.5, 0.4), 30, vec3(2.5, 2, 0.5), 1), 4);
 
   mesh teapot("models/teapot.obj", vec3(0.018, 0.018, 0.018), vec3(-0.5, 1, -1),
               vec3(0, 0, 0), color(1, 0.3, 0.1));
