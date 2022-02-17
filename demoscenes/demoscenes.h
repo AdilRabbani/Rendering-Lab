@@ -901,7 +901,7 @@ inline void bvh_test_scene() {
   // scene.add_mesh(cube3);
 
   std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/analysis/bvh/bvh_test_scene.ppm");
+  file_to_save_image.open("renders/analysis/bvh/bvh_test_scene_ug_density_10.ppm");
 
   // camera cam(point3(0.005, 0.05, -0.75), point3(0, 0, -1), vec3(0, 1, 0), 45,
   //            aspect_ratio);
@@ -1283,7 +1283,7 @@ inline void benchmark_scene_1() {
   scene.add_mesh(xyz_dragon);
 
   std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/analysis/benchmark_scene_1_ug_density_8.ppm");
+  file_to_save_image.open("renders/benchmark_scene_1.ppm");
 
   camera cam(point3(0, 3, 7.5), point3(0, 0, -1), vec3(0, 1, 0), 45,
              aspect_ratio);

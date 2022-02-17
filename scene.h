@@ -36,7 +36,7 @@ using std::chrono::high_resolution_clock;
 
 struct object_reference {
   triangle *reference;
-  long long int index = 0;
+  unsigned int index = 0;
 };
 
 inline void PhongIllumination(color light_color, vec3 light_position,
@@ -557,18 +557,18 @@ public:
 
       aabb cell_aabb(vec3(min_cell_x, min_cell_y, min_cell_z), vec3(max_cell_x, max_cell_y, max_cell_z));
 
-      int extra_voxel = 1;
+      // int extra_voxel = 1;
 
-      if (is_triangle) {
-        extra_voxel = 2;
-      }
+      // if (is_triangle) {
+      //   extra_voxel = 2;
+      // }
 
-      cell_min_z = clamp(std::floor(cell_aabb.min_.z()), 0, grid_resolution_z - extra_voxel);
-      cell_max_z = clamp(std::floor(cell_aabb.max_.z()), 0, grid_resolution_z - extra_voxel);
-      cell_min_y = clamp(std::floor(cell_aabb.min_.y()), 0, grid_resolution_y - extra_voxel);
-      cell_max_y = clamp(std::floor(cell_aabb.max_.y()), 0, grid_resolution_y - extra_voxel);
-      cell_min_x = clamp(std::floor(cell_aabb.min_.x()), 0, grid_resolution_x - extra_voxel);
-      cell_max_x = clamp(std::floor(cell_aabb.max_.x()), 0, grid_resolution_x - extra_voxel);
+      cell_min_z = clamp(std::floor(cell_aabb.min_.z()), 0, grid_resolution_z);
+      cell_max_z = clamp(std::floor(cell_aabb.max_.z()), 0, grid_resolution_z);
+      cell_min_y = clamp(std::floor(cell_aabb.min_.y()), 0, grid_resolution_y);
+      cell_max_y = clamp(std::floor(cell_aabb.max_.y()), 0, grid_resolution_y);
+      cell_min_x = clamp(std::floor(cell_aabb.min_.x()), 0, grid_resolution_x);
+      cell_max_x = clamp(std::floor(cell_aabb.max_.x()), 0, grid_resolution_x);
   }
 
   void create_scene_bounding_box() {
@@ -1022,7 +1022,7 @@ public:
   double scene_tmax;
 
   std::vector<std::vector<std::vector<int>>> uniform_grids_C;
-  std::vector<long long int> uniform_grids_C_linearized;
+  std::vector<unsigned int> uniform_grids_C_linearized;
   int C_size = 0;
   std::vector<object_reference> uniform_grids_L;
 
