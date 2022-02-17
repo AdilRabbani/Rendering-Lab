@@ -9,9 +9,9 @@ and then run the output file as
 ```
 ./output
 ```
-This will start rendering a scene `(scene7)` from `demoscenes/demoscenes.h` and the rendered image is saved in ţhe folder `renders`, after the rendering is complete. Note that you need to be able to open `ppm` format images. The image below was converted to `png` to support markdown but the same image is rendered with a `ppm` format and saved in the folder.
+This will start rendering a scene `(benchmark_scene_1)` from `demoscenes/demoscenes.h` and the rendered image is saved in ţhe folder `renders`, after the rendering is complete. Note that you need to be able to open `ppm` format images. The image below was converted to `png` to support markdown but the same image is rendered with a `ppm` format and saved in the folder.
 
-![Scene 7 render with area light](scene7_arealight.png)
+![Benchmark scene render with area lights](benchmark_scene_1.png)
 
 There are many other scenes to test in `demoscenes/demoscenes.h`. These scenes are functions named as `scene{number}()` from 1 to 9 and they can be called in `main.cpp` to render them. `scene9` and `scene7` require a bool to be passed as an argument which renders the scene with point lights if `false` and area lights if `true`. 
 
@@ -34,22 +34,6 @@ There are some other constants that can be set in the file `constants.h`
 There are some example renders in the folder `example renders`. The animated ones were converted to a gif using a photo editor. The ray tracer would only create frames one by one.
 
 The external libraries are saved in the folder `libraries` and some parts taken from [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) in the folder `RTIOW`. `aabb.h` is also placed in `Scratchapixel` as I'm using the same implementation explained there. There are some other places which are quite similar to how they were explained in [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) but it's rather difficult to separate everything as I also did a lot of changes.
-
-| Scene 1        | Scene 2        | Scene 3  |
-| ------------- |:-------------:| -----:|
-| <img src="renders/scene1.png" alt="drawing" width="350"/>| <img src="renders/scene2.png" alt="drawing" width="350"/> | <img src="renders/scene3.png" alt="drawing" width="350"/> |
-
-| <h4 style='text-align:center;'>Scene 4 (Point Lights)</h4>       | <h4 style='text-align:center;'>Scene 5 (uses Area Lights)</h4>        | <h4 style='text-align:center;'>Scene 6 (uses Area Lights)</h4>  |
-| ------------- |:-------------:| -----:|
-| <img src="example renders/rotation.gif" alt="drawing" width="350"/>| <img src="example renders/scene5.png" alt="drawing" width="350"/> | <img src="example renders/scene6.png" alt="drawing" width="350"/> |
-
-| <h4 style='text-align:center;'>Scene 7 (Point Lights)</h4>       | <h4 style='text-align:center;'>Scene 7 (Area Lights)</h4>        | <h4 style='text-align:center;'>Scene 8</h4>  |
-| ------------- |:-------------:| -----:|
-| <img src="example renders/scene7_pointlight.png" alt="drawing" width="350"/>| <img src="example renders/scene7_arealight.png" alt="drawing" width="350"/> | <img src="example renders/camera.gif" alt="drawing" width="350"/> |
-
-| <h4 style='text-align:center;'>Scene 9 (Point Lights)</h4>       | <h4 style='text-align:center;'>Scene 9 (Area Lights)</h4>        | <h4 style='text-align:center;'>Scene 10 (uses Area Lights)</h4>  |
-| ------------- |:-------------:| -----:|
-| <img src="example renders/pointlight.gif" alt="drawing" width="350"/>| <img src="example renders/arealight.gif" alt="drawing" width="350"/> | <img src="example renders/scene10.png" alt="drawing" width="350"/> |
 
 ## Thanks to
 1. [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)

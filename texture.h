@@ -16,7 +16,7 @@ public:
     texture_image_data = pnm::read(texture_file_name);
     std::cout << "Done loading texture!" << std::endl;
   }
-  color get_texel(double u, double v) {
+  color get_texel(double u, double v) const {
     int height = texture_image_data.y_size();
     int width = texture_image_data.x_size();
     double red = (double)(texture_image_data[(int)round((v)*height)]

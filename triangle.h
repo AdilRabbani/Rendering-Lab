@@ -1,8 +1,11 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
+#include "RTIOW/vec3.h"
+#include "primitive.h"
 #include "hittable.h"
 #include "texture.h"
+#include <cmath>
 
 inline void triangle_rotate_in_x(point3 &p1, point3 &p2, point3 &p3,
                           double rotate_angle_x) {
@@ -76,7 +79,7 @@ inline void triangle_rotate_in_z(point3 &p1, point3 &p2, point3 &p3,
   p3 = vec3(v3_x, v3_y, v3_z);
 }
 
-class triangle {
+class triangle : public primitive {
 public:
   triangle() {}
   triangle(point3 p0_, point3 p1_, point3 p2_, color m) {
@@ -85,6 +88,7 @@ public:
     p2 = p2_;
     albedo = m;
     has_texture = false;
+    center = point3((p0.x() + p1.x() + p2.x()) / 3, (p0.y() + p1.y() + p2.y()) / 3, (p0.z() + p1.z() + p2.z()) / 3);
   }
 
   triangle(point3 p0_, point3 p1_, point3 p2_, texture t) {
@@ -93,6 +97,7 @@ public:
     p2 = p2_;
     tex = t;
     has_texture = true;
+    center = point3((p0.x() + p1.x() + p2.x()) / 3, (p0.y() + p1.y() + p2.y()) / 3, (p0.z() + p1.z() + p2.z()) / 3);
   }
 
   void transform(vec3 translate_by, vec3 scale_by, vec3 rotate_by) {
@@ -100,7 +105,10 @@ public:
     double rotate_x = rotate_by.x() * 0.01745;
     double rotate_y = rotate_by.y() * 0.01745;
     double rotate_z = rotate_by.z() * 0.01745;
-    
+
+    triangle_rotate_in_z(p0, p1, p2, rotate_z);
+    triangle_rotate_in_x(p0, p1, p2, rotate_x);
+    triangle_rotate_in_y(p0, p1, p2, rotate_y);
 
     p0 = vec3(p0.x() * scale_by.x(), p0.y() * scale_by.y(),
               p0.z() * scale_by.z());
@@ -112,18 +120,28 @@ public:
     p0 = p0 + translate_by;
     p1 = p1 + translate_by;
     p2 = p2 + translate_by;
-
-    triangle_rotate_in_z(p0, p1, p2, rotate_z);
-    triangle_rotate_in_x(p0, p1, p2, rotate_x);
-    triangle_rotate_in_y(p0, p1, p2, rotate_y);
+    center = point3((p0.x() + p1.x() + p2.x()) / 3, (p0.y() + p1.y() + p2.y()) / 3, (p0.z() + p1.z() + p2.z()) / 3);
   }
 
-  bool hit(const ray &r, double t_min, double t_max, hit_record &rec);
+  virtual bool hit(const ray &r, double t_min, double t_max, hit_record &rec) const override;
+
+  virtual aabb construct_aabb() override {
+    vec3 max_of_two = get_maximum_vector_for_aabb(p0, p1);
+    vec3 aabb_max = get_maximum_vector_for_aabb(p2, max_of_two);
+    vec3 min_of_two = get_minimum_vector_for_aabb(p0, p1);
+    vec3 aabb_min = get_minimum_vector_for_aabb(p2, min_of_two);
+    return aabb(aabb_min, aabb_max);
+  }
+
+  virtual vec3 get_center() override {
+    return center;
+  }
 
 public:
   point3 p0;
   point3 p1;
   point3 p2;
+  point3 center;
   color albedo;
   bool has_texture;
   texture tex;
@@ -132,7 +150,7 @@ public:
 // Special thanks to author Inigo Quilez:
 // https://www.iquilezles.org/www/articles/intersectors/intersectors.htm
 
-bool triangle::hit(const ray &r, double t_min, double t_max, hit_record &rec) {
+bool triangle::hit(const ray &r, double t_min, double t_max, hit_record &rec) const {
 
   const vec3 p0_to_p1 = p1 - p0;
   const vec3 p0_to_p2 = p2 - p0;
@@ -143,6 +161,10 @@ bool triangle::hit(const ray &r, double t_min, double t_max, hit_record &rec) {
   vec3 q = cross(p0_to_ray_origin, r.direction());
 
   double determinant = 1 / dot(r.direction(), normal);
+
+  if (std::isinf(determinant)) {
+    return false;
+  }
 
   double u_ = determinant * dot(-q, p0_to_p2);
   if (u_ < 0.0 || u_ > 1.0)
@@ -157,9 +179,22 @@ bool triangle::hit(const ray &r, double t_min, double t_max, hit_record &rec) {
   }
 
   rec.t = t;
+  // if (isnan(rec.t)) {
+  //   std::cout << std::endl << "Warning: this triangle was hit but the hit constant t is nan :(\n";
+  //   std::cout << "Ray direction: " << r.direction() << std::endl;
+  //   std::cout << "Determinant: " << determinant << std::endl;
+  //   std::cout << "dot product with -normal and point0 to ray origin: " << dot(-normal, p0_to_ray_origin) << std::endl;
+  //   std::cout << "t: " << rec.t << std::endl;
+  //   std::cout << "t_min: " << t_min << std::endl;
+  //   std::cout << "t_max: " << t_max << std::endl;
+  // }
   rec.p = r.at(rec.t);
   rec.u = u_;
   rec.v = v_;
+
+  // if (isnan(rec.p.x()) || isnan(rec.p.y()) || isnan(rec.p.z())) {
+  //   std::cout << std::endl << "Warning: this triangle was hit but the hit position is nan :(\n";
+  // }
 
   rec.set_face_normal(r, unit_vector(normal));
 

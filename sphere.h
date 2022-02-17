@@ -1,15 +1,16 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
-#include "Scratchapixel/aabb.h"
+#include "primitive.h"
 #include "hittable.h"
 #include "texture.h"
 #include <math.h>
 
+
 // Special thanks to Ray Tracing in One Weekend:
 // https://raytracing.github.io/books/RayTracingInOneWeekend.html
 
-class sphere {
+class sphere : public primitive {
 public:
   sphere() {}
   sphere(point3 cen, double r, color m) {
@@ -17,7 +18,7 @@ public:
     radius = r;
     albedo = m;
     has_texture = false;
-    sphere_aabb = aabb(cen - vec3(r, r, r), cen + vec3(r, r, r));
+    sphere_aabb = construct_aabb();
     // std::cout << sphere_aabb.min_ << " " << sphere_aabb.max_ << std::endl;
   }
   sphere(point3 cen, double r, texture &t) {
@@ -25,18 +26,24 @@ public:
     radius = r;
     tex = t;
     has_texture = true;
-    sphere_aabb = aabb(cen - vec3(r, r, r), cen + vec3(r, r, r));
+    sphere_aabb = construct_aabb();
     // std::cout << sphere_aabb.min_ << " " << sphere_aabb.max_ << std::endl;
   }
 
-  bool hit(const ray &r, double t_min, double t_max, hit_record &rec);
+  virtual bool hit(const ray &r, double t_min, double t_max, hit_record &rec) const override;
 
   void transform(vec3 translate_by, double scale_by, vec3 rotate_by) {
-
     center = center + translate_by;
     radius = radius * scale_by;
-    sphere_aabb = aabb(center - vec3(radius, radius, radius), center + vec3(radius, radius, radius));
+    sphere_aabb = construct_aabb();
+  }
 
+  virtual aabb construct_aabb() override {
+    return aabb(center - vec3(radius, radius, radius), center + vec3(radius, radius, radius));
+  }
+
+  virtual vec3 get_center() override {
+    return center;
   }
 
 public:
@@ -48,7 +55,7 @@ public:
   aabb sphere_aabb;
 };
 
-bool sphere::hit(const ray &r, double t_min, double t_max, hit_record &rec) {
+bool sphere::hit(const ray &r, double t_min, double t_max, hit_record &rec) const {
 
   vec3 oc = r.origin() - center;
   auto a = r.direction().length_squared();
