@@ -347,6 +347,8 @@ public:
 
                 aabb prim_aabb_2 = b->construct_aabb();
                 // vec3 centroid_2 = (prim_aabb_2.min_ * 0.5) + (prim_aabb_2.max_ * 0.5);
+
+                // return centroid_1.e[dim] < centroid_2.e[dim];
                 return prim_aabb_1.min_.e[dim] < prim_aabb_2.min_.e[dim];
             });
 
@@ -464,14 +466,16 @@ public:
             float min_cost = cost[0];
             int min_cost_split_bucket = 0;
 
+            std::cout << cost[0] << " ";
             for (int i = 1; i < number_of_buckets - 1; ++i) {
+                std::cout << cost[i] << " ";
                 if (cost[i] < min_cost) {
                     min_cost = cost[i];
                     min_cost_split_bucket = i;
                 }
             }
 
-            // std::cout << "Minimum cost: " << min_cost << " on bucket " << min_cost_split_bucket << std::endl;
+            std::cout << "\nMinimum cost: " << min_cost << " on bucket " << min_cost_split_bucket << std::endl;
 
             float leaf_cost = primitives.size();
 
@@ -634,7 +638,13 @@ public:
         }
 
         bool left_hit = traverse_bvh(root->left, r, scene_tmin, scene_tmax, shadow_tmin, shadow_tmax, hit);
+        // if (left_hit) {
+        //     std::cout << "Left hit" << std::endl;
+        // }
         bool right_hit = traverse_bvh(root->right, r, scene_tmin, left_hit ? hit.t : scene_tmax, shadow_tmin, left_hit ? hit.t : shadow_tmax, hit);
+        // if (right_hit) {
+        //     std::cout << "Right hit" << std::endl;
+        // }
 
         return left_hit || right_hit;
     }

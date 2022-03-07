@@ -1,0 +1,26 @@
+\BOOKMARK [1][-]{section.1}{Abstract}{}% 1
+\BOOKMARK [1][-]{section.2}{An overview of Ray tracing}{}% 2
+\BOOKMARK [1][-]{section.3}{Importance of acceleration structures}{}% 3
+\BOOKMARK [1][-]{section.4}{Uniform Grid}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Concept}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Implementation}{section.4}% 6
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Construction}{subsection.4.2}% 7
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Illustrated example}{subsection.4.2}% 8
+\BOOKMARK [3][-]{subsubsection.4.2.3}{Traversal}{subsection.4.2}% 9
+\BOOKMARK [1][-]{section.5}{Bounding Volume Hierarchies}{}% 10
+\BOOKMARK [2][-]{subsection.5.1}{Concept}{section.5}% 11
+\BOOKMARK [2][-]{subsection.5.2}{Implementation}{section.5}% 12
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Splitting Criterias}{subsection.5.2}% 13
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Illustrated example}{subsection.5.2}% 14
+\BOOKMARK [3][-]{subsubsection.5.2.3}{Traversal}{subsection.5.2}% 15
+\BOOKMARK [3][-]{subsubsection.5.2.4}{Algorithm}{subsection.5.2}% 16
+\BOOKMARK [1][-]{section.6}{Analysis}{}% 17
+\BOOKMARK [2][-]{subsection.6.1}{Construction time analysis}{section.6}% 18
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Why current compact grid implementation is fast to construct?}{subsection.6.1}% 19
+\BOOKMARK [3][-]{subsubsection.6.1.2}{Why current BVH implementation is slow to construct?}{subsection.6.1}% 20
+\BOOKMARK [2][-]{subsection.6.2}{Render time analysis}{section.6}% 21
+\BOOKMARK [2][-]{subsection.6.3}{Further analysis}{section.6}% 22
+\BOOKMARK [3][-]{subsubsection.6.3.1}{Scene 1}{subsection.6.3}% 23
+\BOOKMARK [3][-]{subsubsection.6.3.2}{Scene 2}{subsection.6.3}% 24
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 25
+\BOOKMARK [1][-]{section.7}{References}{}% 26

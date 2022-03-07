@@ -41,9 +41,11 @@ The external libraries are saved in the folder `libraries` and some parts taken 
 1. [Inigo Quilez](https://www.iquilezles.org/www/articles/intersectors/intersectors.htm) for the ray-triangle intersection method.
 1. The grass texture in `textures` was taken from https://3djungle.net/textures/grass/1417/.
 1. The other solar textures were taken from https://www.solarsystemscope.com/textures/.
-1. The `cube` and `teapot` model in `models` were taken from https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html.
-1. The `bunny` model was taken from https://graphics.stanford.edu/~mdfisher/Data/Meshes/bunny.obj.
+1. The `cube` model was taken from https://people.sc.fsu.edu/~jburkardt/data/obj/obj.html.
 1. The blender suzanne model was taken from https://github.com/OpenGLInsights/OpenGLInsightsCode/blob/master/Chapter%2026%20Indexing%20Multiple%20Vertex%20Arrays/article/suzanne.obj
+1. The Stanford dragon, Serapis Bust, Srub Pine Tree, Utah Teapot and Happy Buddha were taken from https://casual-effects.com/data/
+1. The Stanford XYZ dragon, Stanford bunny, Stanford Lucy and Caltech Spot were taken from https://github.com/alecjacobson/common-3d-test-models
+1. The grass model was taken from https://free3d.com/3d-model/high-quality-grass-78178.html
 1. PNM image library: https://github.com/ToruNiina/pnm/blob/master/pnm.hpp
 1. TinyObjLoader: https://github.com/tinyobjloader/tinyobjloader
 

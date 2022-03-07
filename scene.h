@@ -289,16 +289,6 @@ public:
 
     color hit_color(0, 0, 0);
 
-    // vec3 point_light_debug;
-    // double difference = (scene_point_lights[0].position - r.origin()).length();
-
-    // if (r.at(difference).x() == scene_point_lights[0].position.x() && r.at(difference).y() == scene_point_lights[0].position.y() && r.at(difference).z() == scene_point_lights[0].position.z()
-    // ) {
-    //   return color(0, 0, 0);
-    // }
-
-    
-
       // return traverse_uniform_grid(r, scene_tmin, scene_tmax, hit);
 
       if (USE_UNIFORM_GRIDS) {
@@ -556,12 +546,6 @@ public:
       double max_cell_z = (maximum.z() - scene_aabb.min_.z()) / cell_dimension.z();
 
       aabb cell_aabb(vec3(min_cell_x, min_cell_y, min_cell_z), vec3(max_cell_x, max_cell_y, max_cell_z));
-
-      // int extra_voxel = 1;
-
-      // if (is_triangle) {
-      //   extra_voxel = 2;
-      // }
 
       cell_min_z = clamp(std::floor(cell_aabb.min_.z()), 0, grid_resolution_z);
       cell_max_z = clamp(std::floor(cell_aabb.max_.z()), 0, grid_resolution_z);

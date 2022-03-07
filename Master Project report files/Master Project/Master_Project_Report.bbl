@@ -1,0 +1,638 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Amanatides%
+, Woo%
+\BCBL {}\ \protect \BOthers {.}}{%
+Amanatides%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {1987}}%
+}]{%
+amanatides1987fast}
+\APACinsertmetastar {%
+amanatides1987fast}%
+\begin{APACrefauthors}%
+Amanatides, J.%
+, Woo, A.%
+\BCBL {}\ \BOthersPeriod {.}\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1987}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A fast voxel traversal algorithm for ray tracing.} {A
+  fast voxel traversal algorithm for ray tracing.}{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Eurographics} {Eurographics}\ (\BVOL~87, \BPGS\ 3--10).
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Blatt%
+}{%
+Blatt%
+}{%
+{\protect \APACyear {{\protect \bibnodate {}}}}%
+}]{%
+serapis}
+\APACinsertmetastar {%
+serapis}%
+\begin{APACrefauthors}%
+Blatt, T.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{{\protect \bibnodate {}}}{}{}.
+\newblock
+\APACrefbtitle {Serapis Bust.} {Serapis bust.}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Boulos%
+}{%
+Boulos%
+}{%
+{\protect \APACyear {2005}}%
+}]{%
+boulos2005notes}
+\APACinsertmetastar {%
+boulos2005notes}%
+\begin{APACrefauthors}%
+Boulos, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2005}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Notes on efficient ray tracing} {Notes on efficient ray
+  tracing}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {ACM SIGGRAPH 2005 Courses} {Acm siggraph 2005 courses}\
+  (\BPGS\ 10--es).
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Brian~Curless%
+}{%
+Brian~Curless%
+}{%
+{\protect \APACyear {1996}}%
+}]{%
+buddha}
+\APACinsertmetastar {%
+buddha}%
+\begin{APACrefauthors}%
+Brian~Curless, M\BPBI L.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1996}{}{}.
+\newblock
+\APACrefbtitle {Happy Buddha.} {Happy buddha.}
+\newblock
+\begin{APACrefURL}
+  \url{https://graphics.stanford.edu/software/scanview/models/happybuddha.html}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Burley%
+\ \protect \BOthers {.}}{%
+Burley%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2018}}%
+}]{%
+burley2018design}
+\APACinsertmetastar {%
+burley2018design}%
+\begin{APACrefauthors}%
+Burley, B.%
+, Adler, D.%
+, Chiang, M\BPBI J\BHBI Y.%
+, Driskill, H.%
+, Habel, R.%
+, Kelly, P.%
+\BDBL {}Teece, D.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2018}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {The design and evolution of disney’s hyperion
+  renderer} {The design and evolution of disney’s hyperion renderer}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{ACM Transactions on Graphics (TOG)}{37}{3}{1--22}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Crane%
+}{%
+Crane%
+}{%
+{\protect \APACyear {2012}}%
+}]{%
+spot}
+\APACinsertmetastar {%
+spot}%
+\begin{APACrefauthors}%
+Crane, K.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+\APACrefbtitle {Caltech Spot.} {Caltech spot.}
+\newblock
+\begin{APACrefURL}
+  \url{http://www.cs.cmu.edu/~kmcrane/Projects/ModelRepository/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Devillers%
+}{%
+Devillers%
+}{%
+{\protect \APACyear {1988}}%
+}]{%
+devillers1988methodes}
+\APACinsertmetastar {%
+devillers1988methodes}%
+\begin{APACrefauthors}%
+Devillers, O.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{1988}.
+\unskip\
+\newblock
+\APACrefbtitle {M{\'e}thodes d'optimisation du trac{\'e} de rayons}
+  {M{\'e}thodes d'optimisation du trac{\'e} de rayons}\ \APACtypeAddressSchool
+  {\BUPhD}{}{}.
+\unskip\
+\newblock
+\APACaddressSchool {}{Universit{\'e} Paris Sud-Paris XI}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Ericson%
+}{%
+Ericson%
+}{%
+{\protect \APACyear {2004}}%
+}]{%
+ericson2004real}
+\APACinsertmetastar {%
+ericson2004real}%
+\begin{APACrefauthors}%
+Ericson, C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2004}.
+\newblock
+\APACrefbtitle {Real-time collision detection} {Real-time collision detection}.
+\newblock
+\APACaddressPublisher{}{Crc Press}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Fujimoto%
+, Tanaka%
+\BCBL {}\ \BBA {} Iwata%
+}{%
+Fujimoto%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {1986}}%
+}]{%
+fujimoto1986arts}
+\APACinsertmetastar {%
+fujimoto1986arts}%
+\begin{APACrefauthors}%
+Fujimoto, A.%
+, Tanaka, T.%
+\BCBL {}\ \BBA {} Iwata, K.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1986}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Arts: Accelerated ray-tracing system} {Arts: Accelerated
+  ray-tracing system}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{IEEE Computer Graphics and Applications}{6}{4}{16--26}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Haines%
+\ \BBA {} Akenine-M{\"o}ller%
+}{%
+Haines%
+\ \BBA {} Akenine-M{\"o}ller%
+}{%
+{\protect \APACyear {2019}}%
+}]{%
+haines2019ray}
+\APACinsertmetastar {%
+haines2019ray}%
+\begin{APACrefauthors}%
+Haines, E.%
+\BCBT {}\ \BBA {} Akenine-M{\"o}ller, T.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2019}.
+\newblock
+\APACrefbtitle {Ray Tracing Gems: High-Quality and Real-Time Rendering with DXR
+  and Other APIs} {Ray tracing gems: High-quality and real-time rendering with
+  dxr and other apis}.
+\newblock
+\APACaddressPublisher{}{Springer}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Jacobson%
+}{%
+Jacobson%
+}{%
+{\protect \APACyear {2021}}%
+}]{%
+common3dmodels}
+\APACinsertmetastar {%
+common3dmodels}%
+\begin{APACrefauthors}%
+Jacobson, A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021}{}{}.
+\newblock
+\APACrefbtitle {Common 3d test models.} {Common 3d test models.}
+\newblock
+\begin{APACrefURL} \url{https://github.com/alecjacobson/common-3d-test-models}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Kalojanov%
+, Billeter%
+\BCBL {}\ \BBA {} Slusallek%
+}{%
+Kalojanov%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2011}}%
+}]{%
+kalojanov2011two}
+\APACinsertmetastar {%
+kalojanov2011two}%
+\begin{APACrefauthors}%
+Kalojanov, J.%
+, Billeter, M.%
+\BCBL {}\ \BBA {} Slusallek, P.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2011}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Two-level grids for ray tracing on GPUs} {Two-level
+  grids for ray tracing on gpus}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Computer Graphics Forum} {Computer graphics forum}\
+  (\BVOL~30, \BPGS\ 307--314).
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Lagae%
+\ \BBA {} Dutr{\'e}%
+}{%
+Lagae%
+\ \BBA {} Dutr{\'e}%
+}{%
+{\protect \APACyear {2008}}%
+}]{%
+lagae2008compact}
+\APACinsertmetastar {%
+lagae2008compact}%
+\begin{APACrefauthors}%
+Lagae, A.%
+\BCBT {}\ \BBA {} Dutr{\'e}, P.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2008}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Compact, fast and robust grids for ray tracing}
+  {Compact, fast and robust grids for ray tracing}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Computer Graphics Forum} {Computer graphics forum}\
+  (\BVOL~27, \BPGS\ 1235--1244).
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+McGuire%
+}{%
+McGuire%
+}{%
+{\protect \APACyear {2017}}%
+}]{%
+McGuire2017Data}
+\APACinsertmetastar {%
+McGuire2017Data}%
+\begin{APACrefauthors}%
+McGuire, M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2017}{July}{}.
+\newblock
+\APACrefbtitle {Computer Graphics Archive.} {Computer graphics archive.}
+\newblock
+\begin{APACrefURL} \url{https://casual-effects.com/data} \end{APACrefURL}
+\newblock
+\APACrefnote{\small \texttt{https://casual-effects.com/data}}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+nevayashka%
+}{%
+nevayashka%
+}{%
+{\protect \APACyear {2019}}%
+}]{%
+grass}
+\APACinsertmetastar {%
+grass}%
+\begin{APACrefauthors}%
+nevayashka.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2019}{}{}.
+\newblock
+\APACrefbtitle {Grass 3D Model.} {Grass 3d model.}
+\newblock
+\begin{APACrefURL}
+  \url{https://free3d.com/3d-model/high-quality-grass-78178.html}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Newell%
+}{%
+Newell%
+}{%
+{\protect \APACyear {1975}}%
+}]{%
+utahteapot}
+\APACinsertmetastar {%
+utahteapot}%
+\begin{APACrefauthors}%
+Newell, M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1975}{}{}.
+\newblock
+\APACrefbtitle {Article on Creation of Utah Teapot.} {Article on creation of
+  utah teapot.}
+\newblock
+\begin{APACrefURL}
+  \url{https://www.historyofinformation.com/detail.php?id=2449}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Pharr%
+, Jakob%
+\BCBL {}\ \BBA {} Humphreys%
+}{%
+Pharr%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2016}}%
+}]{%
+pharr2016physically}
+\APACinsertmetastar {%
+pharr2016physically}%
+\begin{APACrefauthors}%
+Pharr, M.%
+, Jakob, W.%
+\BCBL {}\ \BBA {} Humphreys, G.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2016}.
+\newblock
+\APACrefbtitle {Physically based rendering: From theory to implementation}
+  {Physically based rendering: From theory to implementation}.
+\newblock
+\APACaddressPublisher{}{Morgan Kaufmann}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Shirley%
+}{%
+Shirley%
+}{%
+{\protect \APACyear {2020}}%
+}]{%
+Shirley2020RTW1}
+\APACinsertmetastar {%
+Shirley2020RTW1}%
+\begin{APACrefauthors}%
+Shirley, P.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2020}{December}{}.
+\newblock
+\APACrefbtitle {Ray Tracing in One Weekend.} {Ray tracing in one weekend.}
+\newblock
+\begin{APACrefURL}
+  \url{https://raytracing.github.io/books/RayTracingInOneWeekend.html}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Stanford%
+}{%
+Stanford%
+}{%
+{\protect \APACyear {{\protect \bibnodate {}}}}%
+}]{%
+stanfordxyzdragon}
+\APACinsertmetastar {%
+stanfordxyzdragon}%
+\begin{APACrefauthors}%
+Stanford.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{{\protect \bibnodate {}}}{}{}.
+\newblock
+\APACrefbtitle {Stanford XYZ Dragon.} {Stanford xyz dragon.}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Stanford%
+}{%
+Stanford%
+}{%
+{\protect \APACyear {1994}}%
+}]{%
+stanfordbunny}
+\APACinsertmetastar {%
+stanfordbunny}%
+\begin{APACrefauthors}%
+Stanford.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1994}{}{}.
+\newblock
+\APACrefbtitle {Stanford Bunny.} {Stanford bunny.}
+\newblock
+\begin{APACrefURL} \url{http://graphics.stanford.edu/data/3Dscanrep/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Stanford%
+}{%
+Stanford%
+}{%
+{\protect \APACyear {1996}}%
+}]{%
+stanforddragon}
+\APACinsertmetastar {%
+stanforddragon}%
+\begin{APACrefauthors}%
+Stanford.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1996}{}{}.
+\newblock
+\APACrefbtitle {Stanford Dragon.} {Stanford dragon.}
+\newblock
+\begin{APACrefURL} \url{http://graphics.stanford.edu/data/3Dscanrep/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Stanford%
+}{%
+Stanford%
+}{%
+{\protect \APACyear {1998}}%
+}]{%
+stanfordlucy}
+\APACinsertmetastar {%
+stanfordlucy}%
+\begin{APACrefauthors}%
+Stanford.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1998}{}{}.
+\newblock
+\APACrefbtitle {Stanford Lucy.} {Stanford lucy.}
+\newblock
+\begin{APACrefURL} \url{http://graphics.stanford.edu/data/3Dscanrep/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Suffern%
+}{%
+Suffern%
+}{%
+{\protect \APACyear {2016}}%
+}]{%
+suffern2016ray}
+\APACinsertmetastar {%
+suffern2016ray}%
+\begin{APACrefauthors}%
+Suffern, K.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2016}.
+\newblock
+\APACrefbtitle {Ray Tracing from the Ground up} {Ray tracing from the ground
+  up}.
+\newblock
+\APACaddressPublisher{}{CRC Press}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+van Overbruggen%
+}{%
+van Overbruggen%
+}{%
+{\protect \APACyear {2002}}%
+}]{%
+blendermonkey}
+\APACinsertmetastar {%
+blendermonkey}%
+\begin{APACrefauthors}%
+van Overbruggen, W\BHBI P.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2002}{}{}.
+\newblock
+\APACrefbtitle {Blender Monkey.} {Blender monkey.}
+\newblock
+\begin{APACrefURL}
+  \url{https://github.com/OpenGLInsights/OpenGLInsightsCode/blob/master/Chapter%2026%20Indexing%20Multiple%20Vertex%20Arrays/article/suzanne.obj}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wikipedia%
+}{%
+Wikipedia%
+}{%
+{\protect \APACyear {2022}}%
+}]{%
+geometricoptics}
+\APACinsertmetastar {%
+geometricoptics}%
+\begin{APACrefauthors}%
+Wikipedia.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2022}{}{}.
+\newblock
+\APACrefbtitle {Article on geometric optics on Wikipedia.} {Article on
+  geometric optics on wikipedia.}
+\newblock
+\begin{APACrefURL} \url{https://en.wikipedia.org/wiki/Geometrical_optics}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wyman%
+\ \BBA {} McGuire%
+}{%
+Wyman%
+\ \BBA {} McGuire%
+}{%
+{\protect \APACyear {2017}}%
+}]{%
+pinetree}
+\APACinsertmetastar {%
+pinetree}%
+\begin{APACrefauthors}%
+Wyman%
+\BCBT {}\ \BBA {} McGuire.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2017}{}{}.
+\newblock
+\APACrefbtitle {Pine Tree.} {Pine tree.}
+\newblock
+\begin{APACrefURL} \url{https://casual-effects.com/data/} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

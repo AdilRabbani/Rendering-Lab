@@ -1,0 +1,26 @@
+\contentsline {section}{\numberline {1}Abstract}{3}{section.1}%
+\contentsline {section}{\numberline {2}An overview of Ray tracing}{3}{section.2}%
+\contentsline {section}{\numberline {3}Importance of acceleration structures}{4}{section.3}%
+\contentsline {section}{\numberline {4}Uniform Grid}{5}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Concept}{5}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Implementation}{6}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Construction}{6}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Illustrated example}{9}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Traversal}{11}{subsubsection.4.2.3}%
+\contentsline {section}{\numberline {5}Bounding Volume Hierarchies}{13}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Concept}{13}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Implementation}{14}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Splitting Criterias}{14}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Illustrated example}{16}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}Traversal}{18}{subsubsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.4}Algorithm}{18}{subsubsection.5.2.4}%
+\contentsline {section}{\numberline {6}Analysis}{19}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Construction time analysis}{20}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}Why current compact grid implementation is fast to construct?}{20}{subsubsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.2}Why current BVH implementation is slow to construct?}{21}{subsubsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.2}Render time analysis}{21}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Further analysis}{22}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Scene 1}{22}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Scene 2}{23}{subsubsection.6.3.2}%
+\contentsline {section}{\numberline {7}Conclusion}{24}{section.7}%
+\contentsline {section}{References}{24}{section.7}%

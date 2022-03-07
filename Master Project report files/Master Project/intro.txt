@@ -1,0 +1,68 @@
+Computer Graphics has three main areas of research namely, \textbf{Modeling}, \textbf{Rendering} and \textbf{Simulation}. Ray tracing which is a technique for image synthesis lies in the Rendering area of CG research. One of the biggest motivation in computer graphics is to create virtual environments that look as close to how they look in real life. Ray tracing is capable of producing highly realistic images as it attempts to simulate light transport and how light interacts with different kinds of materials. This makes ray tracing an important algorithm for applications such as movies, games as well as 3D tools.
+
+\begin{figure}[H]
+	\centering
+	\captionsetup{justification=centering,margin=2cm}
+	\includegraphics[width=0.45\textwidth]{landing.jpg}
+	\caption{Cover page of the book Physically Based Rendering: From Theory to Implementation. \protect\cite{pharr2016physically}}
+\end{figure}
+
+\noindent
+The scene in figure.1 is a ray traced scene consisting of 23, 241 individual plants with a total of 3.1 billion triangles. You may notice that the scene looks like it is an actual photo of a forest somewhere but in reality it was rendered on a computer using ray tracing. Disney's animated movies are created the same way, placing models in a scene, and rendering them frame by frame. They use their own renderer namely, Hyperion Renderer\cite{burley2018design} which uses Path Tracing (an efficient ray tracing technique) to produce their movies. Recently, interactive media such as games have also started using ray tracing to create compelling virtual environments. This has been possible due to the development of powerful CPUs as well as GPUs that can support real time ray tracing. These examples clearly demonstrate that ray tracing will become more and more popular as CPUs and GPUs are improved over time thereby also enabling us to create more realistic virtual environments in far less time as it is possible today. Let us now discuss how a typical ray tracer works.
+
+\begin{figure}[H]
+	\centering
+	\captionsetup{justification=centering,margin=2cm}
+	\includegraphics[width=0.55\textwidth]{nvidia_marbles.png}
+	\caption{A snapshot of NVIDIA Marbles at Night Demo. A fully playable physics based game \protect\cite{nvidiamarbles}.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\captionsetup{justification=centering,margin=2cm}
+	\includegraphics[width=0.5\textwidth]{raytracing_gems.png}
+	\caption{An image showing how a ray is casted from the camera and how objects are illuminated and shadows are computed in ray tracing \protect\cite{haines2019ray}.}
+\end{figure}
+\noindent
+Ray tracing makes use of \textbf{ray casting} to compute the closest hit point with an object. This is done by a virtual camera that shoots multiple rays from each pixel of the image. These rays then intersect with an object in the scene which is evaluated by a ray-object intersection method. Each object in our scene also have different material properties that bounce off light differently. Shadows are computed by sending another ray from the hit point (the point where the ray hits) towards the light source (any object that emits light) and if this ray hits another object on its way towards the light source, then that hit point is in shadow. This process can be done recursively to get more realistic results keeping a recursion cut off limit. The aim of ray tracing is to compute the overall light transport in a scene while illuminating surfaces according to their material properties.
+\\~\\
+\noindent
+As mentioned previously, in order to simulate different material types, rays are reflected off materials differently. A \textbf{reflective/specular material} would bounce off more light than a \textbf{matte/diffuse} material. As the number and types of materials increase, so does the amount of rays being reflected off them. Moreover, in order to create different types of shadows, different types of lights are also used. For example,  an \textbf{area light} simulates more closely how light behaves in real life and it requires you to cast more than one \textbf{shadow rays} towards an area light source. On the other hand, \textbf{anti-aliasing} which helps make our rendered images more smooth, also requires you to send more than one ray per pixel. So for example, if you want to do 10x anti-aliasing, you would have to cast 10 rays per pixel of your image. This is already computationally expensive, as for a 100x100 image previously you were casting 10,000 rays, and now you are casting 1,000,000 rays for the same image. 
+\\~\\
+\noindent
+In order to render detailed 3D models using our ray tracer we typically have to use a ray-triangle intersection method. If a mesh contains about 10,000 triangles; for every ray casted from the camera, we need to check if this ray intersects any of the triangles in the mesh using a ray-triangle intersection method which is again a computationally expensive process. For highly detailed meshes/scenes which contain millions or even billions of triangles, this process can take hours, days or even years if a naive brute force approach is taken to render our images.
+\\~\\
+\noindent
+From the examples discussed, it is obvious that we are dealing with a huge amount of rays in a ray tracer and these rays keep on increasing as more and more features are added.
+\begin{equation}
+\begin{aligned}
+cost \approx height\;of\;image\;* \\ width\;of\;image\;* \\number\;of\;shapes/primitives\;* \\intersection\;cost\;* \\number\;of\;shadow\;rays\;* \\number\;of\;aa-samples\;* \\number\;of\;reflected\;rays\;*\\....
+\end{aligned}
+\end{equation}
+Therefore there is an extreme need for acceleration techniques in order to cut down the complexity of our ray tracer. This report aims to reduce the cost of intersecting the \textbf{number of shapes/primitives} in our ray tracer. Intersecting every ray with every individual shape in our scene is a bottleneck and this can be reduced significantly by using acceleration data structures.
+
+\section{Bounding Volumes}
+We will start with the first acceleration data structure in our list which is \textbf{BVH} or \textbf{Bounding Volume Hierarchies}. In order to get a nice intuition about the structure, we first need to understand what a bounding volume means. The idea of \textbf{bounding volumes} in graphics, is to find enclosing volumes that are easier to test. It is quite obvious that instead of testing all triangles in a particular mesh with millions of triangles, it might be helpful to first test if the ray actually intersects a simple volume that encloses the mesh itself. There are different types of bounding volumes as shown in figure 5.
+\begin{figure}[H]
+	\centering
+	\captionsetup{justification=centering,margin=2cm}
+	\includegraphics[width=0.65\textwidth]{boundingvolumes}
+	\caption{Different types of bounding volumes. \protect\cite{bvhlecture}}
+\end{figure}
+\noindent
+Ideally, we would like our bounding volume to be as tightly enclosed as possible but also easier to check for an intersection with a ray. A tight bounding volume would help us to have the least amount of overlaps with other bounding volumes in our scene while a fast intersection test would save up the computation time while the image is being rendered. One popular bounding volume type is \textbf{AABB} or \textbf{Axis-Aligned Bounding Boxe} (also shown in figure 5). This is due to the fact that they are faster to compute (linear run time) and also have a simple intersection test
+
+
+
+\section{Raytracer}
+The ray tracer used in this report is a continuation of the work done in the previous semester as a lab project. The ray tracer implements ray-sphere and ray-triangle intersection methods with support to add triangular meshes. For shading, it implements \textbf{Phong illumination} to support diffuse, ambient and specular highlights and adds texture mapping for spheres and triangles. Anti-aliasing is also supported and the number of samples can be changed according to user's needs. It also supports axis-aligned bounding boxes for meshes to slightly speed up ray-mesh intersection tests. Area lights were also implemented by reusing point light implementation.
+\begin{figure}[H]
+	\centering
+	\captionsetup{justification=centering}
+	\includegraphics[width=.3\textwidth]{raytracer1}\quad
+	\includegraphics[width=.3\textwidth]{raytracer2}\quad
+	\includegraphics[width=.3\textwidth]{raytracer3}\quad
+	\caption{Different images rendered by the ray tracer implemented in the last semester.}
+\end{figure}
+\noindent
+The ray tracer has a main \textbf{scene} class which aggregates everything that is added to a scene and renders the scene according to the lights added to it. 

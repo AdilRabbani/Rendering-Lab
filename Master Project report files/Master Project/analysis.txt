@@ -1,0 +1,134 @@
+\subsection{Analysis}
+Now that we have a uniform grids implementation, we can compare it with the naive method for ray tracing i.e for every ray sent into the scene, we go through all objects in the scene and test if that ray intersects with any of the objects. The ray tracer used to test both the implementations was already implemented in a previous lab project. The ray tracer implements ray-sphere and ray-triangle intersection methods with support to add triangular meshes. For shading, it implements \textbf{Phong illumination} to support diffuse, ambient and specular highlights and adds texture mapping for spheres and triangles. Anti-aliasing is also supported and the number of samples can be changed according to user's needs. It also supports axis-aligned bounding boxes for meshes to slightly speed up ray-mesh intersection tests. Area lights were also implemented by reusing point light implementation.
+\\~\\
+We have 6 test scenes to test our implementation of data structures. All of the scenes have a similar setting. They are all illuminated with 3 point light sources with the camera being in the same position, 3x anti-aliasing is used to render all scenes. Different meshes are used for each of the scenes but they all lie on a plane with one plane as a background for better visualization. The scenes used are:
+\begin{enumerate}
+\item \textbf{Scene 1} which consists of a cube in the middle of the scene with 12 triangles with a total of 16 triangles in the scene.
+\item \textbf{Scene 2} which consists of blender monkey suzanne \cite{blendermonkey} which consists of 968 triangles with a total of 972 triangles in the scene.
+\item \textbf{Scene 3} which consists of 5 pine trees \cite{pinetree} each consisting of 527 triangles with a total of 2, 639 triangles in the scene.
+\item \textbf{Scene 4} which uses stanford bunny \cite{stanfordbunny} with 4, 968 triangles with a total of 4, 972 triangles in the scene.
+\item \textbf{Scene 5} which consists of utah teapot \cite{utahteapot} with 6, 320 triangles with a total of 6, 324 triangles in the scene.
+\item \textbf{Scene 6} which consists of 4 pine trees and the utah teapot with a total of 8, 432 triangles. 
+\end{enumerate}
+\begin{figure}[H]
+	\centering
+	\captionsetup{justification=centering}
+	\includegraphics[width=.3\textwidth]{scene1}\quad
+	\includegraphics[width=.3\textwidth]{scene2}\quad
+	\includegraphics[width=.3\textwidth]{scene3}\quad
+	\caption{Scene 1, Scene 2 and Scene 3 from left to right.}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\captionsetup{justification=centering}
+	\includegraphics[width=.3\textwidth]{scene4}\quad
+	\includegraphics[width=.3\textwidth]{scene5}\quad
+	\includegraphics[width=.3\textwidth]{scene6}\quad
+	\caption{Scene 4, Scene 5 and Scene 6 from left to right.}
+\end{figure}
+\begin{table}[!htbp]
+		\centering
+		\begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
+			\hline
+			\multicolumn{3}{|c|}{Scene 1} \\
+			\hline
+			Type  & Ray-triangle intersection tests &   Time to render\\
+			\hline
+			Brute Force     &23, 722, 309&   5.382 seconds\\
+			Uniform Grid  &1, 380, 343   &      5.95 seconds\\
+			\hline
+		\end{tabular}
+	\end{table}
+\begin{table}[!htbp]
+		\centering
+		\begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
+			\hline
+			\multicolumn{3}{|c|}{Scene 2} \\
+			\hline
+			Type  & Ray-triangle intersection tests &   Time to render\\
+			\hline
+			Brute Force     &2, 597, 291, 856&   215.412 seconds\\
+			Uniform Grid  &4, 709, 496   &      15.245 seconds\\
+			\hline
+		\end{tabular}
+	\end{table}
+\begin{table}[!htbp]
+		\centering
+		\begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
+			\hline
+			\multicolumn{3}{|c|}{Scene 3} \\
+			\hline
+			Type  & Ray-triangle intersection tests &   Time to render\\
+			\hline
+			Brute Force     &5, 082, 250, 516&   413.224 seconds\\
+			Uniform Grid  &3, 648, 710   &      14.44 seconds\\
+			\hline
+		\end{tabular}
+	\end{table}
+
+\begin{table}[!htbp]
+		\centering
+		\begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
+			\hline
+			\multicolumn{3}{|c|}{Scene 4} \\
+			\hline
+			Type  & Ray-triangle intersection tests &   Time to render\\
+			\hline
+			Brute Force     &9, 319, 100, 223&   876.264 seconds\\
+			Uniform Grid  &2, 618, 474   &      18.748 seconds\\
+			\hline
+		\end{tabular}
+	\end{table}
+
+\begin{table}[!htbp]
+		\centering
+		\begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
+			\hline
+			\multicolumn{3}{|c|}{Scene 5} \\
+			\hline
+			Type  & Ray-triangle intersection tests &   Time to render\\
+			\hline
+			Brute Force     &17, 926, 727, 145&  1532.55 seconds\\
+			Uniform Grid  &3, 876, 189   &      18.072 seconds\\
+			\hline
+		\end{tabular}
+	\end{table}
+
+\begin{table}[!htbp]
+		\centering
+		\begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
+			\hline
+			\multicolumn{3}{|c|}{Scene 6} \\
+			\hline
+			Type  & Ray-triangle intersection tests &   Time to render\\
+			\hline
+			Brute Force     &16, 289, 624, 734&  1369.32 seconds\\
+			Uniform Grid  &3, 205, 779   &      14.2628 seconds\\
+			\hline
+		\end{tabular}
+	\end{table}
+\begin{figure}[H]
+	\centering
+	\captionsetup{justification=centering,margin=2cm}
+	\includegraphics[width=1.1\textwidth]{uniformgrid_time}
+	\caption{(Uniform Grid) A graph with number of triangles in the x-axis and time taken to render the scene in y-axis.}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\captionsetup{justification=centering,margin=2cm}
+	\includegraphics[width=1.1\textwidth]{uniformgrid_tests}
+	\caption{(Uniform Grid) A graph with number of triangles in the x-axis and ray-triangle intersections in y-axis.}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\captionsetup{justification=centering,margin=2cm}
+	\includegraphics[width=1.1\textwidth]{bruteforce_time}
+	\caption{(Brute Force)  A graph with number of triangles in the x-axis and time taken to render the scene in y-axis.}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\captionsetup{justification=centering,margin=2cm}
+	\includegraphics[width=1.1\textwidth]{bruteforce_tests}
+	\caption{(Brute Force) A graph with number of triangles in the x-axis and ray-triangle intersections in y-axis.}
+\end{figure}
+\pagebreak

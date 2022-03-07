@@ -1,0 +1,70 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: Master_Project_Report.aux
+The style file: apacite.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: References.bib
+Warning--entry type for "Shirley2020RTW1" isn't style-file defined
+--line 33 of file References.bib
+You're missing a field part---line 227 of file References.bib
+ :     year=
+ :          ,
+I'm skipping whatever remains of this entry
+You're missing a field part---line 283 of file References.bib
+ :     year=
+ :          ,
+I'm skipping whatever remains of this entry
+Warning--entry type for "common3dmodels" isn't style-file defined
+--line 293 of file References.bib
+apacite.bst [2013/07/21 v6.03 APA bibliography style]
+Warning--`others' not consistent with 6th ed. of the APA Manual
+You've used 26 entries,
+            6951 wiz_defined-function locations,
+            1402 strings with 13602 characters,
+and the built_in function-call counts, 38928 in all, are:
+= -- 5043
+> -- 349
+< -- 1367
++ -- 1216
+- -- 70
+* -- 2011
+:= -- 6062
+add.period$ -- 111
+call.type$ -- 26
+change.case$ -- 424
+chr.to.int$ -- 0
+cite$ -- 52
+duplicate$ -- 1031
+empty$ -- 1877
+format.name$ -- 510
+if$ -- 8194
+int.to.chr$ -- 0
+int.to.str$ -- 78
+missing$ -- 0
+newline$ -- 604
+num.names$ -- 208
+pop$ -- 1397
+preamble$ -- 1
+purify$ -- 106
+quote$ -- 0
+skip$ -- 2705
+stack$ -- 0
+substring$ -- 1404
+swap$ -- 552
+text.length$ -- 94
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 2544
+warning$ -- 1
+while$ -- 187
+width$ -- 0
+write$ -- 703
+(There were 2 error messages)
