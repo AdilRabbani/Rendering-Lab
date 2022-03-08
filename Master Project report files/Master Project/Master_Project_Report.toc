@@ -16,7 +16,7 @@
 \contentsline {subsubsection}{\numberline {5.2.4}Algorithm}{18}{subsubsection.5.2.4}%
 \contentsline {section}{\numberline {6}Analysis}{19}{section.6}%
 \contentsline {subsection}{\numberline {6.1}Construction time analysis}{20}{subsection.6.1}%
-\contentsline {subsubsection}{\numberline {6.1.1}Why current compact grid implementation is fast to construct?}{20}{subsubsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}Why compact grid is fast to construct?}{20}{subsubsection.6.1.1}%
 \contentsline {subsubsection}{\numberline {6.1.2}Why current BVH implementation is slow to construct?}{21}{subsubsection.6.1.2}%
 \contentsline {subsection}{\numberline {6.2}Render time analysis}{21}{subsection.6.2}%
 \contentsline {subsection}{\numberline {6.3}Further analysis}{22}{subsection.6.3}%

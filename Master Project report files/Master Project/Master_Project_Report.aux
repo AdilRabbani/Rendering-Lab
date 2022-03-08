@@ -39,7 +39,7 @@
 \citation{burley2018design}
 \citation{burley2018design}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A nature scene from pbrt rendered using ray tracing. \cite {pharr2016physically}\relax }}{4}{figure.caption.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces a) A comparison of a real photo (left) and an image rendered using hyperion (right). \cite {burley2018design}\relax }}{4}{figure.caption.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces A comparison of a real photo (left) and an image rendered using hyperion (right). \cite {burley2018design}\relax }}{4}{figure.caption.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}Importance of acceleration structures}{4}{section.3}\protected@file@percent }
 \citation{lagae2008compact}
 \citation{lagae2008compact}
@@ -60,15 +60,15 @@
 \citation{lagae2008compact}
 \citation{lagae2008compact}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces a) A grid with three triangles overlapping the cells and the linearized 1D version of the grid. b) A traditional grid data structure using linked lists. \cite {lagae2008compact}\relax }}{7}{figure.caption.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces c) A traditional grid data structure using dynamic arrays. d) The compact grid data structure implemented in this report. \cite {lagae2008compact}\relax }}{7}{figure.caption.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces c) A traditional grid data structure using dynamic arrays. d) The compact grid data structure implemented in this project. \cite {lagae2008compact}\relax }}{7}{figure.caption.8}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Illustrated example}{9}{subsubsection.4.2.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces A scene with 7 triangles with its bounding box calculated.\relax }}{9}{figure.caption.9}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Scene subdivided into cells.\relax }}{10}{figure.caption.10}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Array $C$ initialization. Size is $5 * 4 = 20$.\relax }}{10}{figure.caption.11}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Array $C$ after 1st iteration. Counting primitive overlaps in each cell.\relax }}{10}{figure.caption.12}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Array $C$ after 2nd iteration. Accumulation and expansion of one index as mentioned in (5) above.\relax }}{10}{figure.caption.13}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Array $C$ after 2nd iteration. Accumulation and expansion of one index as mentioned in (7) above.\relax }}{10}{figure.caption.13}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Array $L$ initialization. Size equal to value in last index of $C$.\relax }}{10}{figure.caption.14}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Array $C$ and $L$. Reverse iteration over primitives as mentioned in (6) above.\relax }}{10}{figure.caption.15}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Array $C$ and $L$. Reverse iteration over primitives as mentioned in (8) above.\relax }}{10}{figure.caption.15}\protected@file@percent }
 \citation{amanatides1987fast}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Traversal}{11}{subsubsection.4.2.3}\protected@file@percent }
 \@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Fast Voxel Traversal for Ray Tracing\relax }}{12}{algorithm.1}\protected@file@percent }
@@ -90,7 +90,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Splitting primitves in a scene based on centroids of their bounding volumes. \cite {pharr2016physically}\relax }}{15}{figure.caption.19}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.2}Illustrated example}{16}{subsubsection.5.2.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Bounding box of centroids of scene primitives with $\boldsymbol  {d}$ calculated.\relax }}{16}{figure.caption.20}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Split point to partition primitives in left and right node. (left) Primitives partitioned in left and right node (right).\relax }}{17}{figure.caption.21}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Split point to partition primitives in left and right node (left). Primitives partitioned in left and right node (right).\relax }}{17}{figure.caption.21}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Diagonal $\boldsymbol  {d}$ in the left and right nodes (left). Split point in the left and right nodes (right).\relax }}{17}{figure.caption.22}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces Partition in left and right nodes (left). The whole tree (right).\relax }}{17}{figure.caption.23}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.3}Traversal}{18}{subsubsection.5.2.3}\protected@file@percent }
@@ -101,7 +101,7 @@
 \citation{blendermonkey}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Analysis}{19}{section.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Construction time analysis}{20}{subsection.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.1}Why current compact grid implementation is fast to construct?}{20}{subsubsection.6.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.1}Why compact grid is fast to construct?}{20}{subsubsection.6.1.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.2}Why current BVH implementation is slow to construct?}{21}{subsubsection.6.1.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Render time analysis}{21}{subsection.6.2}\protected@file@percent }
 \citation{grass}

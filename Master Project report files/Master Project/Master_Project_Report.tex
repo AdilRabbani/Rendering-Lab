@@ -80,20 +80,20 @@ This project and report is not the work of the author alone. The author thanks h
 \noindent
 \textbf{\Large{About the cover}}
 \\~\\
-The cover image was rendered using a ray tracer implemented in a previous semester. Peter Shirley's Ray Tracing in One Weekend \cite{Shirley2020RTW1} and Kevin Suffern's Ray Tracing from the Ground up \cite{suffern2016ray} were an important resource in implementing most of the functionalities in that ray tracer. The same ray tracer would be used throughout this report. The image was rendered first using normal mode, which colors each pixels according to the normal at that point and then afterwards shaded using Phong Illumination and area lights spread out in between the scene. The images were then cropped half and merged using a photo editor. Detailed specifications of the scene will be discussed later in the report. Special thanks to McGuire Computer Graphics Archive \cite{McGuire2017Data} for providing 3D models for Stanford Dragon \cite{stanforddragon}, Serapis Bust \cite{serapis}, Scrub Pine Tree \cite{pinetree} and Utah teapot \cite{utahteapot}. Also thanks to Alec Jacobson's common 3d test models repository \cite{common3dmodels} for the Stanford XYZ Dragon \cite{stanfordxyzdragon}, Stanford Lucy \cite{stanfordlucy}, Stanford Bunny \cite{stanfordbunny} and Caltech Spot \cite{spot}.
+The cover image was rendered using a ray tracer implemented in a previous semester. Peter Shirley's Ray Tracing in One Weekend \cite{Shirley2020RTW1} and Kevin Suffern's Ray Tracing from the Ground up \cite{suffern2016ray} were an important resource in implementing most of the functionalities in that ray tracer. The same ray tracer would be used throughout this report. The image was rendered first using normal mode, which colors each point according to the normal at that point and then the image was rendered the second time, using Phong Illumination and area lights spread out in between the scene. The images were then cropped half and merged using a photo editor. The image would have been impossible to render in a reasonable time without the acceleration structures discussed in this report. Detailed specifications of the scene will be discussed later in the report. Special thanks to McGuire Computer Graphics Archive \cite{McGuire2017Data} for providing 3D models for Stanford Dragon \cite{stanforddragon}, Serapis Bust \cite{serapis}, Scrub Pine Tree \cite{pinetree} and Utah teapot \cite{utahteapot}. Also thanks to Alec Jacobson's common 3d test models repository \cite{common3dmodels} for the Stanford XYZ Dragon \cite{stanfordxyzdragon}, Stanford Lucy \cite{stanfordlucy}, Stanford Bunny \cite{stanfordbunny} and Caltech Spot \cite{spot}.
 
 \pagebreak
 \tableofcontents
 \pagebreak
 
 \section{Abstract}
-Acceleration data structures play an important role in any ray tracer, reducing the amount of intersections for each ray with objects in our scene. Mainly, there are two broad categories of acceleration structures namely, \textbf{spatial subdivision} and \textbf{object subdivision}. Spatial subdivision algorithms divide 3D space into regions and record which primitives overlap which regions. On the other hand, object subdivision algorithms progressively break the objects in the scene into smaller sets of objects. This report implements and investigates two different kinds of acceleration data structures in ray tracing namely, \textbf{Bounding Volume Hierarchies (BVH)} and \textbf{Uniform Grid}. BVH is an example of object subdivision acceleration structure while Uniform Grid is an example of spatial subdivision. The report would further analyze in what scenarios these structures are preferred from one another and what are the pros and cons of using either of them.
+Acceleration data structures play an important role in any ray tracer, reducing the amount of intersections for each ray with objects in our scene. Mainly, there are two broad categories of acceleration structures namely, \textbf{spatial subdivision} and \textbf{object subdivision}. Spatial subdivision algorithms divide 3D space into regions and record which primitives overlap which regions. On the other hand, object subdivision algorithms progressively break the objects in the scene into smaller sets of objects. This report implements and investigates two different kinds of acceleration data structures namely, \textbf{Bounding Volume Hierarchies (BVH)} and \textbf{Uniform Grid}. BVH is an example of object subdivision acceleration structure while Uniform Grid is an example of spatial subdivision. The report would further analyze in what scenarios these structures are preferred from one another and what are the pros and cons of using either of them.
 \\~\\
 \noindent
 \textbf{Keywords:} [ray tracing] [acceleration structure] [grid] [hierarchies] [object subdivision] [spatial subdivision]
 
 \section{An overview of Ray tracing}
-\textbf{Ray tracing} is a method to generate photo-realistic images which resemble closely to how we perceive things in real life. This is due to the fact that it tries to simulate light traveling in a virtual scene by using principles from \textbf{geometric optics} \cite{geometricoptics}. Geometric optics is a model of optics that describes light propagation in terms of rays and that these rays travel in straight lines.  We start with casting rays from each of the pixels of our
+\textbf{Ray tracing} is a method to generate photo-realistic images which resemble closely to how we perceive things in real life. This is due to the fact that it tries to simulate light traveling in a virtual scene by using principles from \textbf{geometric optics} \cite{geometricoptics}. Geometric optics is a model of optics that describes light propagation in terms of rays and that these rays travel in straight lines.  We start by casting rays from each of the pixel of our
 screen from the view position. As we do this, we hit various objects in our scene. This is done by
 ray-primitive intersection tests. As an object is hit, we compute illumination at that point depending
 on how far the position is from a light source. As we also want to create shadows in our scene, when
@@ -130,7 +130,7 @@ For this reason, ray tracing is often used for \textbf{offline rendering}. We fi
 	\captionsetup{justification=centering}
 	\includegraphics[width=.35\textwidth]{real_photo}\quad
 	\includegraphics[width=.35\textwidth]{hyperion}\quad
-	\caption{a) A comparison of a real photo (left) and an image rendered using hyperion (right). \protect\cite{burley2018design}}
+	\caption{A comparison of a real photo (left) and an image rendered using hyperion (right). \protect\cite{burley2018design}}
 \end{figure}
 
 \section{Importance of acceleration structures}
@@ -140,7 +140,7 @@ Considering that many complex scenes can contain millions or even billions of pr
 As more and more features are added to the ray tracer, the number of rays sent from the view point towards the scene also increases. One example of a very common method for smoothing out the rendered image is anti-aliasing. In order to do anti-aliasing, we need to send more than one ray per pixel and average the color received for each ray. This means that doing 5x anti-aliasing will result in a smoother image but this would also increase the number of rays sent per pixel by $5$. 
 \\~\\
 \noindent
-If we implement different materials that model reflections; the rays sent towards the scene are then reflected from these materials and then tested again with other objects in the scene as they are reflected. Shadow rays as previously discussed, also require us to send a ray towards a light when a primary ray hits a surface. This means that for each ray hit, we send an additional ray towards the light source to compute shadows. Area lights are one example of a light source which simulates soft shadows and these lights are composed of a region of light instead of just one point in space. One way to achieve area light effects is to arrange point lights in a particular region in a grid. This means that now we need a grid of 3x3 or a 5x5 point lights, thereby increasing the number of shadow rays sent for each of those lights. Moreover, moving on towards more advanced ray tracing techniques such as Monte Carlo Ray tracing requires us to send 100s of rays per pixel in order to reduce noise in our images.
+If we implement different materials that model reflections; the rays sent towards the scene are then reflected from these materials and then tested again with other objects in the scene as they are reflected. Shadow rays as previously discussed, also require us to send a ray towards a light when a primary ray hits a surface. This means that for each ray hit, we send an additional ray towards the light source to compute shadows. Area lights are one example of a light source which simulates soft shadows and these lights are composed of a region of light instead of just one point in space. One way to achieve area light effects is to arrange point lights in a particular region in a grid. This means that now we need a grid of 3x3 or a 5x5 point lights, thereby also increasing the number of shadow rays sent for each of those lights. Moreover, moving on towards more advanced ray tracing techniques such as Monte Carlo Ray tracing requires us to send 100s of rays per pixel in order to reduce noise in our images.
 \\~\\
 \noindent
 All these examples demonstrate that the number of rays sent towards the scene, keeps on increasing as more and more features are added to the ray tracer. A ray sent towards a particular region of the scene should only intersect with primitives in that region while ignoring majority of the primitives in the scene and hence testing all primitives in a scene for each ray is extremely wasteful for time as well as space. Since we are only interested for the closest intersection of a ray with a primitive, there are acceleration structures which help in grouping as well as ordering many primitives in the scene and check if a ray hits any of them. This speeds up the rendering process as many of the ray-object intersection tests are too expensive to compute and reducing these intersection tests can greatly reduce the amount of time and space required for rendering the image. And so, this is a clear motivation for acceleration structures in ray tracing. We will begin our discussion of acceleration structures with a spatial subdivision technique known as \textbf{Uniform Grid}.
@@ -154,7 +154,7 @@ Spatial subdivision or space subdivision is a technique to reduce intersections 
 	\includegraphics[width=0.18\textwidth]{uniformgrids}
 	\caption{A grid with three triangles overlapping the cells. \protect\cite{lagae2008compact}}
 \end{figure}
-Figure.1 shows a 3x3 grid used to partition a scene consisting of 3 triangles. It is obvious that when our ray intersects cell (0, 1), we can just test the objects that are contained in that cell (triangle 0) and we need not care about the triangles in other regions. This way of partitioning space into cells or voxels (in 3D) is called a \textbf{uniform grid}.
+Figure.1 shows a 3x3 grid used to partition a scene consisting of 3 triangles. It is obvious that when our ray intersects cell $(1, 0)$, we can just test the objects that are contained in that cell (triangle 0) and we need not care about the triangles in other regions. This way of partitioning space into cells or voxels (in 3D) is called a \textbf{uniform grid}.
 Uniform grid was one of the first proposed acceleration structures \cite{fujimoto1986arts} in rendering. As discussed previously, the idea is to divide the 3D space into a 3D grid. The approach is good as it automatically divides the objects into smaller parts which are faster to test than testing an entire 3D model consisting of millions of triangles.
 \subsection{Implementation}
 The uniform grid implementation that is used in this project is from the paper \textbf{Compact, Fast and Robust Grids for Ray Tracing}\cite{lagae2008compact}. The paper presents a compact grid method which consists of a static data structure for representing a grid with minimal memory requirements, more specifically exactly one index per grid cell and exactly one index per object reference. This means that we will only be storing just one index for a cell in our grid and only one index to reference an object in our scene. All acceleration data structures consist of two phases, i.e \textbf{constructing the structure} and \textbf{traversing the structure}. We will divide our discussion in the same way.
@@ -185,7 +185,7 @@ The next question we need to answer when building uniform grids is how to insert
 \\
 \noindent
 
-In order to get an intuition of how the structure is built, we will briefly discuss two other simpler methods of building uniform grids. One traditional way to represent grids with object references is using linked lists. This is illustrated in figure 6. Figure 6(a) shows a simple scene with three triangles which is subdivided into cells of a 2D grid. A linearized 1D version of the same grid is also shown. Here, it can be seen that a cell index (0, 1) in 2D is the same cell with the index (3) in 1D.
+In order to get an intuition of how the structure is built, we will briefly discuss two other simpler methods of building uniform grids. One traditional way to represent grids with object references is using linked lists. This is illustrated in figure 6. Figure 6(a) shows a simple scene with three triangles which is subdivided into cells of a 2D grid. A linearized 1D version of the same grid is also shown. Here, it can be seen that a cell index $(1, 0)$ in 2D is the same cell with the index (3) in 1D.
 \begin{figure}[H]
 	\centering
 	\captionsetup{justification=centering}
@@ -193,13 +193,13 @@ In order to get an intuition of how the structure is built, we will briefly disc
 	\includegraphics[width=.28\textwidth]{uniformgrids2}\quad
 	\caption{a) A grid with three triangles overlapping the cells and the linearized 1D version of the grid. b) A traditional grid data structure using linked lists. \protect\cite{lagae2008compact}}
 \end{figure}
-Figure 2(b) shows how the references are stored in each index of the linearized array. Each cell index points to a linked list which is empty if there are no primitives in that cell and contains nodes if a cell contains primitives. It can be seen that the cell index (1, 1) which is cell index (4) in the linearized array contains a linked list of 3 objects which are three triangles overlapping the cell in the scene. Another method to build the uniform grid structure is to use dynamic arrays. This is illustrated in figure 7(c).
+Figure 6(b) shows how the references are stored in each index of the linearized array. Each cell index points to a linked list which is empty if there are no primitives in that cell and contains nodes if a cell contains primitives. It can be seen that the cell index (1, 1) which is cell index (4) in the linearized array contains a linked list of 3 objects which are three triangles overlapping the cell in the scene. Another method to build the uniform grid structure is to use dynamic arrays. This is illustrated in figure 7(c).
 \begin{figure}[H]
 	\centering
 	\captionsetup{justification=centering}
 	\includegraphics[width=.3\textwidth]{uniformgrids3}\quad
 	\includegraphics[width=.3\textwidth]{uniformgrids4}\quad
-	\caption{c) A traditional grid data structure using dynamic arrays. d) The compact grid data structure implemented in this report.
+	\caption{c) A traditional grid data structure using dynamic arrays. d) The compact grid data structure implemented in this project.
  \protect\cite{lagae2008compact}}
 \end{figure}
 The first array again represents the number of cells in our grid linearized, while each index of the array also maintains an array with a size depending on the number of objects in a specific cell. When the size is about to exceed the capacity, a new array with a larger capacity is allocated and the old array is copied and freed. We can observe that the array index 4 which represents cell (1, 1) in our grid contains an array with a size larger than other indexes hence the name, dynamic arrays.
@@ -218,7 +218,7 @@ The number of objects contained in a specific cell can be given by $C[i+1] - C[i
 \\
 \noindent
 
-Now we'll discuss how to build the compact grid. First, the scene bounding box is computed. This is done by simply going through all objects in our scene and merging their bounding boxes. Once, we have the scene bounding box, we can compute $S_{i}$ (size of the scene bounding box in dimension $i$) where $i \in {x, y, z}$, the $V$ (volume of the scene bounding box) and by using equation $(2)$ with $\rho = 4$, get the resolution of the grid $M$. Here $M$ is the resolution of the grid in all 3 dimensions or $M_{x} \times M_{y} \times M_{z}$. Once, we have $M$, we can allocate the $C$ array which is of the same size and initialize all entries to 0. We also compute the cell dimension which is constant for all cells and given by:
+Now we'll discuss how to build the compact grid. First, the scene bounding box is computed. This is done by simply going through all objects in our scene and merging their bounding boxes. Once, we have the scene bounding box, we can compute $S_{i}$ (size of the scene bounding box in dimension $i$) where $i \in {x, y, z}$, the $V$ (volume of the scene bounding box) and by using equation $(2)$ with $\rho = 4$, get the resolution of the grid $M$. Here $M$ is the resolution of the grid in all 3 dimensions or $M_{x} \times M_{y} \times M_{z}$. Once, we have $M$, we can allocate array $C$ which is of the same size and initialize all its entries to 0. We also compute the cell dimension which is constant for all cells and given by:
 
 \begin{equation}
 D_{i} = \frac{S_{i}}{M_{i}}\;\;\;\; (i \in \{x,\;y,\;z\})
@@ -242,9 +242,9 @@ C[i] = C[i] + C[i-1]\;\;\;\;(where\;\;i\;=\;0\;\;to\;\;M)
 \end{equation}
 \\
 \noindent
-The joint size of the object list is given by $C[M - 1]$. And that is the value that is used to allocate array $L$. Primitive indices are now inserted in array $L$ by reversely iterating over all primitives, and for each cell overlapped by the primitive, decrementing the offset of the cell and storing the object index at that offset. This is done by:
+The joint size of the object list is then given by $C[M - 1]$. And that is the value that is used to allocate array $L$. Primitive indices are now inserted in array $L$ by reversely iterating over all primitives, and for each cell overlapped by the primitive, decrementing the offset of the cell and storing the primitive index at that offset. This is done by:
 \begin{equation}
-L[--C[j]] = i\;\;\;\;(where\;\;i\;=\;N-1\;\;to\;\;0)\;\;for\;\;each\;\;cell\;\;j\;\;overlapped\;\;by\;\;object\;\;i
+L[--C[j]] = i\;\;\;\;(where\;\;i\;=\;N-1\;\;to\;\;0)\;\;for\;\;each\;\;cell\;\;j\;\;overlapped\;\;by\;\;primitive\;\;i
 \end{equation}
 After this operation the cell array $C$ contains the correct offsets, since each offset was decremented the appropriate number of times.
 \subsubsection{Illustrated example}
@@ -289,7 +289,7 @@ So the grid resolution is $5 \times 4$. We get the cell dimension $(D_{x}, D_{y}
 	\centering
 	\captionsetup{justification=centering}
 	\includegraphics[width=.65\textwidth]{compact_grid_6}\quad
-	\caption{Array $C$ after 2nd iteration. Accumulation and expansion of one index as mentioned in (5) above.}
+	\caption{Array $C$ after 2nd iteration. Accumulation and expansion of one index as mentioned in (7) above.}
 \end{figure}
 \begin{figure}[H]
 	\centering
@@ -301,13 +301,13 @@ So the grid resolution is $5 \times 4$. We get the cell dimension $(D_{x}, D_{y}
 	\centering
 	\captionsetup{justification=centering}
 	\includegraphics[width=.7\textwidth]{compact_grid_8}\quad
-	\caption{Array $C$ and $L$. Reverse iteration over primitives as mentioned in (6) above.}
+	\caption{Array $C$ and $L$. Reverse iteration over primitives as mentioned in (8) above.}
 \end{figure}
 \noindent
-Let's check cell $13$, the one that overlaps triangles $4$ and $6$. We fetch the value in the $C$ array at index $13$ which gives us $14$. Now we arrive at index $14$ in array $L$ which gives us the triangle $(4)$ that overlaps that cell. We check if the value in the next index ($14$) in array $C$ is greater than the value in the index after that ($15$), and it is true ($16 < 17$). So we fetch the value in $C$ array at index $14$ which gives us $16$. Now we arrive at index $16$ in array $L$ giving us the other triangle $(6)$ that overlaps that cell. Our check for the number of triangles fails next time ($17 < 17 = false$) and we exit.
+Let's check cell $13$, the one that overlaps triangles $4$ and $6$. We check if the value in cell $13$ is less than the value in the cell after that, and it is true $(14 < 16)$. We then fetch the value in the $C$ array at index $13$ which gives us $14$. Now we arrive at index $14$ in array $L$ which gives us the triangle $(4)$ that overlaps that cell. We check if the value in the next index ($14$) in array $C$ is less than the value in the index ($15$) after that, and it is true ($16 < 17$). So we fetch the value in $C$ array at index $14$ which gives us $16$. Now we arrive at index $16$ in array $L$ giving us the other triangle $(6)$ that overlaps that cell. Our check if the current cell value is less than value in the next cell fails this time ($17 < 17 = false$) so we exit.
 \subsubsection{Traversal}
 
-The  traversal algorithm for 3D grid presented in this project is an implementation of the paper \textbf{A Fast Voxel Traversal Algorithm for Ray Tracing}\cite{amanatides1987fast}. The very first step in our algorithm is to check if the ray even enters the bounds of our scene. This is done by checking if the ray intersects the bounding box of the scene at all, which is also the place where our bounds of the grid start. If there is no intersection, we return without doing any computation. However, if the ray does intersect the scene bounding box, we have to go through a two step process: initialization of the variables and incremental traversal of the grid. 
+The  traversal algorithm for 3D grid presented in this report is an implementation of the paper \textbf{A Fast Voxel Traversal Algorithm for Ray Tracing}\cite{amanatides1987fast}. The very first step in our algorithm is to check if the ray even enters the bounds of our scene. This is done by checking if the ray intersects the bounding box of the scene at all, which is also the place where our bounds of the grid start. If there is no intersection, we return without doing any computation. However, if the ray does intersect the scene bounding box, we have to go through a two step process: initialization of the variables and incremental traversal of the grid. 
 
 \begin{enumerate}
 \item \textbf{Initialization}
@@ -323,7 +323,7 @@ $\boldsymbol{r_{o}}$ and $\boldsymbol{r_{dir}}$ being the ray origin and ray dir
 i_{start} = \lfloor \frac{(r_{start_{i}} - scene_{AABB_{min_{i}}})}{D_{i}} \rfloor \;\;\;\; (i \in \{X,\;Y,\;Z\})
 \end{equation}
 \\
-We calculate $i_{start}$ above for each $x$, $y$ and $z$ coordinate of our voxel respectively and then we can easily use equation (3) above to get the voxel from linearized array $C$. The above equation (13) needs to be clamped in between $0$ and grid resolutions $M_{x} - 1$, $M_{y} - 1$ and $M_{z} - 1$ respectively, so we always get a value which is inside our grid. Once we have $X_{start}$, $Y_{start}$ and $Z_{start}$, we need to compute $X_{end}$, $Y_{end}$ and $Z_{end}$ as well by using $\boldsymbol{r_{end}}$ in equation (9). After this, we need 3 more variables for each coordinate after which we can start the traversal. The 3 variables are the $step$, $tDelta$ and $tMax$ values:
+We calculate $i_{start}$ above for each $x$, $y$ and $z$ coordinate of our voxel respectively and then we can easily use equation (3) above to get the voxel from linearized array $C$. The above equation (13) needs to be clamped in between $0$ and grid resolutions $M_{x} - 1$, $M_{y} - 1$ and $M_{z} - 1$ respectively, so we always get a value which is inside our grid. Once we have $X_{start}$, $Y_{start}$ and $Z_{start}$, we need to compute $X_{end}$, $Y_{end}$ and $Z_{end}$ as well by using $\boldsymbol{r_{end}}$ in equation (13). After this, we need 3 more variables for each coordinate after which we can start the traversal. The 3 variables are the $step$, $tDelta$ and $tMax$ values:
 \begin{enumerate}
 \item \textbf{step}: This is the value which decides if the step in our traversal is positive, negative or zero. Or in other words, for stepX, are we going from left to right (positive), right to left (negative) or we don't want to change this coordinate at all (zero) in our traversal of voxels. It must be obvious that this is just the slope or the direction of our ray and we can set this value by checking if $r_{dir_{x}}$ is positive, negative or zero. Same process is used for stepY and stepZ.
 \item \textbf{tDelta}: This, as the paper describes it, is the value which determines how far along the ray we must move (in units of $t$) for a component of such a movement to equal the dimension of the voxel. Or in other words, it is the step length in units of t between grid planes. This can be calculated by dividing the cell dimension with the ray direction in the respective coordinate:
@@ -393,11 +393,11 @@ In the figure we can see that the whole scene itself is first enclosed into one 
 The idea here is to partition complex objects into a hierarchy of simpler objects that are easier to test. If we send a ray into the scene shown in figure 16, our first test would be with the scene AABB itself (a), and if our ray does intersect with the scene AABB or the root node, we can then move further and test similarly with the two AABBs in the left and right node.  Now there's a chance that our ray hits the left node again where we would test the same ray again but this time only with the primitives' AABBs in the left node. And if our ray does not hit the right node, then that would mean that we also do not intersect with any of the primitives in the right node or for more complex scenes, any of the further nodes in the right node. This results in a much more efficient way to test if we have an intersection with complex models in our scene. This way of dividing objects is known as \textbf{object subdivision}.
 
 \subsection{Implementation}
-We do have an idea of how to build the hierarchy or tree of primitives in our scene but there are still some important questions to answer. One of the most important part in a BVH is the \textbf{splitting criteria}. As we go through all the primitives in our scene, we need a criteria that decides how to partition our primitives in the left and right node. This is important because a bad criteria can result in a bad tree where our primitives in both left and right node could overlap. This would result in more ray-intersection tests when the tree is traversed and thereby resulting in a bad implementation of BVH. We will discuss 2 different splitting criterias in this report starting with the most trivial one.
+We do have an idea of how to build the hierarchy or tree of primitives in our scene but there are still some important questions to answer. One of the most important part in a BVH is the \textbf{splitting criteria}. As we go through all the primitives in our scene, we need a criteria that decides how to partition our primitives in the left and right node. This is important because a bad criteria can result in a bad tree where our primitives in both left and right node could overlap. This would result in more ray-primitive intersection tests when the tree is traversed and thereby resulting in a bad implementation of BVH. We will discuss 2 different splitting criterias in this report starting with the most trivial one.
 \subsubsection{Splitting Criterias}
 \begin{enumerate}
 \item \textbf{Randomly sorting axis:}
-One way to split the primitives is to sort them by picking a random axis. Once the primitives are sorted, the first half of the primitives can be placed into the left node while the second half can be placed in the right node. This ofcourse does not take into account many of the information in our scene that could be helpful but is still quite fast than not using the acceleration structure at all. Figure 7 illustrates this method for a simple scene.
+One way to split the primitives is to sort them by picking a random axis. Once the primitives are sorted, the first half of the primitives can be placed into the left node while the second half can be placed in the right node. This ofcourse does not take into account many of the information in our scene that could be helpful but is still quite fast than not using the acceleration structure at all. Figure 17 illustrates this method for a simple scene.
 \begin{figure}[H]
 	\centering
 	\captionsetup{justification=centering,margin=2cm}
@@ -441,13 +441,13 @@ The construction of the BVH using centroid split method is illustrated using the
 	\includegraphics[width=.4\textwidth]{bvh_1}\quad
 	\caption{Bounding box of centroids of scene primitives with $\boldsymbol{d}$ calculated.}
 \end{figure}
-We can see that $\boldsymbol{d}=(2.7, 2.4)$ and we need to split in x-axis for our root node. The split value is then $(0.6*0.5) + (3.3*0.5)=1.95$. And we can partition primitives in the left and right node as:
+We can see that $\boldsymbol{d}=(2.7, 2.4)$ and we need to split in x-axis for our root node ($2.7 > 2.4$). The split value is then $(0.6*0.5) + (3.3*0.5)=1.95$. And we can partition primitives in the left and right node as:
 \begin{figure}[H]
 	\centering
 	\captionsetup{justification=centering}
 	\includegraphics[width=.25\textwidth]{bvh_2}\quad
 	\includegraphics[width=.25\textwidth]{bvh_3}\quad
-	\caption{Split point to partition primitives in left and right node. (left) Primitives partitioned in left and right node (right).}
+	\caption{Split point to partition primitives in left and right node (left). Primitives partitioned in left and right node (right).}
 \end{figure}
 \begin{figure}[H]
 	\centering
@@ -502,7 +502,7 @@ The traversal for a BVH is quite simple. We start with the root node and check i
 \end{algorithm}
 \pagebreak
 \section{Analysis}
-The data structures implemented in this report were tested on different models. Some obj variants of the scanned models from \emph{The Stanford 3D Scanning Repository} were used. This includes \emph{Stanford Bunny}, \emph{Lucy}, \emph{Stanford Dragon}, \emph{Stanford Asian Dragon} and \emph{Happy Buddha} \cite{buddha}. The famous \emph{Utah teapot} is also used as well as \emph{Suzanne} \cite{blendermonkey} from Blender and \emph{Spot} from Caltech.
+The data structures implemented in this report were tested on different models. Some obj variants of the scanned models from \emph{The Stanford 3D Scanning Repository} were used. This includes \emph{Stanford Bunny}, \emph{Stanford Lucy}, \emph{Stanford Dragon}, \emph{Stanford Asian Dragon} and \emph{Happy Buddha} \cite{buddha}. The famous \emph{Utah teapot} is also used as well as \emph{Suzanne} \cite{blendermonkey} from Blender and \emph{Spot} from Caltech.
 \\~\\
 The ray tracer as well as all the methods discussed in the report were implemented in C++. All of the methods also make use of STL. No low level optimizations were made. All results were obtained on a computer with a Quad Core AMD Ryzen 5 PRO 3500U CPU and 16GB of RAM. All images were rendered on a single core. All images use an aspect ratio of $1:1$ and a resolution of $500 \times 500$.  Phong illumination model was used to shade all objects with just one point light in front of the camera. Only 1 ray per pixel was used to render all images. In the tables, BVH\_C is BVH with centroid split method, BVH\_R is BVH with random sorting of axis and C.G is compact grid.
 \\
@@ -533,7 +533,7 @@ BVH\_C build(s)& 0.014 s& 0.091 s & 0.26 s & 1.3 s \\
 \\
 BVH\_R build(s)& 0.03 s& 0.3 s & 0.84 s & 5.1 s \\
 \\
-C.G build(s)& 0.004 s& 0.025 s & 0.15 s & 0.36 s \\
+C.G build(s)& 0.0013 s& 0.005 s & 0.015 s & 0.07 s \\
 \\
 \hline \hline
 \\
@@ -585,7 +585,7 @@ BVH\_C build(s)& 1.97 s& 5.4 s & 20.8 s & 26.17 s \\
 \\
 BVH\_R build(s)& 8.1 s& 22.5 s & N/A & N/A \\
 \\
-C.G build(s)& 0.4 s& 0.82 s & 3.4 s & 5.854 s \\
+C.G build(s)& 0.1 s& 0.22 s & 0.8 s & 0.98 s \\
 \\
 \hline \hline
 \\
@@ -608,11 +608,11 @@ C.G avg \# isect tests / isect ray& 59.12& 115.89& 155.68& 116.7 \\
 }
 \end{table}
 
-For all of the scenes we record the time it takes to construct the data structure and the time it takes to render the image. Another metric which is quite helpful is to compute the average number of intersection tests per intersecting ray. So, for every ray that intersects with the scene bounding box, we compute the number of intersection tests, sum them all together, and then take the average of it. It can be seen that both compact grids as well as the BVH centroid split method perform really well on a variety of 3D models with different number of triangles. 
+For all of the scenes we record the time it takes to construct the data structure and the time it takes to render the image. Another metric which is quite helpful is to compute the average number of intersection tests per intersecting ray. So, for every ray that intersects with the scene bounding box, we compute the number of intersection tests, sum them all together, and then take the average of it by dividing it by the number of intersecting rays. It can be seen that both compact grids as well as the BVH centroid split method perform really well on a variety of 3D models with different number of triangles. 
 
 \subsection{Construction time analysis}
-\subsubsection{Why current compact grid implementation is fast to construct?}
-Overall, it can be seen that compact grid takes less time to build the structure as compared to the binary tree in BVH centroid split method. This is because compact grid is constructed by first going through all primitives in the scene, check which cells they overlap to get the linearized $C$ array, so it is a loop over all primitives in the scene. Then the linearized $C$ array is corrected by going through the same array itself. This array has approximately the size of the density $\rho$ times the primitives in our scene. Next, we get the object list $L$ by going through the corrected $C$ array once again. Once we have both these arrays, we then get the corrected $L$ and $C$ array by going through the primitives once again, getting the cell they overlap and then getting the final $L$ and $C$ array. We can ofcourse, save much of the information previously when we go through the primitives array the first time, but it would require a lot of additional memory because one triangle can be in more than one cell so this array which would store this information would be quite large. Overall, most of the time is spent checking for triangles that overlap but since we only have to go through them two times, it is still quite fast.
+\subsubsection{Why compact grid is fast to construct?}
+Overall, it can be seen that compact grid takes less time to build the structure as compared to the binary tree in BVH centroid split method. This is because compact grid is constructed by first going through all primitives in the scene, check which cells they overlap to get the linearized $C$ array, so it is a loop over all primitives in the scene. Then the linearized $C$ array is corrected by going through the same array itself. This array has approximately the size of the density $\rho$ times the primitives in our scene. Next, we allocate the object list $L$ by using the value in the last index of $C$. Once we have both these arrays, we then get the corrected $L$ and $C$ array by reversely iterating through the primitives once again, getting the cell they overlap and then getting the final $L$ and $C$ array. We can ofcourse, save much of the information previously when we go through the primitives array the first time, but it would require a lot of additional memory because one triangle can be in more than one cell so this array which would store this information would be quite large. Overall, most of the time is spent checking for triangles that overlap but since we only have to go through them two times, it is quite fast.
 
 \subsubsection{Why current BVH implementation is slow to construct?}
 Comparing this with the BVH centroid split method, we start with the scene bounding box which is the root node of our tree. This contains all of the primitives in our scene, so we go through them one by one, get their bounding boxes, get the centroid of those bounding boxes, and then compute the union of all those centroids to get a resultant bounding box. This resultant bounding box is then used to get the best split for the primitives in the current node and then we partition them into left and right nodes. Note that for both left and right nodes, we again want the correct bounding box that encloses the primitives in those nodes, so we again want a union of all bounding boxes of primitives in each of those nodes. This process is repeated for the left and right nodes again until we reach our base condition. So, most of the time is spent computing this resultant bounding box, which requires us to loop through all primitives in a node. This makes this BVH slow to construct. One important thing to mention here is that the better the split criteria, the better the quality of our tree, and the less the depth of our tree. So as a result, if we use a better criteria, we would be able to partition the primitives in a much better way, and this would result in a tree with less overlapping primitives in both left and right nodes of our tree. This can help in cutting down the time it takes to construct the tree in some scenarios (depending on the complexity of the splitting criteria) but would always help in cutting down the render time.
@@ -620,7 +620,7 @@ Comparing this with the BVH centroid split method, we start with the scene bound
 The BVH random split method performs poorly compared to other structures. This is quite obvious since we choose the split axis randomly without using any valuable information our scene can give to us. We sort the primitives and then place the first half in left node and the second half in the right node. Choosing the split axis randomly also results in random trees. In some cases, the tree is satisfactory while in other cases the tree can be much worse, increasing both the time complexity as well as the space complexity for tree construction. Resulting in a bad tree also increases the render time since then there might be a case that many of the primitives end up in both left and right nodes of our tree with wasted repeated intersection tests.
 
 \subsection{Render time analysis}
-Let's discuss the render time now. This is the amount of time it takes to render our image given that we have already built our data structure. It can be seen that both compact grids and BVH centroid split method perform quite nicely and render the image in similar times. One deviation to notice is the fact that the render time for compact grids is increasing slightly as the number of primitives in our scene increase. This is not true for BVH. The centroid split method for BVH renders the Happy Buddha scene in about 1.91 seconds, which is almost the same amount of time it takes for all other scenes. The compact grids however, while still very fast for less complex scenes, start to take more time to render the image for more complex scenes. The Happy Buddha scene takes about 4.28 seconds, while the Suzanne scene takes just about 1.17 seconds to render.
+Let's discuss the render time now. This is the amount of time it takes to render our image given that we have already built our data structure. It can be seen that both compact grids and BVH centroid split method perform quite nicely and render the image in similar times. One deviation to notice is the fact that the render time for compact grids is increasing slightly as the number of triangles in our scene increase. This is not true for BVH. The centroid split method for BVH renders the Happy Buddha scene in about 1.91 seconds, which is almost the same amount of time it takes for all other scenes. The compact grid however, while still very fast for less complex scenes, starts to take more time to render the image for more complex scenes. The Happy Buddha scene takes about 4.28 seconds, while the Suzanne scene takes just about 1.17 seconds to render for the compact grid.
 \\~\\
 Let's discuss the metric we computed which is the average number of intersection tests for each intersecting ray. It is interesting to note that this metric has a direct relation to the render time. If the value is lower, this would mean that the image would also take less time to render. Higher values can result in an increased render time. So for example, the dragon scene has the value $155.68$ for compact grids and the time it takes to render the scene with compact grids is about 5.7 seconds. The same scene has a value of $95.64$ for BVH, and it takes about 2.62 seconds to render the image using BVH. This metric can also be used to come up with a better density $\rho$ value for a specific scene when using compact grids. This value, as mentioned previously is used in equation (2) to get the desired grid resolution. Let's discuss this further for a more complex scene.
 
@@ -630,7 +630,7 @@ Let's discuss the metric we computed which is the average number of intersection
 {\footnotesize
 \begin{tabular}{ P{2.5cm} ||P{6cm} || P{6cm}  }      % centered columns (3 columns) 
 \hline\hline                                      %inserts double horizontal lines
-& Custom scene 1 & Custom scene 2\\ [0.5ex] % inserts table heading 
+& Scene 1 & Scene 2\\ [0.5ex] % inserts table heading 
 \hline
         & \Includegraphics[height=1.35in]{figures/custom_scene}& \Includegraphics[height=1.35in]{figures/benchmark_scene} \\
 \hline  
@@ -648,21 +648,21 @@ Let's discuss the metric we computed which is the average number of intersection
 \\
 \hline \hline
 \\
-BVH\_C build(s)& 95.91 s & 37.02 s \\
+BVH\_C build(s)& 95.91 s & 36.12 s \\
 \\
-C.G build(s)& $(\rho=4)$\:13.276 s, $(\rho=6)$\:23.271 s, $(\rho=8)$\:23.859 s& $(\rho=8)$\:11.22 s \\
-\\
-\hline \hline
-\\
-BVH\_C render(s)& 100.15 s & 663.84 s \\
-\\
-C.G render(s)&  $(\rho=4)$\:218.15 s, $(\rho=6)$\:183.961 s, $(\rho=8)$\:164.468 s& $(\rho=8)$\:2076.93 s \\
+C.G build(s)& $(\rho=4)$\:3.7 s, $(\rho=10)$\:4.6 s, $(\rho=15)$\:5.72 s& $(\rho=8)$\:1.48 s, $(\rho=15)$\:1.8 s, $(\rho=30)$\:2.75 s  \\
 \\
 \hline \hline
 \\
-BVH\_C avg \# isect tests / isect ray& 320.96 & 79.6917\\
+BVH\_C render(s)& 100.15 s & 1906 s \\
 \\
-C.G avg\# isect tests / isect ray& $(\rho=4)$\:560.504, $(\rho=6)$\:466.015, $(\rho=8)$\:417.912& $(\rho=8)$\:264.514 \\
+C.G render(s)&  $(\rho=4)$\:206.5 s, $(\rho=10)$\:150.5 s, $(\rho=15)$\:133.94 s& $(\rho=8)$\:6707 s, $(\rho=15)$\:4621 s, $(\rho=30)$\:4365 s  \\
+\\
+\hline \hline
+\\
+BVH\_C avg \# isect tests / isect ray& 320.96 & 79.69\\
+\\
+C.G avg\# isect tests / isect ray& $(\rho=4)$\:551.996, $(\rho=10)$\:364.94, $(\rho=15)$\:314.26& $(\rho=8)$\:260.717, $(\rho=15)$\:193.07, $(\rho=30)$\:143.08 \\
 \\
 \hline \hline
     \end{tabular}
@@ -672,15 +672,15 @@ C.G avg\# isect tests / isect ray& $(\rho=4)$\:560.504, $(\rho=6)$\:466.015, $(\
 \subsubsection{Scene 1}
 This scene uses an aspect ratio of $16:9$ with a resolution of $1000 \times 562$. 3 rays per pixel were used to render this scene. 2 point lights, one in front of the camera with an intensity value of $30$ and the other above the scene with a high intensity value of $60$ were used. Special thanks to \cite{grass} for the grass 3D model. The scene uses random scaling for the grass so that it properly represents a natural scene. This affects the render times as well as build time slightly for different runs but not so much.
 \\~\\
-It is interesting to note that BVH outperforms compact grid in this scene. The build time is about $95$ seconds and the render time is about $100$ seconds with a total of about $195$ seconds for time to image. Compact grids while still take less time to construct ($13.276$ seconds), the time taken to render the image is about $218$ seconds with a total of about $231$ seconds. Note that the average number of intersection tests per intersecting ray for compact grids is quite high ($500.5$) compared to BVH ($320.96$). Now we tried to increase the value $\rho$ to get different resolution grids for compact grids and noticed that they start to get better results for increased density. 
+It is interesting to note that BVH outperforms compact grid in this scene at first. The build time is about $95$ seconds and the render time is about $100$ seconds with a total of about $195$ seconds for time to image. Compact grids while still take less time to construct ($3.7$ seconds), the time taken to render the image is about $206$ seconds with a total of about $209.7$ seconds. Note that the average number of intersection tests per intersecting ray for compact grids is quite high ($551.996$) compared to BVH ($320.96$). Now we tried to increase the value $\rho$ to get different resolution grids for compact grid and noticed that they start to get better results for increased density. 
 \\~\\
-For a value of $\rho=6$ the average number of intersection tests per intersecting ray went down to $466.015$ which had a significant impact on render time as well. This time we were able to render the same image in about $184$ seconds, which is about $34$ seconds faster than before. We did spent some extra time (about $10$ seconds more) on construction but even adding the total time to image gives us $207$ seconds versus $231$ seconds. Now increasing the $\rho$ value further gives us a value of $417.912$, which is not a huge difference from before. This means that we might have still improved our time but not so much, which is apparent from the values in the table. Since increasing this $\rho$ value also increases the space complexity to keep our grid in memory, this new $\rho$ value isn't worth it. The metric we computed can therefore be used to arrive at a better $\rho$ value for specific scenes when using compact grids. Let us analyse one more scene, this time using area lights and having different objects of varied number of triangles scattered throughout the scene.
+For a value of $\rho=10$ the average number of intersection tests per intersecting ray went down to $364.94$ which had a significant impact on render time as well. This time we were able to render the same image in about $155$ seconds, which is about $55$ seconds faster than before. Now increasing the $\rho$ value further to $15$ gives us a value of $314.26$, rendering the image in about $134$ seconds. The total time to image is now about $140$ seconds. Note that we have already outperformed BVH for this scene which had total time to image of about $195$ seconds. The metric we computed can therefore be used to arrive at a better $\rho$ value for specific scenes when using compact grids. Let us analyze one more scene, this time using area lights and having different objects of varied number of triangles scattered throughout the scene.
 \subsubsection{Scene 2}
-This scene uses an aspect ratio of $16:9$ with a resolution of $1000 \times 562$. 3 rays per pixel were used to render this scene. This time five area lights were used instead of point lights. All of them are basically point lights in a grid of $3 \times 3$ so a total of $45$ point lights. The intensity value for a point is then averaged for each area light to compute shading. All of the lights are mostly around the center of the scene. As you can notice, the scene has different objects with varied amount of triangles; some of them are highly dense objects while others contain less number of triangles.
+This scene uses an aspect ratio of $16:9$ with a resolution of $1000 \times 562$. 5 rays per pixel were used to render this scene. This time five area lights were used instead of point lights. All of them are basically point lights in a grid of $3 \times 3$ so a total of $45$ point lights. The intensity value for a point is then averaged for each area light to compute shading. All of the lights are mostly around the center of the scene. As you can notice, the scene has different objects with varied amount of triangles; some of them are highly dense objects while others contain less number of triangles.
 \\~\\
-Compact grids perform very poorly in this scene. As obvious from the table, the construction time was quite low (about $11.22$ seconds) but rendering this scene took about $2077$ seconds or about $35$ minutes. The reason behind this significant impact even though the scene contains almost half of the number of triangles in scene 1 is because this scene has a \textbf{non uniform primitive distribution}. This causes uniform grids to suffer from a problem known as \textbf{teapot in a stadium} \cite{utahteapot} problem. What this means is that, if all objects in the scene have approximately the same size, then uniform grids have generally good results, but if there are objects which contain a small number of primitives and some objects that contain a very high density of primitives, then many of the primitives end up in many cells of the grid which results in greater number of intersection tests in some cells resulting in poor performance. An improvement over the regular compact grids was made in the paper \textbf{Two-Level Grids for Ray Tracing on GPUs} \cite{kalojanov2011two} which constructs two levels grids depending on the density of primitives in a particular region. When a region of high density is found, another grid with an increased density is introduced in the region. This helps in handling the problem of non uniform primitive distributions more robustly.
+Compact grids perform very poorly in this scene. As obvious from the table, the construction time was quite low (about $1.5$ seconds) but rendering this scene took about $6707$ seconds or about $1$ hour $50$ minutes. Increasing the density $\rho$ value helps a bit but even increasing it to a value of $30$ takes it down to $4365$ seconds or about $1$ hour $12$ minutes. The reason behind this significant impact even though the scene contains almost half of the number of triangles in scene 1 is because this scene has a \textbf{non uniform primitive distribution}. This causes uniform grids to suffer from a problem known as \textbf{teapot in a stadium} \cite{utahteapot} problem. What this means is that, if all objects in the scene have approximately the same size, then uniform grids have generally good results, but if there are objects which contain a small number of primitives and some objects that contain a very high density of primitives, then many of the primitives end up in many cells of the grid which results in greater number of intersection tests in some cells resulting in poor performance. An improvement over the regular compact grids was made in the paper \textbf{Two-Level Grids for Ray Tracing on GPUs} \cite{kalojanov2011two} which constructs two levels grids depending on the density of primitives in a particular region. When a region of high density is found, another grid with an increased density is introduced in the region. This helps in handling the problem of non uniform primitive distributions more robustly.
 \\~\\
-BVH however, do not suffer from this problem since it divides objects (object subdivision) instead of space (space subdivision). This is the reason why BVH was able to render the same scene in about $663$ seconds or about 11 minutes. But this also does not mean that BVH will outperform uniform grid in every scenario. 
+BVH however, do not suffer from this problem since it divides objects (object subdivision) instead of space (space subdivision). This is the reason why BVH was able to render the same scene in about $1906$ seconds or about 31 minutes. But this also does not mean that BVH will outperform uniform grid in every scenario. 
 \\~\\
 In our previous scenes which contained single models with approximately uniformly distributed primitives, the compact grid implementation outperformed BVH in the total time to image (construction and render time). The Happy Buddha scene for instance, takes about 27 seconds for BVH while it takes just about 6 seconds for compact grid. This tells us that BVH is mostly ideal for sparse scenes \cite{boulos2005notes} where we can group objects into two separate clusters that may be separated by large portions of space. Another important aspect is the memory consumption. Compact grids allocates memory according to the resolution of the grid (equation (2)) while the current BVH implementation keeps pointers to primitives in each node making compact grids, a better choice for representing complex scenes efficiently.
 

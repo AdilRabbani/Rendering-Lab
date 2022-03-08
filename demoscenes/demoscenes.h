@@ -53,17 +53,10 @@ inline void scene1() {
   file_to_save_image << "P3\n"
                      << image_width << " " << image_height << "\n255\n";
 
-  auto t1 = high_resolution_clock::now();
   scene.render_scene(image_width, image_height, samples_per_pixel, cam,
                      file_to_save_image);
-  auto t2 = high_resolution_clock::now();
-  duration<double, std::milli> ms_double = t2 - t1;
-  std::cout << "\nTime taken to render the image: "
-            << (ms_double.count() / 1000) << " seconds\n";
-  std::cout << "Ray-triangle intersection tests: "
+  std::cout << "Ray-triangle intersections: "
             << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
 
   scene.clear_scene();
 }
@@ -89,9 +82,9 @@ inline void scene_textured_spheres(bool area_light) {
   scene.add_sphere(sphere_2);
   scene.add_sphere(sphere_3);
 
-  scene.add_triangle(triangle(point3(-5, -1, -6), point3(5, -1, -6),
+  scene.add_triangle(triangle(point3(-5, -1 + 0.00001, -6), point3(5, -1, -6),
                               point3(-5, -1, 2.5), color(0.2, 0.2, 0.2)));
-  scene.add_triangle(triangle(point3(5, -1, 2.5), point3(-5, -1, 2.5),
+  scene.add_triangle(triangle(point3(5, -1 + 0.00001, 2.5), point3(-5, -1, 2.5),
                               point3(5, -1, -6), color(0.2, 0.2, 0.2)));
 
   std::ofstream file_to_save_image;
@@ -99,7 +92,7 @@ inline void scene_textured_spheres(bool area_light) {
     scene.add_area_light(AreaLight(color(1, 1, 1), 30, vec3(-2, 2, -1), 1), 3);
     scene.add_area_light(AreaLight(color(1, 1, 1), 30, vec3(2, 2, -1), 1), 3);
     scene.add_area_light(AreaLight(color(1, 1, 1), 10, vec3(0, 2, -1), 1), 3);
-    file_to_save_image.open("renders/scene7_arealight_uniform_grids.ppm");
+    file_to_save_image.open("renders/scene7_arealight_uniform_grids_.ppm");
   } else {
     scene.add_point_light(PointLight(color(1, 1, 1), 30, vec3(-2, 2, -1)));
     scene.add_point_light(PointLight(color(1, 1, 1), 30, vec3(2, 2, -1)));
@@ -113,22 +106,15 @@ inline void scene_textured_spheres(bool area_light) {
   file_to_save_image << "P3\n"
                      << image_width << " " << image_height << "\n255\n";
 
-  auto t1 = high_resolution_clock::now();
   scene.render_scene(image_width, image_height, samples_per_pixel, cam,
                      file_to_save_image);
-  auto t2 = high_resolution_clock::now();
-  duration<double, std::milli> ms_double = t2 - t1;
-  std::cout << "\nTime taken to render the image: "
-            << (ms_double.count() / 1000) << " seconds\n";
-  std::cout << "Ray-triangle intersection tests: "
+  std::cout << "Ray-triangle intersections: "
             << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
 
   scene.clear_scene();
 }
 
-inline void bvh_test_scene() {
+inline void nature_scene() {
   const auto aspect_ratio = 16.0 / 9.0;
   const int image_width = 1000;
   const int image_height = static_cast<int>(image_width / aspect_ratio);
@@ -161,7 +147,6 @@ inline void bvh_test_scene() {
   for (int i = -10; i < 10; i++) {
     for (int j = -30; j < 30; j++) {
       int random_scale = (rand() % 5) + 2;
-      std::cout << random_scale << std::endl;
       mesh grass("models/low_grass.obj", vec3(random_scale, random_scale, random_scale), vec3(j*0.45, -0.8, i), vec3(0, 0, 0), color(0, 0.9, 0.45));
       scene.add_mesh(grass);
     }
@@ -171,7 +156,7 @@ inline void bvh_test_scene() {
   scene.add_mesh(happy_buddha);
 
   std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/analysis/bvh/bvh_test_scene_ug_density_10.ppm");
+  file_to_save_image.open("renders/nature_scene_ug_density_15.ppm");
 
   camera cam(point3(0, 2, 7), point3(0, 0, -1), vec3(0, 1, 0), 45,
              aspect_ratio);
@@ -181,48 +166,10 @@ inline void bvh_test_scene() {
 
   scene.render_scene(image_width, image_height, samples_per_pixel, cam,
                      file_to_save_image);
-  std::cout << "Ray-triangle intersection tests: "
+  std::cout << "Ray-triangle intersections: "
             << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
 
   scene.clear_scene();
-}
-
-inline void analysis_scene_2 () {
-  const auto aspect_ratio = 1;
-  const int image_width = 500;
-  const int image_height = static_cast<int>(image_width / aspect_ratio);
-  const int samples_per_pixel = 1;
-
-  std::cout << "Image width: " << image_width << "\nImage height: " << image_height << std::endl;
-
-  Scene scene(1, 1, 1, 1);
-
-  mesh bunny("models/stanford-bunny.obj", vec3(23, 23, 23), vec3(-1.25, 0.75, 0),
-             vec3(0, -30, 0), color(0.97, 0.7, 0.008));
-  scene.add_mesh(bunny);
-
-  scene.add_point_light(PointLight(color(1, 1, 1), 30, vec3(0, 2, 5)));
-
-  std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/analysis/bvh/analysis_scenes/scene_1_bvh.ppm");
-  
-  camera cam(point3(0, 2, 7), point3(0, 0, -1), vec3(0, 1, 0), 45,
-             aspect_ratio);
-
-  file_to_save_image << "P3\n"
-                     << image_width << " " << image_height << "\n255\n";
-
-  scene.render_scene(image_width, image_height, samples_per_pixel, cam,
-                     file_to_save_image);
-  std::cout << "Ray-triangle intersection tests: "
-            << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
-
-  scene.clear_scene();
-
 }
 
 inline void analysis_scene_1 () {
@@ -242,7 +189,7 @@ inline void analysis_scene_1 () {
   scene.add_point_light(PointLight(color(1, 1, 1), 30, vec3(0, 2, 5)));
 
   std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/analysis/bvh/analysis_scenes/scene_2_bvh.ppm");
+  file_to_save_image.open("renders/scene_1_ug_density_4.ppm");
   
   camera cam(point3(0, 2, 7), point3(0, 0, -1), vec3(0, 1, 0), 45,
              aspect_ratio);
@@ -252,10 +199,42 @@ inline void analysis_scene_1 () {
 
   scene.render_scene(image_width, image_height, samples_per_pixel, cam,
                      file_to_save_image);
-  std::cout << "Ray-triangle intersection tests: "
+  std::cout << "Ray-triangle intersections: "
             << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
+
+  scene.clear_scene();
+
+}
+
+inline void analysis_scene_2 () {
+  const auto aspect_ratio = 1;
+  const int image_width = 500;
+  const int image_height = static_cast<int>(image_width / aspect_ratio);
+  const int samples_per_pixel = 1;
+
+  std::cout << "Image width: " << image_width << "\nImage height: " << image_height << std::endl;
+
+  Scene scene(1, 1, 1, 1);
+
+  mesh bunny("models/stanford-bunny.obj", vec3(23, 23, 23), vec3(-1.25, 0.75, 0),
+             vec3(0, -30, 0), color(0.97, 0.7, 0.008));
+  scene.add_mesh(bunny);
+
+  scene.add_point_light(PointLight(color(1, 1, 1), 30, vec3(0, 2, 5)));
+
+  std::ofstream file_to_save_image;
+  file_to_save_image.open("renders/scene_2_ug_density_4.ppm");
+  
+  camera cam(point3(0, 2, 7), point3(0, 0, -1), vec3(0, 1, 0), 45,
+             aspect_ratio);
+
+  file_to_save_image << "P3\n"
+                     << image_width << " " << image_height << "\n255\n";
+
+  scene.render_scene(image_width, image_height, samples_per_pixel, cam,
+                     file_to_save_image);
+  std::cout << "Ray-triangle intersections: "
+            << scene.get_ray_triangle_tests() << std::endl;
 
   scene.clear_scene();
 
@@ -278,7 +257,7 @@ inline void analysis_scene_3 () {
   scene.add_point_light(PointLight(color(1, 1, 1), 30, vec3(0, 2, 5)));
 
   std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/analysis/bvh/analysis_scenes/scene_3_bvh.ppm");
+  file_to_save_image.open("renders/scene_3_ug_density_4.ppm");
   
   camera cam(point3(0, 2, 7), point3(0, 0, -1), vec3(0, 1, 0), 45,
              aspect_ratio);
@@ -288,10 +267,8 @@ inline void analysis_scene_3 () {
 
   scene.render_scene(image_width, image_height, samples_per_pixel, cam,
                      file_to_save_image);
-  std::cout << "Ray-triangle intersection tests: "
+  std::cout << "Ray-triangle intersections: "
             << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
 
   scene.clear_scene();
 
@@ -314,7 +291,7 @@ inline void analysis_scene_4 () {
   scene.add_point_light(PointLight(color(1, 1, 1), 30, vec3(0, 2, 5)));
 
   std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/analysis/bvh/analysis_scenes/scene_4_bvh.ppm");
+  file_to_save_image.open("renders/scene_4_ug_density_4.ppm");
   
   camera cam(point3(0, 2, 7), point3(0, 0, -1), vec3(0, 1, 0), 45,
              aspect_ratio);
@@ -324,10 +301,8 @@ inline void analysis_scene_4 () {
 
   scene.render_scene(image_width, image_height, samples_per_pixel, cam,
                      file_to_save_image);
-  std::cout << "Ray-triangle intersection tests: "
+  std::cout << "Ray-triangle intersections: "
             << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
 
   scene.clear_scene();
 
@@ -350,7 +325,7 @@ inline void analysis_scene_5 () {
   scene.add_point_light(PointLight(color(1, 1, 1), 30, vec3(0, 2, 5)));
 
   std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/scene_5_sah_.ppm");
+  file_to_save_image.open("renders/scene_5_ug_density_4.ppm");
   
   camera cam(point3(0, 2, 7), point3(0, 0, -1), vec3(0, 1, 0), 45,
              aspect_ratio);
@@ -360,10 +335,8 @@ inline void analysis_scene_5 () {
 
   scene.render_scene(image_width, image_height, samples_per_pixel, cam,
                      file_to_save_image);
-  std::cout << "Ray-triangle intersection tests: "
+  std::cout << "Ray-triangle intersections: "
             << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
 
   scene.clear_scene();
 
@@ -386,7 +359,7 @@ inline void analysis_scene_6 () {
   scene.add_point_light(PointLight(color(1, 1, 1), 30, vec3(0, 2, 5)));
 
   std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/analysis/bvh/analysis_scenes/scene_6_ug.ppm");
+  file_to_save_image.open("renders/scene_6_ug_density_4.ppm");
   
   camera cam(point3(0, 2, 7), point3(0, 0, -1), vec3(0, 1, 0), 45,
              aspect_ratio);
@@ -396,10 +369,8 @@ inline void analysis_scene_6 () {
 
   scene.render_scene(image_width, image_height, samples_per_pixel, cam,
                      file_to_save_image);
-  std::cout << "Ray-triangle intersection tests: "
+  std::cout << "Ray-triangle intersections: "
             << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
 
   scene.clear_scene();
 
@@ -421,7 +392,7 @@ inline void analysis_scene_7 () {
   scene.add_point_light(PointLight(color(1, 1, 1), 30, vec3(0, 2, 5)));
 
   std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/analysis/bvh/analysis_scenes/scene_7_ug.ppm");
+  file_to_save_image.open("renders/scene_7_bvh.ppm");
   
   camera cam(point3(0, 2, 7), point3(0, 0, -1), vec3(0, 1, 0), 45,
              aspect_ratio);
@@ -431,10 +402,8 @@ inline void analysis_scene_7 () {
 
   scene.render_scene(image_width, image_height, samples_per_pixel, cam,
                      file_to_save_image);
-  std::cout << "Ray-triangle intersection tests: "
+  std::cout << "Ray-triangle intersections: "
             << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
 
   scene.clear_scene();
 
@@ -456,7 +425,7 @@ inline void analysis_scene_8 () {
   scene.add_point_light(PointLight(color(1, 1, 1), 30, vec3(0, 2, 5)));
 
   std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/analysis/bvh/analysis_scenes/scene_8_bvh.ppm");
+  file_to_save_image.open("renders/scene_8_ug_density_4.ppm");
   
   camera cam(point3(0, 2, 7), point3(0, 0, -1), vec3(0, 1, 0), 45,
              aspect_ratio);
@@ -466,10 +435,8 @@ inline void analysis_scene_8 () {
 
   scene.render_scene(image_width, image_height, samples_per_pixel, cam,
                      file_to_save_image);
-  std::cout << "Ray-triangle intersection tests: "
+  std::cout << "Ray-triangle intersections: "
             << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
 
   scene.clear_scene();
 
@@ -537,7 +504,7 @@ inline void benchmark_scene_1() {
   scene.add_mesh(xyz_dragon);
 
   std::ofstream file_to_save_image;
-  file_to_save_image.open("renders/benchmark_scene_1_normal_sah.ppm");
+  file_to_save_image.open("renders/benchmark_scene_1_ug_density_30.ppm");
 
   camera cam(point3(0, 3, 7.5), point3(0, 0, -1), vec3(0, 1, 0), 45,
              aspect_ratio);
@@ -545,17 +512,10 @@ inline void benchmark_scene_1() {
   file_to_save_image << "P3\n"
                      << image_width << " " << image_height << "\n255\n";
 
-  auto t1 = high_resolution_clock::now();
   scene.render_scene(image_width, image_height, samples_per_pixel, cam,
                      file_to_save_image);
-  auto t2 = high_resolution_clock::now();
-  duration<double, std::milli> ms_double = t2 - t1;
-  std::cout << "\nTime taken to render the image: "
-            << (ms_double.count() / 1000) << " seconds\n";
-  std::cout << "Ray-triangle intersection tests: "
+  std::cout << "Ray-triangle intersections: "
             << scene.get_ray_triangle_tests() << std::endl;
-  std::cout << "Ray-sphere intersection tests: " << scene.get_ray_sphere_tests()
-            << std::endl << std::endl;
 
   scene.clear_scene();
 }

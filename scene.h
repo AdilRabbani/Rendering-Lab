@@ -35,7 +35,7 @@ using std::chrono::high_resolution_clock;
 // std::mutex render_thread_lock;
 
 struct object_reference {
-  triangle *reference;
+  primitive *reference;
   unsigned int index = 0;
 };
 
@@ -80,7 +80,7 @@ public:
     with_aabb = 1;
     number_of_area_lights = 0;
     // ray_mesh_tests = 0;
-    ray_triangle_tests = 0;
+    ray_triangle_intersections = 0;
     ray_sphere_tests = 0;
     texture_set = 0;
     color_set = 0;
@@ -94,7 +94,7 @@ public:
     with_aabb = with_aabb_bool;
     number_of_area_lights = 0;
     // ray_mesh_tests = 0;
-    ray_triangle_tests = 0;
+    ray_triangle_intersections = 0;
     ray_sphere_tests = 0;
     texture_set = 0;
     color_set = 0;
@@ -109,7 +109,7 @@ public:
     with_aabb = with_aabb_bool;
     number_of_area_lights = 0;
     // ray_mesh_tests = 0;
-    ray_triangle_tests = 0;
+    ray_triangle_intersections = 0;
     ray_sphere_tests = 0;
     background_color = background_color_arg;
     texture_set = 0;
@@ -124,7 +124,7 @@ public:
     with_aabb = with_aabb_bool;
     number_of_area_lights = 0;
     // ray_mesh_tests = 0;
-    ray_triangle_tests = 0;
+    ray_triangle_intersections = 0;
     ray_sphere_tests = 0;
     background_texture = background_texture_arg;
     texture_set = 1;
@@ -246,10 +246,11 @@ public:
       int i = (((grid_resolution_y * cur_z_index) + cur_y_index) * grid_resolution_x) + cur_x_index;
 
       for (int j = uniform_grids_C_linearized[i]; j < uniform_grids_C_linearized[i + 1]; ++j) {
-        triangle *triangle_test = uniform_grids_L[j].reference;
+        // triangle *triangle_test = uniform_grids_L[j].reference;
+        primitive *prim = uniform_grids_L[j].reference;
         intersection_tests_for_this_ray = intersection_tests_for_this_ray + 1;
-        if (triangle_test->hit(r, t_min, closest_so_far, temp_hit)) {
-          ray_triangle_tests = ray_triangle_tests + 1;
+        if (prim->hit(r, t_min, closest_so_far, temp_hit)) {
+          ray_triangle_intersections = ray_triangle_intersections + 1;
           hit_anything = true;
           if (r.shadow_ray) {
             break;
@@ -353,6 +354,7 @@ public:
               }
             }
           }
+          ray_triangle_intersections = ray_triangle_intersections + scene_bvh.hits.size();
           intersection_tests_per_intersecting_ray.push_back(scene_bvh.intersection_tests);
           if (NORMAL_MODE) {
             return 0.5 * (closest_hit.normal + color(1, 1, 1));
@@ -458,7 +460,7 @@ public:
           // ray_mesh_tests = ray_mesh_tests + 1;
           for (std::size_t k = 0; k < scene_meshes[j].mesh_triangles.size();
                ++k) {
-            ray_triangle_tests = ray_triangle_tests + 1;
+            ray_triangle_intersections = ray_triangle_intersections + 1;
             if (scene_meshes[j].mesh_triangles[k].hit(r, t_min, closest_so_far,
                                                       temp_hit)) {
 
@@ -474,7 +476,7 @@ public:
         // ray_mesh_tests = ray_mesh_tests + 1;
         for (std::size_t k = 0; k < scene_meshes[j].mesh_triangles.size();
              ++k) {
-          ray_triangle_tests = ray_triangle_tests + 1;
+          ray_triangle_intersections = ray_triangle_intersections + 1;
           if (scene_meshes[j].mesh_triangles[k].hit(r, t_min, closest_so_far,
                                                     temp_hit)) {
             hit_anything = true;
@@ -489,7 +491,7 @@ public:
 
     for (std::size_t j = 0; j < scene_triangles.size(); ++j) {
       if (scene_triangles[j].hit(r, t_min, closest_so_far, temp_hit)) {
-        ray_triangle_tests = ray_triangle_tests + 1;
+        ray_triangle_intersections = ray_triangle_intersections + 1;
         hit_anything = true;
         if (r.shadow_ray)
           continue;
@@ -525,17 +527,21 @@ public:
     return hit_anything;
   }
 
-  void get_object_min_max_cell(triangle const t, vec3 const cell_dimension, int &cell_min_z, int &cell_max_z, 
+  void get_object_min_max_cell(primitive &prim, vec3 const cell_dimension, int &cell_min_z, int &cell_max_z, 
                                int &cell_min_y, int &cell_max_y, int &cell_min_x, int &cell_max_x, bool is_triangle) {
-      vec3 triangle_p0 = t.p0;
-      vec3 triangle_p1 = t.p1;
-      vec3 triangle_p2 = t.p2;
+      // vec3 triangle_p0 = t.p0;
+      // vec3 triangle_p1 = t.p1;
+      // vec3 triangle_p2 = t.p2;
 
-      vec3 first_min = get_minimum_vector_for_aabb(triangle_p0, triangle_p1);
-      vec3 minimum = get_minimum_vector_for_aabb(first_min, triangle_p2);
+      aabb prim_aabb = prim.construct_aabb();
+      vec3 minimum = prim_aabb.min_;
+      vec3 maximum = prim_aabb.max_;
 
-      vec3 first_max = get_maximum_vector_for_aabb(triangle_p0, triangle_p1);
-      vec3 maximum = get_maximum_vector_for_aabb(first_max, triangle_p2);
+      // vec3 first_min = get_minimum_vector_for_aabb(triangle_p0, triangle_p1);
+      // vec3 minimum = get_minimum_vector_for_aabb(first_min, triangle_p2);
+
+      // vec3 first_max = get_maximum_vector_for_aabb(triangle_p0, triangle_p1);
+      // vec3 maximum = get_maximum_vector_for_aabb(first_max, triangle_p2);
 
       double min_cell_x = (minimum.x() - scene_aabb.min_.x()) / cell_dimension.x();
       double min_cell_y = (minimum.y() - scene_aabb.min_.y()) / cell_dimension.y();
@@ -622,6 +628,8 @@ public:
   void compute_grid_resolution_and_C() {
     double size_x_of_scene_bbox, size_y_of_scene_bbox, size_z_of_scene_bbox;
 
+    std::cout << "***********************************************************" << std::endl;  
+
     size_x_of_scene_bbox = scene_aabb.max_.x() - scene_aabb.min_.x();
     size_y_of_scene_bbox = scene_aabb.max_.y() - scene_aabb.min_.y();
     size_z_of_scene_bbox = scene_aabb.max_.z() - scene_aabb.min_.z();
@@ -636,7 +644,7 @@ public:
 
     std::cout << "volume of scene bounding box : " << volume_of_scene_bbox << " units" << std::endl;
 
-    double grid_density = 8;
+    double grid_density = GRID_DENSITY;
 
     std::cout << "number of objects : " << number_of_objects << std::endl;
 
@@ -665,7 +673,7 @@ public:
 
     vec3 cell_dimension(cell_dimension_x, cell_dimension_y, cell_dimension_z);
 
-    std::cout << "Cell dimension: " << cell_dimension << std::endl;
+    std::cout << "Cell dimension : " << cell_dimension << std::endl;
 
     for (int z = 0; z < grid_resolution_z; z++) {
       for (int y = 0; y < grid_resolution_y; y++) {
@@ -683,7 +691,7 @@ public:
       // std::cout << std::endl;
     }
 
-    std::cout << "Size of linearized array: " << uniform_grids_C_linearized.size() << std::endl;
+    std::cout << "Size of linearized array C : " << uniform_grids_C_linearized.size() << std::endl;
 
     for (std::size_t j = 0; j < scene_triangles.size(); ++j) {
 
@@ -692,9 +700,25 @@ public:
       get_object_min_max_cell(scene_triangles[j], cell_dimension, cell_min_z, cell_max_z,
                               cell_min_y, cell_max_y, cell_min_x, cell_max_x, true);
 
-      for (int z = cell_min_z; z <= cell_max_z + 1; ++z) {
-        for (int y = cell_min_y; y <= cell_max_y + 1; ++y) {
-          for (int x = cell_min_x; x <= cell_max_x + 1; ++x) {
+      for (int z = cell_min_z; z <= cell_max_z; ++z) {
+        for (int y = cell_min_y; y <= cell_max_y; ++y) {
+          for (int x = cell_min_x; x <= cell_max_x; ++x) {
+            int ith_index = (((grid_resolution_y * z) + y) * grid_resolution_x) + x;
+            uniform_grids_C_linearized[ith_index] = uniform_grids_C_linearized[ith_index] + 1;
+          }
+        }
+      }
+    }
+
+    for (std::size_t j = 0; j < scene_spheres.size(); ++j) {
+      int cell_min_z, cell_max_z, cell_min_y, cell_max_y, cell_min_x, cell_max_x;
+
+      get_object_min_max_cell(scene_spheres[j], cell_dimension, cell_min_z, cell_max_z,
+                              cell_min_y, cell_max_y, cell_min_x, cell_max_x, true);
+
+      for (int z = cell_min_z; z <= cell_max_z; ++z) {
+        for (int y = cell_min_y; y <= cell_max_y; ++y) {
+          for (int x = cell_min_x; x <= cell_max_x; ++x) {
             int ith_index = (((grid_resolution_y * z) + y) * grid_resolution_x) + x;
             uniform_grids_C_linearized[ith_index] = uniform_grids_C_linearized[ith_index] + 1;
           }
@@ -737,7 +761,7 @@ public:
     // }
     // std::cout << std::endl;
 
-    std::cout << std::endl << "Joint size of the object list : " << uniform_grids_C_linearized[uniform_grids_C_linearized.size() - 1] << std::endl;
+    std::cout << std::endl << "Joint size of the object list L : " << uniform_grids_C_linearized[uniform_grids_C_linearized.size() - 1] << std::endl;
 
     for (int i = 0; i < uniform_grids_C_linearized[uniform_grids_C_linearized.size() - 1]; ++i) {
       object_reference object;
@@ -774,6 +798,40 @@ public:
       }
     }
 
+    // std::cout << std::endl;
+    // for (int i = 0; i < uniform_grids_C_linearized.size(); ++i) {
+    //   std::cout << uniform_grids_C_linearized[i] << " ";
+    // }
+    // std::cout << std::endl;
+
+    // std::cout << std::endl << "L : " << std::endl;
+    // for (int i = 0; i < uniform_grids_L.size(); ++i) {
+    //   std::cout << uniform_grids_L[i].index << " ";
+    // }
+    // std::cout << std::endl;
+
+    for (int j = scene_spheres.size() - 1; j >= 0; --j) {
+
+      int cell_min_z, cell_max_z, cell_min_y, cell_max_y, cell_min_x, cell_max_x;
+
+      get_object_min_max_cell(scene_spheres[j], cell_dimension, cell_min_z, cell_max_z,
+                                  cell_min_y, cell_max_y, cell_min_x, cell_max_x, true);
+
+      number_of_objects_counter = number_of_objects_counter - 1;
+
+      for (int z = cell_min_z; z <= cell_max_z; ++z) {
+        for (int y = cell_min_y; y <= cell_max_y; ++y) {
+          for (int x = cell_min_x; x <= cell_max_x; ++x) {
+            int each_cell = (((grid_resolution_y * z) + y) * grid_resolution_x) + x;
+            object_reference object;
+            object.index = number_of_objects_counter;
+            object.reference = &scene_spheres[j];
+            uniform_grids_L[--uniform_grids_C_linearized[each_cell]] = object;
+          }
+        }
+      }
+    }
+
     for (int j = scene_triangles.size() - 1; j >= 0; --j) {
 
       int cell_min_z, cell_max_z, cell_min_y, cell_max_y, cell_min_x, cell_max_x;
@@ -783,9 +841,9 @@ public:
 
       number_of_objects_counter = number_of_objects_counter - 1;
 
-      for (int z = cell_min_z; z <= cell_max_z + 1; ++z) {
-        for (int y = cell_min_y; y <= cell_max_y + 1; ++y) {
-          for (int x = cell_min_x; x <= cell_max_x + 1; ++x) {
+      for (int z = cell_min_z; z <= cell_max_z; ++z) {
+        for (int y = cell_min_y; y <= cell_max_y; ++y) {
+          for (int x = cell_min_x; x <= cell_max_x; ++x) {
             int each_cell = (((grid_resolution_y * z) + y) * grid_resolution_x) + x;
             object_reference object;
             object.index = number_of_objects_counter;
@@ -841,17 +899,18 @@ public:
       }
     }
 
-    std::cout << "Scene primitives: " << scene_primitives.size() << std::endl;
+    std::cout << "***********************************************************" << std::endl;  
+    std::cout << "number of objects : " << scene_primitives.size() << std::endl;
 
     scene_bvh.init(scene_primitives, 0, scene_primitives.size(), scene_aabb);
 
     int count = 0;
 
-    if (BVH_SAH_SPLIT) {
-      scene_bvh.build_SAH_split(scene_bvh.root);
-    }
+    // if (BVH_SAH_SPLIT) {
+    //   scene_bvh.build_SAH_split(scene_bvh.root);
+    // }
 
-    else if (BVH_RANDOM_SPLIT) {
+    if (BVH_RANDOM_SPLIT) {
       scene_bvh.build(scene_bvh.root, 0, scene_primitives.size());
     }
 
@@ -863,7 +922,7 @@ public:
 
   }
 
-  unsigned long long int get_ray_triangle_tests() { return ray_triangle_tests; }
+  unsigned long long int get_ray_triangle_tests() { return ray_triangle_intersections; }
 
   unsigned long long int get_ray_sphere_tests() { return ray_sphere_tests; }
 
@@ -929,8 +988,9 @@ public:
       compute_grid_resolution_and_C();
       auto t2 = high_resolution_clock::now();
       duration<double, std::milli> ms_double = t2 - t1;
-      std::cout << "\nTime taken to construct uniform grid: "
+      std::cout << "\nTime taken to construct uniform grid : "
               << (ms_double.count() / 1000) << " seconds\n";
+      std::cout << "***********************************************************" << std::endl;  
     }
 
     if (USE_BVH) {
@@ -939,8 +999,9 @@ public:
       construct_bvh();
       auto t2 = high_resolution_clock::now();
       duration<double, std::milli> ms_double = t2 - t1;
-      std::cout << "\nTime taken to construct bvh: "
+      std::cout << "\nTime taken to construct bvh : "
               << (ms_double.count() / 1000) << " seconds\n";
+      std::cout << "***********************************************************" << std::endl;  
     }
 
     auto t1 = high_resolution_clock::now();
@@ -996,7 +1057,7 @@ public:
   bool apply_specular;
   bool with_aabb;
 
-  unsigned long long int ray_triangle_tests;
+  unsigned long long int ray_triangle_intersections;
   unsigned long long int ray_sphere_tests;
   texture background_texture;
   color background_color;

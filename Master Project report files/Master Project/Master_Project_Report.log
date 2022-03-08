@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.6)  7 MAR 2022 15:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.6)  8 MAR 2022 02:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1003,7 +1003,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 696.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 696.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 696.
 Package rerunfilecheck Info: File `Master_Project_Report.out' has not changed.
-(rerunfilecheck)             Checksum: C96037559EE043ACF468BC3B3F6C0709;1754.
+(rerunfilecheck)             Checksum: 91D4DC9E0B61283C431A95810204FF41;1731.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1017,7 +1017,7 @@ Here is how much of TeX's memory you used:
  25761 multiletter control sequences out of 15000+600000
  545376 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,15n,48p,1580b,514s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,15n,48p,1595b,514s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -1036,7 +1036,7 @@ share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Master_Project_Report.pdf (26 pages, 4733581 bytes).
+Output written on Master_Project_Report.pdf (26 pages, 4733539 bytes).
 PDF statistics:
  624 PDF objects out of 1000 (max. 8388607)
  484 compressed objects within 5 object streams
