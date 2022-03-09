@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.6)  8 MAR 2022 02:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.5.6)  9 MAR 2022 23:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -579,22 +579,22 @@ LaTeX Info: Redefining \BHBI on input line 130.
 <cover_image.png, id=107, 752.8125pt x 423.08063pt>
 File: cover_image.png Graphic file (type png)
 <use cover_image.png>
-Package pdftex.def Info: cover_image.png  used on input line 65.
+Package pdftex.def Info: cover_image.png  used on input line 66.
 (pdftex.def)             Requested size: 362.37569pt x 203.6574pt.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./cover_image.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 74--84
+Underfull \hbox (badness 10000) in paragraph at lines 76--86
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--84
+Underfull \hbox (badness 10000) in paragraph at lines 76--86
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--84
+Underfull \hbox (badness 10000) in paragraph at lines 76--86
 
  []
 
@@ -602,7 +602,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.86 \tableofcontents
+l.88 \tableofcontents
                       [1] (./Master_Project_Report.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
 
@@ -618,404 +618,410 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout4 = `Master_Project_Report.toc'.
 
  [2]
-Underfull \hbox (badness 10000) in paragraph at lines 90--94
+Underfull \hbox (badness 10000) in paragraph at lines 92--96
 
  []
 
-<raytracing_gems.png, id=193, 624.08156pt x 454.69875pt>
+<raytracing_gems.png, id=194, 624.08156pt x 454.69875pt>
 File: raytracing_gems.png Graphic file (type png)
 <use raytracing_gems.png>
-Package pdftex.def Info: raytracing_gems.png  used on input line 110.
+Package pdftex.def Info: raytracing_gems.png  used on input line 112.
 (pdftex.def)             Requested size: 203.83417pt x 148.51077pt.
 [3 <./raytracing_gems.png (PNG copy)>]
-<landing.jpg, id=206, 1927.2pt x 1084.05pt>
+<landing.jpg, id=207, 1927.2pt x 1084.05pt>
 File: landing.jpg Graphic file (type jpg)
 <use landing.jpg>
-Package pdftex.def Info: landing.jpg  used on input line 121.
+Package pdftex.def Info: landing.jpg  used on input line 123.
 (pdftex.def)             Requested size: 181.18439pt x 101.91063pt.
-<real_photo.png, id=211, 642.4pt x 401.5pt>
+<real_photo.png, id=212, 642.4pt x 401.5pt>
 File: real_photo.png Graphic file (type png)
 <use real_photo.png>
-Package pdftex.def Info: real_photo.png  used on input line 131.
+Package pdftex.def Info: real_photo.png  used on input line 133.
 (pdftex.def)             Requested size: 158.54152pt x 99.0882pt.
-<hyperion.png, id=212, 642.4pt x 401.5pt>
+<hyperion.png, id=213, 642.4pt x 401.5pt>
 File: hyperion.png Graphic file (type png)
 <use hyperion.png>
-Package pdftex.def Info: hyperion.png  used on input line 132.
+Package pdftex.def Info: hyperion.png  used on input line 134.
 (pdftex.def)             Requested size: 158.54152pt x 99.0882pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 137--147
+Underfull \hbox (badness 10000) in paragraph at lines 139--149
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 137--147
+Underfull \hbox (badness 10000) in paragraph at lines 139--149
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 137--147
+Underfull \hbox (badness 10000) in paragraph at lines 139--149
 
  []
 
 [4 <./landing.jpg> <./real_photo.png> <./hyperion.png>]
-<uniformgrids.png, id=229, 216.81pt x 208.52907pt>
+<uniformgrids.png, id=230, 216.81pt x 208.52907pt>
 File: uniformgrids.png Graphic file (type png)
 <use uniformgrids.png>
-Package pdftex.def Info: uniformgrids.png  used on input line 154.
+Package pdftex.def Info: uniformgrids.png  used on input line 156.
 (pdftex.def)             Requested size: 81.5309pt x 78.41776pt.
  [5 <./uniformgrids.PNG>]
-<grid_density_graph.png, id=251, 659.46375pt x 465.23813pt>
+<grid_density_graph.png, id=252, 659.46375pt x 465.23813pt>
 File: grid_density_graph.png Graphic file (type png)
 <use grid_density_graph.png>
-Package pdftex.def Info: grid_density_graph.png  used on input line 175.
+Package pdftex.def Info: grid_density_graph.png  used on input line 177.
 (pdftex.def)             Requested size: 249.13371pt x 175.75587pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--183
+Underfull \hbox (badness 10000) in paragraph at lines 182--185
 
  []
 
 [6 <./grid_density_graph.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 184--187
+Underfull \hbox (badness 10000) in paragraph at lines 186--189
 
  []
 
-<uniformgrids1.png, id=270, 478.03593pt x 441.90094pt>
+<uniformgrids1.png, id=271, 478.03593pt x 441.90094pt>
 File: uniformgrids1.png Graphic file (type png)
 <use uniformgrids1.png>
-Package pdftex.def Info: uniformgrids1.png  used on input line 192.
+Package pdftex.def Info: uniformgrids1.png  used on input line 194.
 (pdftex.def)             Requested size: 126.83044pt x 117.23804pt.
-<uniformgrids2.png, id=271, 399.74344pt x 376.40625pt>
+<uniformgrids2.png, id=272, 399.74344pt x 376.40625pt>
 File: uniformgrids2.png Graphic file (type png)
 <use uniformgrids2.png>
-Package pdftex.def Info: uniformgrids2.png  used on input line 193.
+Package pdftex.def Info: uniformgrids2.png  used on input line 195.
 (pdftex.def)             Requested size: 126.83044pt x 119.42436pt.
-<uniformgrids3.png, id=276, 391.4625pt x 374.90062pt>
+<uniformgrids3.png, id=277, 391.4625pt x 374.90062pt>
 File: uniformgrids3.png Graphic file (type png)
 <use uniformgrids3.png>
-Package pdftex.def Info: uniformgrids3.png  used on input line 200.
+Package pdftex.def Info: uniformgrids3.png  used on input line 202.
 (pdftex.def)             Requested size: 135.89174pt x 130.14172pt.
-<uniformgrids4.png, id=277, 513.41812pt x 373.395pt>
+<uniformgrids4.png, id=278, 513.41812pt x 373.395pt>
 File: uniformgrids4.png Graphic file (type png)
 <use uniformgrids4.png>
-Package pdftex.def Info: uniformgrids4.png  used on input line 201.
+Package pdftex.def Info: uniformgrids4.png  used on input line 203.
 (pdftex.def)             Requested size: 135.89174pt x 98.82954pt.
 [7 <./uniformgrids1.PNG> <./uniformgrids2.PNG> <./uniformgrids3.PNG> <./uniform
 grids4.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 216--220
+Underfull \hbox (badness 10000) in paragraph at lines 218--222
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 233--240
+Underfull \hbox (badness 10000) in paragraph at lines 235--242
 
  []
 
 [8]
-<compact_grid_1.png, id=303, 560.8453pt x 601.4972pt>
+<compact_grid_1.png, id=304, 560.8453pt x 601.4972pt>
 File: compact_grid_1.png Graphic file (type png)
 <use compact_grid_1.png>
-Package pdftex.def Info: compact_grid_1.png  used on input line 255.
+Package pdftex.def Info: compact_grid_1.png  used on input line 257.
 (pdftex.def)             Requested size: 181.18439pt x 194.30948pt.
-<compact_grid_2.png, id=304, 560.8453pt x 601.4972pt>
+<compact_grid_2.png, id=305, 560.8453pt x 601.4972pt>
 File: compact_grid_2.png Graphic file (type png)
 <use compact_grid_2.png>
-Package pdftex.def Info: compact_grid_2.png  used on input line 256.
+Package pdftex.def Info: compact_grid_2.png  used on input line 258.
 (pdftex.def)             Requested size: 181.18439pt x 194.30948pt.
-<compact_grid_3.png, id=305, 560.8453pt x 601.4972pt>
+<compact_grid_3.png, id=306, 560.8453pt x 601.4972pt>
 File: compact_grid_3.png Graphic file (type png)
 <use compact_grid_3.png>
-Package pdftex.def Info: compact_grid_3.png  used on input line 271.
+Package pdftex.def Info: compact_grid_3.png  used on input line 273.
 (pdftex.def)             Requested size: 135.89174pt x 145.73898pt.
  [9 <./compact_grid_1.png> <./compact_grid_2.png>]
-<compact_grid_4.png, id=316, 575.90157pt x 48.18pt>
+<compact_grid_4.png, id=317, 575.90157pt x 48.18pt>
 File: compact_grid_4.png Graphic file (type png)
 <use compact_grid_4.png>
-Package pdftex.def Info: compact_grid_4.png  used on input line 278.
+Package pdftex.def Info: compact_grid_4.png  used on input line 280.
 (pdftex.def)             Requested size: 294.42636pt x 24.63248pt.
-<compact_grid_5.png, id=317, 575.90157pt x 48.18pt>
+<compact_grid_5.png, id=318, 575.90157pt x 48.18pt>
 File: compact_grid_5.png Graphic file (type png)
 <use compact_grid_5.png>
-Package pdftex.def Info: compact_grid_5.png  used on input line 285.
+Package pdftex.def Info: compact_grid_5.png  used on input line 287.
 (pdftex.def)             Requested size: 294.42636pt x 24.63248pt.
-<compact_grid_6.png, id=318, 593.96906pt x 47.42719pt>
+<compact_grid_6.png, id=319, 593.96906pt x 47.42719pt>
 File: compact_grid_6.png Graphic file (type png)
 <use compact_grid_6.png>
-Package pdftex.def Info: compact_grid_6.png  used on input line 291.
+Package pdftex.def Info: compact_grid_6.png  used on input line 293.
 (pdftex.def)             Requested size: 294.42636pt x 23.51016pt.
-<compact_grid_7.png, id=319, 590.205pt x 47.42719pt>
+<compact_grid_7.png, id=320, 590.205pt x 47.42719pt>
 File: compact_grid_7.png Graphic file (type png)
 <use compact_grid_7.png>
-Package pdftex.def Info: compact_grid_7.png  used on input line 297.
+Package pdftex.def Info: compact_grid_7.png  used on input line 299.
 (pdftex.def)             Requested size: 294.42636pt x 23.65924pt.
-<compact_grid_8.png, id=320, 593.96906pt x 130.23656pt>
+<compact_grid_8.png, id=321, 593.96906pt x 130.23656pt>
 File: compact_grid_8.png Graphic file (type png)
 <use compact_grid_8.png>
-Package pdftex.def Info: compact_grid_8.png  used on input line 303.
+Package pdftex.def Info: compact_grid_8.png  used on input line 305.
 (pdftex.def)             Requested size: 317.07614pt x 69.52582pt.
  [10 <./compact_grid_3.png> <./compact_grid_4.png> <./compact_grid_5.png> <./co
 mpact_grid_6.png> <./compact_grid_7.png> <./compact_grid_8.png>] [11]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 344.
+put line 346.
  [12]
-<boundingvolumes.png, id=363, 897.3525pt x 335.75438pt>
+<boundingvolumes.png, id=367, 897.3525pt x 335.75438pt>
 File: boundingvolumes.png Graphic file (type png)
 <use boundingvolumes.png>
-Package pdftex.def Info: boundingvolumes.png  used on input line 377.
+Package pdftex.def Info: boundingvolumes.png  used on input line 380.
 (pdftex.def)             Requested size: 339.72592pt x 127.11153pt.
-<bvh_pbr.png, id=368, 374.14781pt x 412.54124pt>
+<bvh_pbr.png, id=372, 374.14781pt x 412.54124pt>
 File: bvh_pbr.png Graphic file (type png)
 <use bvh_pbr.png>
-Package pdftex.def Info: bvh_pbr.png  used on input line 390.
+Package pdftex.def Info: bvh_pbr.png  used on input line 393.
 (pdftex.def)             Requested size: 158.54152pt x 174.80838pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--392
+Underfull \hbox (badness 10000) in paragraph at lines 383--395
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--392
+Underfull \hbox (badness 10000) in paragraph at lines 383--395
 
  []
 
 [13 <./boundingvolumes.PNG>]
-<sorting_bvh.png, id=380, 312.16624pt x 386.44376pt>
+<sorting_bvh.png, id=384, 312.16624pt x 386.44376pt>
 File: sorting_bvh.png Graphic file (type png)
 <use sorting_bvh.png>
-Package pdftex.def Info: sorting_bvh.png  used on input line 404.
+Package pdftex.def Info: sorting_bvh.png  used on input line 407.
 (pdftex.def)             Requested size: 135.89174pt x 168.2255pt.
  [14 <./bvh_pbr.PNG>]
-<centroid_bvh.png, id=388, 429.85594pt x 433.62pt>
+<centroid_bvh.png, id=392, 429.85594pt x 433.62pt>
 File: centroid_bvh.png Graphic file (type png)
 <use centroid_bvh.png>
-Package pdftex.def Info: centroid_bvh.png  used on input line 421.
+Package pdftex.def Info: centroid_bvh.png  used on input line 424.
 (pdftex.def)             Requested size: 135.89174pt x 137.08064pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 424--427
+Underfull \hbox (badness 10000) in paragraph at lines 427--430
 
  []
 
 [15 <./sorting_bvh.png> <./centroid_bvh.PNG>]
-<bvh_1.png, id=404, 576.65437pt x 601.4972pt>
+<bvh_1.png, id=408, 576.65437pt x 601.4972pt>
 File: bvh_1.png Graphic file (type png)
 <use bvh_1.png>
-Package pdftex.def Info: bvh_1.png  used on input line 441.
+Package pdftex.def Info: bvh_1.png  used on input line 444.
 (pdftex.def)             Requested size: 181.18439pt x 188.98618pt.
-<bvh_2.png, id=405, 560.8453pt x 601.4972pt>
+<bvh_2.png, id=409, 560.8453pt x 601.4972pt>
 File: bvh_2.png Graphic file (type png)
 <use bvh_2.png>
-Package pdftex.def Info: bvh_2.png  used on input line 448.
+Package pdftex.def Info: bvh_2.png  used on input line 451.
 (pdftex.def)             Requested size: 113.24197pt x 121.44456pt.
-<bvh_3.png, id=406, 547.2947pt x 466.74374pt>
+<bvh_3.png, id=410, 547.2947pt x 466.74374pt>
 File: bvh_3.png Graphic file (type png)
 <use bvh_3.png>
-Package pdftex.def Info: bvh_3.png  used on input line 449.
+Package pdftex.def Info: bvh_3.png  used on input line 452.
 (pdftex.def)             Requested size: 113.24197pt x 96.57332pt.
  [16 <./bvh_1.png>]
-<bvh_4.png, id=415, 560.8453pt x 601.4972pt>
+<bvh_4.png, id=419, 560.8453pt x 601.4972pt>
 File: bvh_4.png Graphic file (type png)
 <use bvh_4.png>
-Package pdftex.def Info: bvh_4.png  used on input line 455.
+Package pdftex.def Info: bvh_4.png  used on input line 458.
 (pdftex.def)             Requested size: 113.24197pt x 121.44456pt.
-<bvh_5.png, id=416, 560.8453pt x 601.4972pt>
+<bvh_5.png, id=420, 560.8453pt x 601.4972pt>
 File: bvh_5.png Graphic file (type png)
 <use bvh_5.png>
-Package pdftex.def Info: bvh_5.png  used on input line 456.
+Package pdftex.def Info: bvh_5.png  used on input line 459.
 (pdftex.def)             Requested size: 113.24197pt x 121.44456pt.
-<bvh_6.png, id=417, 567.62062pt x 729.47531pt>
+<bvh_6.png, id=421, 567.62062pt x 729.47531pt>
 File: bvh_6.png Graphic file (type png)
 <use bvh_6.png>
-Package pdftex.def Info: bvh_6.png  used on input line 464.
+Package pdftex.def Info: bvh_6.png  used on input line 467.
 (pdftex.def)             Requested size: 135.89174pt x 174.64354pt.
-<bvh_7.png, id=418, 566.115pt x 814.54312pt>
+<bvh_7.png, id=422, 566.115pt x 814.54312pt>
 File: bvh_7.png Graphic file (type png)
 <use bvh_7.png>
-Package pdftex.def Info: bvh_7.png  used on input line 465.
+Package pdftex.def Info: bvh_7.png  used on input line 468.
 (pdftex.def)             Requested size: 131.35764pt x 188.99402pt.
  [17 <./bvh_2.png> <./bvh_3.png> <./bvh_4.png> <./bvh_5.png> <./bvh_6.png> <./b
 vh_7.png>]
 [18]
-<figures/suzanne.png, id=442, 501.875pt x 501.875pt>
+<figures/suzanne.png, id=446, 501.875pt x 501.875pt>
 File: figures/suzanne.png Graphic file (type png)
 <use figures/suzanne.png>
-Package pdftex.def Info: figures/suzanne.png  used on input line 516.
+Package pdftex.def Info: figures/suzanne.png  used on input line 519.
 (pdftex.def)             Requested size: 72.2684pt x 72.26999pt.
 
-Overfull \hbox (1.13652pt too wide) in paragraph at lines 516--516
+Overfull \hbox (1.13652pt too wide) in paragraph at lines 519--519
  []|[]| 
  []
 
-<figures/spot.png, id=443, 501.875pt x 501.875pt>
+<figures/spot.png, id=447, 501.875pt x 501.875pt>
 File: figures/spot.png Graphic file (type png)
 <use figures/spot.png>
-Package pdftex.def Info: figures/spot.png  used on input line 516.
+Package pdftex.def Info: figures/spot.png  used on input line 519.
 (pdftex.def)             Requested size: 72.2684pt x 72.26999pt.
 
-Overfull \hbox (1.13652pt too wide) in paragraph at lines 516--516
+Overfull \hbox (1.13652pt too wide) in paragraph at lines 519--519
  []|[]| 
  []
 
-<figures/teapot.png, id=444, 501.875pt x 501.875pt>
+<figures/teapot.png, id=448, 501.875pt x 501.875pt>
 File: figures/teapot.png Graphic file (type png)
 <use figures/teapot.png>
-Package pdftex.def Info: figures/teapot.png  used on input line 516.
+Package pdftex.def Info: figures/teapot.png  used on input line 519.
 (pdftex.def)             Requested size: 72.2684pt x 72.26999pt.
 
-Overfull \hbox (1.13652pt too wide) in paragraph at lines 516--516
+Overfull \hbox (1.13652pt too wide) in paragraph at lines 519--519
  []|[]| 
  []
 
-<figures/bunny.png, id=445, 501.875pt x 501.875pt>
+<figures/bunny.png, id=449, 501.875pt x 501.875pt>
 File: figures/bunny.png Graphic file (type png)
 <use figures/bunny.png>
-Package pdftex.def Info: figures/bunny.png  used on input line 516.
+Package pdftex.def Info: figures/bunny.png  used on input line 519.
 (pdftex.def)             Requested size: 72.2684pt x 72.26999pt.
 
-Overfull \hbox (1.13652pt too wide) in paragraph at lines 516--517
+Overfull \hbox (1.13652pt too wide) in paragraph at lines 519--520
  []|[]| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 505--558
+Underfull \hbox (badness 10000) in paragraph at lines 508--561
 
  []
 
 [19 <./figures/suzanne.png> <./figures/spot.png> <./figures/teapot.png> <./figu
 res/bunny.png>]
-<figures/lucy.png, id=457, 501.875pt x 501.875pt>
+<figures/lucy.png, id=461, 501.875pt x 501.875pt>
 File: figures/lucy.png Graphic file (type png)
 <use figures/lucy.png>
-Package pdftex.def Info: figures/lucy.png  used on input line 568.
+Package pdftex.def Info: figures/lucy.png  used on input line 571.
 (pdftex.def)             Requested size: 72.2684pt x 72.26999pt.
 
-Overfull \hbox (1.13652pt too wide) in paragraph at lines 568--568
+Overfull \hbox (1.13652pt too wide) in paragraph at lines 571--571
  []|[]| 
  []
 
-<figures/xyz_dragon.png, id=458, 501.875pt x 501.875pt>
+<figures/xyz_dragon.png, id=462, 501.875pt x 501.875pt>
 File: figures/xyz_dragon.png Graphic file (type png)
 <use figures/xyz_dragon.png>
-Package pdftex.def Info: figures/xyz_dragon.png  used on input line 568.
+Package pdftex.def Info: figures/xyz_dragon.png  used on input line 571.
 (pdftex.def)             Requested size: 72.2684pt x 72.26999pt.
 
-Overfull \hbox (1.13652pt too wide) in paragraph at lines 568--568
+Overfull \hbox (1.13652pt too wide) in paragraph at lines 571--571
  []|[]| 
  []
 
-<figures/dragon.png, id=459, 501.875pt x 501.875pt>
+<figures/dragon.png, id=463, 501.875pt x 501.875pt>
 File: figures/dragon.png Graphic file (type png)
 <use figures/dragon.png>
-Package pdftex.def Info: figures/dragon.png  used on input line 568.
+Package pdftex.def Info: figures/dragon.png  used on input line 571.
 (pdftex.def)             Requested size: 72.2684pt x 72.26999pt.
 
-Overfull \hbox (1.13652pt too wide) in paragraph at lines 568--568
+Overfull \hbox (1.13652pt too wide) in paragraph at lines 571--571
  []|[]| 
  []
 
-<figures/buddha.png, id=460, 501.875pt x 501.875pt>
+<figures/buddha.png, id=464, 501.875pt x 501.875pt>
 File: figures/buddha.png Graphic file (type png)
 <use figures/buddha.png>
-Package pdftex.def Info: figures/buddha.png  used on input line 568.
+Package pdftex.def Info: figures/buddha.png  used on input line 571.
 (pdftex.def)             Requested size: 72.2684pt x 72.26999pt.
 
-Overfull \hbox (1.13652pt too wide) in paragraph at lines 568--569
+Overfull \hbox (1.13652pt too wide) in paragraph at lines 571--572
  []|[]| 
  []
 
 [20 <./figures/lucy.png> <./figures/xyz_dragon.png> <./figures/dragon.png> <./f
 igures/buddha.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 618--621
+Underfull \hbox (badness 10000) in paragraph at lines 621--624
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 623--626
+Underfull \hbox (badness 10000) in paragraph at lines 626--629
 
  []
 
 [21]
-<figures/custom_scene.png, id=471, 1003.75pt x 564.1075pt>
+<figures/custom_scene.png, id=475, 1003.75pt x 564.1075pt>
 File: figures/custom_scene.png Graphic file (type png)
 <use figures/custom_scene.png>
-Package pdftex.def Info: figures/custom_scene.png  used on input line 635.
+Package pdftex.def Info: figures/custom_scene.png  used on input line 638.
 (pdftex.def)             Requested size: 173.59122pt x 97.56493pt.
 
-Overfull \hbox (2.8747pt too wide) in paragraph at lines 635--635
+Overfull \hbox (2.8747pt too wide) in paragraph at lines 638--638
  []|[]| 
  []
 
-<figures/benchmark_scene.png, id=472, 1003.75pt x 564.1075pt>
+<figures/benchmark_scene.png, id=476, 1003.75pt x 564.1075pt>
 File: figures/benchmark_scene.png Graphic file (type png)
 <use figures/benchmark_scene.png>
-Package pdftex.def Info: figures/benchmark_scene.png  used on input line 635.
+Package pdftex.def Info: figures/benchmark_scene.png  used on input line 638.
 (pdftex.def)             Requested size: 173.59122pt x 97.56493pt.
 
-Overfull \hbox (2.8747pt too wide) in paragraph at lines 635--636
+Overfull \hbox (2.8747pt too wide) in paragraph at lines 638--639
  []|[]| 
  []
 
 
-Overfull \hbox (1.197pt too wide) in paragraph at lines 631--639
+Overfull \hbox (1.197pt too wide) in paragraph at lines 634--642
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 673--678
+Underfull \hbox (badness 10000) in paragraph at lines 676--681
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 673--678
+Underfull \hbox (badness 10000) in paragraph at lines 676--681
 
  []
 
 [22 <./figures/custom_scene.png> <./figures/benchmark_scene.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 679--686
+Underfull \hbox (badness 10000) in paragraph at lines 682--689
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 679--686
+Underfull \hbox (badness 10000) in paragraph at lines 682--689
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 679--686
+Underfull \hbox (badness 10000) in paragraph at lines 682--689
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 688--693
+Underfull \hbox (badness 10000) in paragraph at lines 691--696
 
  []
 
 (./Master_Project_Report.bbl [24]
-Underfull \hbox (badness 10000) in paragraph at lines 576--588
+Underfull \hbox (badness 10000) in paragraph at lines 235--248
+[]$\OT1/cmtt/m/n/10.95 https :// github [] .com / cgyurgyik / fast [] -voxel []
+ -traversal [] -algorithm / blob / master /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 601--613
 \OT1/cmtt/m/n/10.95 OpenGLInsights / OpenGLInsightsCode / blob / master / Chapt
 er % 2026 % 20Indexing %
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 696.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 699.
  [25]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 696.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 699.
  (./Master_Project_Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 696.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 696.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 699.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 699.
 Package rerunfilecheck Info: File `Master_Project_Report.out' has not changed.
 (rerunfilecheck)             Checksum: 91D4DC9E0B61283C431A95810204FF41;1731.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 696.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 699.
  ) 
 Here is how much of TeX's memory you used:
- 10849 strings out of 481239
- 163423 string characters out of 5920378
- 442601 words of memory out of 5000000
- 25761 multiletter control sequences out of 15000+600000
- 545376 words of font info for 73 fonts, out of 8000000 for 9000
+ 10854 strings out of 481239
+ 163544 string characters out of 5920378
+ 442670 words of memory out of 5000000
+ 25765 multiletter control sequences out of 15000+600000
+ 545677 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,15n,48p,1595b,514s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
@@ -1036,10 +1042,10 @@ share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Master_Project_Report.pdf (26 pages, 4733539 bytes).
+Output written on Master_Project_Report.pdf (26 pages, 4735291 bytes).
 PDF statistics:
- 624 PDF objects out of 1000 (max. 8388607)
- 484 compressed objects within 5 object streams
- 134 named destinations out of 1000 (max. 500000)
+ 630 PDF objects out of 1000 (max. 8388607)
+ 490 compressed objects within 5 object streams
+ 135 named destinations out of 1000 (max. 500000)
  409 words of extra memory for PDF output out of 10000 (max. 10000000)
 

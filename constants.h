@@ -13,11 +13,11 @@ const double AMBIENT_CONSTANT = 0.05;
 const bool USE_SHADOWS = true;
 const bool NORMAL_MODE = false;
 const bool DEBUG_GRID = false;
-const bool USE_UNIFORM_GRIDS = true;
-const double GRID_DENSITY = 30;
-const bool USE_BVH = false;
+const bool USE_UNIFORM_GRIDS = false;
+const double GRID_DENSITY = 4;
+const bool USE_BVH = true;
 const bool BVH_RANDOM_SPLIT = false;
-const bool BVH_CENTROID_SPLIT = false;
+const bool BVH_CENTROID_SPLIT = true;
 // const bool BVH_SAH_SPLIT = false; // doesn't work properly
 const double AREA_LIGHTS_SPREAD = 0.05; // previously 0.1
 

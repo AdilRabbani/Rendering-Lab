@@ -222,6 +222,31 @@ Fujimoto, A.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Gyurgyik%
+}{%
+Gyurgyik%
+}{%
+{\protect \APACyear {2020}}%
+}]{%
+fastvoxeltraversalnotes}
+\APACinsertmetastar {%
+fastvoxeltraversalnotes}%
+\begin{APACrefauthors}%
+Gyurgyik, C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2020}{}{}.
+\newblock
+\APACrefbtitle {An Overview of the Fast Voxel Traversal Algorithm.} {An
+  overview of the fast voxel traversal algorithm.}
+\newblock
+\begin{APACrefURL}
+  \url{https://github.com/cgyurgyik/fast-voxel-traversal-algorithm/blob/master/overview/FastVoxelTraversalOverview.md}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Haines%
 \ \BBA {} Akenine-M{\"o}ller%
 }{%

@@ -20,7 +20,7 @@
 \contentsline {subsubsection}{\numberline {6.1.2}Why current BVH implementation is slow to construct?}{21}{subsubsection.6.1.2}%
 \contentsline {subsection}{\numberline {6.2}Render time analysis}{21}{subsection.6.2}%
 \contentsline {subsection}{\numberline {6.3}Further analysis}{22}{subsection.6.3}%
-\contentsline {subsubsection}{\numberline {6.3.1}Scene 1}{22}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.1}Scene 1}{23}{subsubsection.6.3.1}%
 \contentsline {subsubsection}{\numberline {6.3.2}Scene 2}{23}{subsubsection.6.3.2}%
 \contentsline {section}{\numberline {7}Conclusion}{24}{section.7}%
 \contentsline {section}{References}{24}{section.7}%
